@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">HebrewSongDownloaderApp</string>
+    <string name="search_hint">שם שיר, אלבום או אומן</string>
+    <string name="downloadFolder">/HebrewSongDownloads</string>
+</resources>
