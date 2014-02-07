@@ -25,6 +25,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a3d188e-0acd-4df5-844f-22d39649ba13" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HebrewSongDownloaderApp.iws" />
@@ -101,7 +102,7 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2890">
+            <state line="98" column="54" selection-start="3459" selection-end="3459" vertical-scroll-proportion="0.0" vertical-offset="918" max-vertical-offset="2890">
               <folding />
             </state>
           </provider>
@@ -110,7 +111,7 @@
       <file leaf-file-name="FetchSongs.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/engine/FetchSongs.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="23" selection-start="946" selection-end="946" vertical-scroll-proportion="0.51282054" vertical-offset="204" max-vertical-offset="1819">
+            <state line="47" column="0" selection-start="1775" selection-end="1775" vertical-scroll-proportion="0.6666667" vertical-offset="357" max-vertical-offset="1819">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -808,17 +809,21 @@
       <workItem from="1391774654859" duration="1016000" />
       <workItem from="1391776767243" duration="30000" />
       <workItem from="1391777609514" duration="485000" />
-      <workItem from="1391778269431" duration="904000" />
+      <workItem from="1391778269431" duration="4217000" />
     </task>
     <task id="LOCAL-00001" summary="second commit!!!">
       <created>1391779081154</created>
       <updated>1391779081154</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="second commit!!!&#10;">
+      <created>1391779184763</created>
+      <updated>1391779184763</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61373000" />
+    <option name="totallyTimeSpent" value="64686000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -928,7 +933,8 @@
     <MESSAGE value="&#10;" />
     <MESSAGE value="new project commit" />
     <MESSAGE value="second commit!!!" />
-    <option name="LAST_COMMIT_MESSAGE" value="second commit!!!" />
+    <MESSAGE value="second commit!!!&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="second commit!!!&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1219,14 +1225,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2890">
+        <state line="98" column="54" selection-start="3459" selection-end="3459" vertical-scroll-proportion="0.0" vertical-offset="918" max-vertical-offset="2890">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/engine/FetchSongs.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="23" selection-start="946" selection-end="946" vertical-scroll-proportion="0.51282054" vertical-offset="204" max-vertical-offset="1819">
+        <state line="47" column="0" selection-start="1775" selection-end="1775" vertical-scroll-proportion="0.6666667" vertical-offset="357" max-vertical-offset="1819">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
