@@ -31,7 +31,6 @@ public class FetchSongs {
                 u.getPath(),
                 u.getQuery(),
                 u.getRef());
-        // HI
     }
 
     public static String[] downloadHebrewSong(String nameOfSong, final String directoryForSong) throws Exception {
