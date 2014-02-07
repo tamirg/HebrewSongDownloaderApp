@@ -31,7 +31,6 @@ public class FetchSongs {
                 u.getPath(),
                 u.getQuery(),
                 u.getRef());
-        // HI
     }
 
     public static String[] downloadHebrewSong(String nameOfSong, final String directoryForSong) throws Exception {
@@ -45,7 +44,7 @@ public class FetchSongs {
 
             Document songDownloadParsedHTML = Jsoup.connect(songDownloadURL).get();
             Elements elementsWithClassIframe = songDownloadParsedHTML.getElementsByClass("iframecontent").select("iframe");
-            String iframeURL =  elementsWithClassIframe.attr("abs:src");
+            String iframeURL = elementsWithClassIframe.attr("abs:src");
 
             Document iframeSongDownloadDocument = Jsoup.connect(iframeURL).get();
             String songDownloadIframe = iframeSongDownloadDocument.getElementsByTag("iframe").attr("abs:src");
@@ -64,10 +63,10 @@ public class FetchSongs {
             // Works for videotomp3now site!
             else if (songDownloadIframe.contains("videotomp3now")) {
                 songFinalDownloadURL = iframeParsedHTML.getElementById("downloadbutton").child(0).attr("abs:href");
-                songFileName =  iframeParsedHTML.getElementById("url").children().select("h1").text();
+                songFileName = iframeParsedHTML.getElementById("url").children().select("h1").text();
             } else if (songDownloadIframe.contains("mp3tuber")) {
                 songFinalDownloadURL = iframeParsedHTML.select("p:has(a)").first().child(0).attr("abs:href");
-                songFileName =  iframeParsedHTML.select("p[dir]").first().text();
+                songFileName = iframeParsedHTML.select("p[dir]").first().text();
             }
 
             //createHebrewSong(directoryForSong, songFinalDownloadURL, songFileName);
@@ -84,12 +83,12 @@ public class FetchSongs {
 
         try {
             HttpEntity entity = responseSongFile.getEntity();
-            songFileLengthInBytes = (int)entity.getContentLength();
+            songFileLengthInBytes = (int) entity.getContentLength();
             BufferedInputStream bfInputStream = new BufferedInputStream(entity.getContent());
             String filePath = directoryForSong + File.separator + songFileName + SONG_FILE_MP3_SUFFIX;
             BufferedOutputStream bfOutputStream = new BufferedOutputStream(new FileOutputStream(filePath));
             int inByte = bfInputStream.read();
-            while (inByte!= -1) {
+            while (inByte != -1) {
                 bfOutputStream.write(inByte);
                 inByte = bfInputStream.read();
             }

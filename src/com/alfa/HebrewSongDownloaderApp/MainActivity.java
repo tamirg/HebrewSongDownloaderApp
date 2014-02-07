@@ -1,14 +1,12 @@
 package com.alfa.HebrewSongDownloaderApp;
 
 import Exceptions.NoSongFoundException;
-import android.app.*;
+import android.app.Activity;
+import android.app.Service;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
@@ -20,7 +18,6 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.io.*;
 import java.net.URI;
-import java.util.Collections;
 
 public class MainActivity extends Activity {
     private ProgressBar progressBar;
@@ -52,20 +49,20 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 // Perform action on click
                 songQuerySearch = (SearchView) findViewById(R.id.searchSongQuery);
-                InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Service.INPUT_METHOD_SERVICE);
+                InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Service.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(songQuerySearch.getWindowToken(), 0);
-                 try {
+                try {
                     new DownloadFileFromURL(v.getContext()).execute(null, null, null);
-                 } catch (Exception e) {
-                        System.out.println(e.getMessage());
-                 }
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
             }
         });
     }
 
     /**
      * Background Async Task to download file
-     * */
+     */
     private class DownloadFileFromURL extends AsyncTask<String, String, String> {
 
         private Context context;
@@ -78,7 +75,7 @@ public class MainActivity extends Activity {
         /**
          * Before starting background thread
          * Show Progress Bar Dialog
-         * */
+         */
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -91,7 +88,7 @@ public class MainActivity extends Activity {
 
         /**
          * Downloading file in background thread
-         * */
+         */
         @Override
         protected String doInBackground(String... params) {
             String[] urlParamsForDownload = null;
@@ -119,7 +116,7 @@ public class MainActivity extends Activity {
                     int songFileLengthInBytes;
 
                     HttpEntity entity = responseSongFile.getEntity();
-                    songFileLengthInBytes = (int)entity.getContentLength();
+                    songFileLengthInBytes = (int) entity.getContentLength();
                     BufferedInputStream bfInputStream = new BufferedInputStream(entity.getContent());
                     String filePath = directoryForSong + File.separator + songFileName + FetchSongs.SONG_FILE_MP3_SUFFIX;
                     BufferedOutputStream bfOutputStream = new BufferedOutputStream(new FileOutputStream(filePath));
@@ -131,7 +128,7 @@ public class MainActivity extends Activity {
                         totalBytesDownloaded += bytesRead;
 
                         // publishing the progress....
-                        publishProgress(""+(int)((totalBytesDownloaded*100)/songFileLengthInBytes));
+                        publishProgress("" + (int) ((totalBytesDownloaded * 100) / songFileLengthInBytes));
 
                         // Writing the song to disk
                         baos.write(buffer, 0, bytesRead);
@@ -149,7 +146,7 @@ public class MainActivity extends Activity {
 
         /**
          * Updating progress bar
-         * */
+         */
         protected void onProgressUpdate(String... progress) {
             // setting progress percentage
             int progressPercentage = Integer.parseInt(progress[0]);
@@ -160,7 +157,8 @@ public class MainActivity extends Activity {
         /**
          * After completing background task
          * Dismiss the progress dialog
-         * **/
+         * *
+         */
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
@@ -170,7 +168,7 @@ public class MainActivity extends Activity {
                 Toast.makeText(context, "השיר ירד בהצלחה", Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(context, errorContent, Toast.LENGTH_LONG).show();
-                View rootView = ((Activity)context).getWindow().getDecorView().findViewById(android.R.id.content);
+                View rootView = ((Activity) context).getWindow().getDecorView().findViewById(android.R.id.content);
                 View songQuerySearchEditText = rootView.findViewById(R.id.searchSongQuery);
                 songQuerySearchEditText.requestFocus();
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -179,7 +177,7 @@ public class MainActivity extends Activity {
                 } catch (Exception exc) {
                     System.out.println(exc.getMessage());
                 }
-                imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
+                imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
             }
         }
     }
