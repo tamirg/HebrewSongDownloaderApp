@@ -28,6 +28,8 @@ public class MainActivity extends Activity {
     SearchView songQuerySearch;
     //private Context context = this.getApplicationContext();
 
+    // this is micha's comment!!!!
+
     /**
      * Called when the activity is first created.
      */
