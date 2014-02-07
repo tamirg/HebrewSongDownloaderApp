@@ -19,7 +19,10 @@ public class SearchableActivity extends Activity {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
             try {
-                FetchSongs.getSongURL(query);
+
+                // replaced it with
+                //FetchSongs.getSongURL(query);
+
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
