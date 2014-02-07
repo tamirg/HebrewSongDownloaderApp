@@ -24,7 +24,9 @@
     <option name="TOOL_WINDOW_LOG_LEVEL" value="ERROR" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a3d188e-0acd-4df5-844f-22d39649ba13" name="Default" comment="" />
+    <list default="true" id="2a3d188e-0acd-4df5-844f-22d39649ba13" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="HebrewSongDownloaderApp.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -108,7 +110,7 @@
       <file leaf-file-name="FetchSongs.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/engine/FetchSongs.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="19" selection-start="1175" selection-end="1175" vertical-scroll-proportion="0.6666667" vertical-offset="204" max-vertical-offset="1836">
+            <state line="32" column="23" selection-start="946" selection-end="946" vertical-scroll-proportion="0.51282054" vertical-offset="204" max-vertical-offset="1819">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -806,12 +808,17 @@
       <workItem from="1391774654859" duration="1016000" />
       <workItem from="1391776767243" duration="30000" />
       <workItem from="1391777609514" duration="485000" />
-      <workItem from="1391778269431" duration="639000" />
+      <workItem from="1391778269431" duration="904000" />
     </task>
+    <task id="LOCAL-00001" summary="second commit!!!">
+      <created>1391779081154</created>
+      <updated>1391779081154</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61108000" />
+    <option name="totallyTimeSpent" value="61373000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -852,6 +859,7 @@
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32793137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3285578" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32983795" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -866,7 +874,6 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32793137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -920,7 +927,8 @@
     <MESSAGE value="new project" />
     <MESSAGE value="&#10;" />
     <MESSAGE value="new project commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="new project commit" />
+    <MESSAGE value="second commit!!!" />
+    <option name="LAST_COMMIT_MESSAGE" value="second commit!!!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1218,7 +1226,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/engine/FetchSongs.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="19" selection-start="1175" selection-end="1175" vertical-scroll-proportion="0.6666667" vertical-offset="204" max-vertical-offset="1836">
+        <state line="32" column="23" selection-start="946" selection-end="946" vertical-scroll-proportion="0.51282054" vertical-offset="204" max-vertical-offset="1819">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
