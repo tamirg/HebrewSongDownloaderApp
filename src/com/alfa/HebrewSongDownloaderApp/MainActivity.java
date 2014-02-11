@@ -1,6 +1,7 @@
 package com.alfa.HebrewSongDownloaderApp;
 
 import Exceptions.NoSongFoundException;
+import Exceptions.UnRecognizedSongEngine;
 import android.app.Activity;
 import android.app.Service;
 import android.content.Context;
@@ -10,7 +11,9 @@ import android.os.Environment;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
+import com.alfa.utils.URLUtils;
 import engine.FetchSongs;
+import entities.SongResult;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -18,12 +21,13 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.io.*;
 import java.net.URI;
+import java.util.List;
 
 public class MainActivity extends Activity {
+    private String SONGS_DIRECTORY = Environment.getExternalStorageDirectory().toString();
     private ProgressBar progressBar;
     TextView showPercentageTextView;
     SearchView songQuerySearch;
-    //private Context context = this.getApplicationContext();
 
     /**
      * Called when the activity is first created.
@@ -32,12 +36,13 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        SONGS_DIRECTORY += getString(R.string.downloadFolder);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         showPercentageTextView = (TextView) findViewById(R.id.textShowingPercentage);
         progressBar.setVisibility(View.GONE);
         progressBar.setMax(100);
 
-        File folder = new File(Environment.getExternalStorageDirectory() + "/HebrewSongDownloads");
+        File folder = new File(SONGS_DIRECTORY);
         boolean success = true;
         if (!folder.exists()) {
             success = folder.mkdir();
@@ -91,25 +96,32 @@ public class MainActivity extends Activity {
          */
         @Override
         protected String doInBackground(String... params) {
-            String[] urlParamsForDownload = null;
+            SongResult chosenSongResult = null;
             try {
-                urlParamsForDownload = FetchSongs.downloadHebrewSong(songQuerySearch.getQuery().toString(),
-                        Environment.getExternalStorageDirectory() + getString(R.string.downloadFolder));
+                // TODO: implement listView which will display this list of song results
+
+                List<SongResult> songResults = FetchSongs.getSongResults(songQuerySearch.getQuery().toString());
+
+                // TODO: remove this line (its only for test the first result for downloading song)
+
+                chosenSongResult = songResults.get(1);
             } catch (NoSongFoundException noSongException) {
                 errorContent = "לא נמצא שיר, נסה שם מפורט יותר";
+            } catch (UnRecognizedSongEngine noRecognitionException) {
+                //errorContent = "לא נמצא מנוע לשיר"
+                errorContent = noRecognitionException.getMessage();
             } catch (Exception exc) {
-                System.out.println(exc.getMessage());
+                //System.out.println(exc.getMessage());
                 errorContent = "הרעה שגיאה";
             }
-            if (urlParamsForDownload == null) {
+            if (chosenSongResult == null) {
                 return errorContent;
             } else {
-                String directoryForSong = urlParamsForDownload[0];
-                String songFinalDownloadURL = urlParamsForDownload[1];
-                String songFileName = urlParamsForDownload[2];
+                String songFinalDownloadURL = chosenSongResult.getDownloadURL();
+                String songFileName = chosenSongResult.getNameOfSong();
 
                 try {
-                    URI songFinalDownloadURI = FetchSongs.parseUrl(songFinalDownloadURL);
+                    URI songFinalDownloadURI = URLUtils.parseUrl(songFinalDownloadURL);
                     DefaultHttpClient httpClient = new DefaultHttpClient();
                     HttpPost httpRequest = new HttpPost(songFinalDownloadURI.toString());
                     HttpResponse responseSongFile = httpClient.execute(httpRequest);
@@ -118,7 +130,7 @@ public class MainActivity extends Activity {
                     HttpEntity entity = responseSongFile.getEntity();
                     songFileLengthInBytes = (int) entity.getContentLength();
                     BufferedInputStream bfInputStream = new BufferedInputStream(entity.getContent());
-                    String filePath = directoryForSong + File.separator + songFileName + FetchSongs.SONG_FILE_MP3_SUFFIX;
+                    String filePath = SONGS_DIRECTORY + File.separator + songFileName + FetchSongs.SONG_FILE_MP3_SUFFIX;
                     BufferedOutputStream bfOutputStream = new BufferedOutputStream(new FileOutputStream(filePath));
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     byte[] buffer = new byte[8192];
