@@ -1,7 +1,7 @@
 package com.alfa.HebrewSongDownloaderApp;
 
 import Exceptions.NoSongFoundException;
-import Exceptions.UnRecognizedSongEngine;
+import Exceptions.UnRecognizedSongEngineException;
 import android.app.Activity;
 import android.app.Service;
 import android.content.Context;
@@ -107,7 +107,7 @@ public class MainActivity extends Activity {
                 chosenSongResult = songResults.get(1);
             } catch (NoSongFoundException noSongException) {
                 errorContent = "לא נמצא שיר, נסה שם מפורט יותר";
-            } catch (UnRecognizedSongEngine noRecognitionException) {
+            } catch (UnRecognizedSongEngineException noRecognitionException) {
                 //errorContent = "לא נמצא מנוע לשיר"
                 errorContent = noRecognitionException.getMessage();
             } catch (Exception exc) {

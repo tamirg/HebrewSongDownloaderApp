@@ -1,7 +1,7 @@
 package engine;
 
 import Exceptions.NoSongFoundException;
-import Exceptions.UnRecognizedSongEngine;
+import Exceptions.UnRecognizedSongEngineException;
 import com.alfa.utils.URLUtils;
 import entities.SongResult;
 import org.apache.http.HttpEntity;
@@ -80,7 +80,7 @@ public class FetchSongs {
                     *   mainActivity to catch - catch it in the for loop and write to log (without
                     *   stopping the loop
                     */
-                    throw new UnRecognizedSongEngine(songDownloadIframe + " - לא מוכר");
+                    throw new UnRecognizedSongEngineException(songDownloadIframe + " - לא מוכר");
                 }
                 if (!songFinalDownloadURL.equals("") && !songFileName.equals("")) {
                     songResults.add(new SongResult(songFileName, songFinalDownloadURL));
