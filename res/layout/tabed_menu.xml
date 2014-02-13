@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+		  android:id="@+id/widget0"
+		  android:layout_width="fill_parent"
+		  android:layout_height="fill_parent">
+
+    <TabHost
+		  android:id="@+id/tabhost"
+		  android:layout_width="match_parent"
+		  android:layout_height="match_parent">
+
+	   <RelativeLayout
+			 android:layout_width="match_parent"
+			 android:layout_height="match_parent"
+			 android:orientation="vertical">
+
+		  <TabWidget
+				android:id="@android:id/tabs"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+		  </TabWidget>
+
+		  <FrameLayout
+				android:id="@android:id/tabcontent"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_centerHorizontal="true">
+
+			 <RelativeLayout
+				    android:id="@+id/search"
+				    android:layout_width="match_parent"
+				    android:layout_height="499dp">
+
+				<TextView
+					   android:layout_width="wrap_content"
+					   android:layout_height="wrap_content"
+					   android:textAppearance="?android:attr/textAppearanceLarge"
+					   android:text="1"
+					   android:id="@+id/tst1"/>
+
+
+			 </RelativeLayout>
+
+			 <LinearLayout
+				    android:id="@+id/download"
+				    android:layout_width="match_parent"
+				    android:layout_height="match_parent">
+
+				<TextView
+					   android:layout_width="wrap_content"
+					   android:layout_height="wrap_content"
+					   android:textAppearance="?android:attr/textAppearanceSmall"
+					   android:text="2"
+					   android:id="@+id/tst2"/>
+				<fragment
+					   android:id="@+id/fragment_content"
+					   android:name="com.alfa.HebrewSongDownloaderApp.TutFragment"
+					   android:layout_width="fill_parent"
+					   android:layout_height="fill_parent">
+				</fragment>
+
+			 </LinearLayout>
+
+			 <RelativeLayout
+				    android:id="@+id/library"
+				    android:layout_width="match_parent"
+				    android:layout_height="match_parent">
+
+				<TextView
+					   android:layout_width="wrap_content"
+					   android:layout_height="wrap_content"
+					   android:textAppearance="?android:attr/textAppearanceSmall"
+					   android:text="3"
+					   android:id="@+id/tst3"/>
+			 </RelativeLayout>
+
+		  </FrameLayout>
+	   </RelativeLayout>
+    </TabHost>
+</ScrollView>
