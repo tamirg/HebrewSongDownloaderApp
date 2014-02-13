@@ -10,6 +10,11 @@ public class SongResult {
     public SongResult() {
     }
 
+    public SongResult(SongResult otherSongResult) {
+        this.nameOfSong = otherSongResult.getNameOfSong();
+        this.downloadURL = otherSongResult.getDownloadURL();
+    }
+
     public SongResult(String nameOfSong, String downloadURL) {
         this.nameOfSong = nameOfSong;
         this.downloadURL = downloadURL;

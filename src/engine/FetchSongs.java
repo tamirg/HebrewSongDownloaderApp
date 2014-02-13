@@ -24,11 +24,22 @@ import java.util.List;
  * Created by Tamir on 24/01/14.
  */
 public class FetchSongs {
-    private static final String UNIDOWN_URL_QUERY = "http://www.unidown.com/search.php?q=";
-    static final String QUERY_ENCODING = "UTF-8";
-    public static final String SONG_FILE_MP3_SUFFIX = ".mp3";
+    public final String UNIDOWN_URL_QUERY = "http://www.unidown.com/search.php?q=";
+    public final String QUERY_ENCODING = "UTF-8";
+    public  final String SONG_FILE_MP3_SUFFIX = ".mp3";
+    private static FetchSongs fetchSongsEngine = null;
 
-    public static List<SongResult> getSongResults(String nameOfSong) throws Exception {
+    protected FetchSongs() {
+    }
+
+    public static FetchSongs getInstance() {
+        if (fetchSongsEngine == null) {
+            fetchSongsEngine = new FetchSongs();
+        }
+        return fetchSongsEngine;
+    }
+
+    public List<SongResult> getSongResults(String nameOfSong) throws Exception {
         List<SongResult> songResults = new LinkedList<SongResult>();
         nameOfSong = URLEncoder.encode(nameOfSong, QUERY_ENCODING);
         Document pageDoc = Jsoup.connect(UNIDOWN_URL_QUERY + nameOfSong).get();
@@ -37,53 +48,33 @@ public class FetchSongs {
             throw new NoSongFoundException();
         } else {
             for (Element singleDownloadButton : downloadButtonElements) {
-                String songDownloadURL = singleDownloadButton.child(0).attr("abs:href");
 
-                Document songDownloadParsedHTML = Jsoup.connect(songDownloadURL).get();
-                Elements elementsWithClassIframe = songDownloadParsedHTML.getElementsByClass("iframecontent").select("iframe");
-                String iframeURL = elementsWithClassIframe.attr("abs:src");
+                try {
+                    String songDownloadURL = singleDownloadButton.child(0).attr("abs:href");
 
-                Document iframeSongDownloadDocument = Jsoup.connect(iframeURL).get();
-                String songDownloadIframe = iframeSongDownloadDocument.getElementsByTag("iframe").attr("abs:src");
+                    Document songDownloadParsedHTML = Jsoup.connect(songDownloadURL).get();
+                    Elements elementsWithClassIframe = songDownloadParsedHTML.getElementsByClass("iframecontent").select("iframe");
+                    String iframeURL = elementsWithClassIframe.attr("abs:src");
 
-                // Gets the iframe for the download, can be more than one website
-                Document iframeParsedHTML = Jsoup.connect(songDownloadIframe).userAgent("Mozilla").get();
+                    Document iframeSongDownloadDocument = Jsoup.connect(iframeURL).get();
+                    String songDownloadIframe = iframeSongDownloadDocument.getElementsByTag("iframe").attr("abs:src");
 
-                String songFinalDownloadURL = "";
-                String songFileName = "";
+                    // Gets the iframe for the download, can be more than one website
+                    Document iframeParsedHTML = Jsoup.connect(songDownloadIframe)
+                            .userAgent("Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1667.0 Safari/537.36").get();
 
-                // Works for freeTUBEconvertor site!
-                if (songDownloadIframe.contains("freetubeconvertor")) {
-                    if (iframeParsedHTML.getElementById("downloadbox") != null) {
-                        songFinalDownloadURL = iframeParsedHTML.getElementById("downloadbox").child(1).child(0).attr("abs:href");
-                        songFileName = iframeParsedHTML.getElementById("downloadbox").child(0).text();
+                    SongResult newSongResult = fetchSingleSongResult(songDownloadIframe, iframeParsedHTML);
+
+                    if (!newSongResult.getDownloadURL().equals("") &&
+                        !newSongResult.getNameOfSong().equals("")) {
+                        songResults.add(newSongResult);
                     }
-                }
-                // Works for videotomp3now site!
-                else if (songDownloadIframe.contains("videotomp3now")) {
-                    if (iframeParsedHTML.getElementById("downloadbutton") != null) {
-                        songFinalDownloadURL = iframeParsedHTML.getElementById("downloadbutton").child(0).attr("abs:href");
-                        songFileName = iframeParsedHTML.getElementById("url").children().select("h1").text();
-                    }
-                } else if (songDownloadIframe.contains("mp3tuber")) {
-                    if (!iframeParsedHTML.select("p:has(a)").isEmpty()) {
-                        songFinalDownloadURL = iframeParsedHTML.select("p:has(a)").first().child(0).attr("abs:href");
-                        songFileName = iframeParsedHTML.select("p[dir]").first().text();
-                    }
-                } else if (songDownloadIframe.contains("hqconvertor")) {
-                    if (iframeParsedHTML.getElementById("button_download") != null) {
-                        songFinalDownloadURL = iframeParsedHTML.getElementById("button_download").child(0).attr("abs:href");
-                        songFileName = iframeParsedHTML.getElementsByClass("songname").first().text();
-                    }
-                } else {
-                    /** TODO: not throw this exception for the
-                    *   mainActivity to catch - catch it in the for loop and write to log (without
-                    *   stopping the loop
-                    */
-                    throw new UnRecognizedSongEngineException(songDownloadIframe + " - לא מוכר");
-                }
-                if (!songFinalDownloadURL.equals("") && !songFileName.equals("")) {
-                    songResults.add(new SongResult(songFileName, songFinalDownloadURL));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (UnRecognizedSongEngineException e) {
+                    e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
 
@@ -91,29 +82,56 @@ public class FetchSongs {
         }
     }
 
-    private static void createHebrewSong(String directoryForSong, String songFinalDownloadURL, String songFileName) throws IOException, Exception {
-        URI songFinalDownloadURI = URLUtils.parseUrl(songFinalDownloadURL);
-        DefaultHttpClient httpClient = new DefaultHttpClient();
-        HttpPost httpRequest = new HttpPost(songFinalDownloadURI.toString());
-        HttpResponse responseSongFile = httpClient.execute(httpRequest);
-        int songFileLengthInBytes;
+    /**
+     *
+     * @param songDownloadIframe - the website's URL which we need to extract the song result from.
+     * @param iframeParsedHTML - the website's DOM HTML elements tree which contains all page's data.
+     * @return SongResult type object which contains
+     *         1.song's name
+     *         2.song's download URL
+     * @return
+     */
+    private SongResult fetchSingleSongResult(String songDownloadIframe,
+                                             Document iframeParsedHTML) throws UnRecognizedSongEngineException {
+        String songFinalDownloadURL = "";
+        String songFileName = "";
 
-        try {
-            HttpEntity entity = responseSongFile.getEntity();
-            songFileLengthInBytes = (int) entity.getContentLength();
-            BufferedInputStream bfInputStream = new BufferedInputStream(entity.getContent());
-            String filePath = directoryForSong + File.separator + songFileName + SONG_FILE_MP3_SUFFIX;
-            BufferedOutputStream bfOutputStream = new BufferedOutputStream(new FileOutputStream(filePath));
-            int inByte = bfInputStream.read();
-            while (inByte != -1) {
-                bfOutputStream.write(inByte);
-                inByte = bfInputStream.read();
+        // Works for freeTUBEconvertor site!
+        if (songDownloadIframe.contains("freetubeconvertor")) {
+            if (iframeParsedHTML.getElementById("downloadbox") != null) {
+                songFinalDownloadURL = iframeParsedHTML.getElementById("downloadbox").child(1).child(0).attr("abs:href");
+                songFileName = iframeParsedHTML.getElementById("downloadbox").child(0).text();
             }
-
-            bfInputStream.close();
-            bfOutputStream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
         }
+        // Works for videotomp3now site!
+        else if (songDownloadIframe.contains("videotomp3now")) {
+            if (iframeParsedHTML.getElementById("downloadbutton") != null) {
+                songFinalDownloadURL = iframeParsedHTML.getElementById("downloadbutton").child(0).attr("abs:href");
+                songFileName = iframeParsedHTML.getElementById("url").children().select("h1").text();
+            }
+        }
+        // Works for mp3tuber site!
+        else if (songDownloadIframe.contains("mp3tuber")) {
+            if (!iframeParsedHTML.select("p:has(a)").isEmpty()) {
+                songFinalDownloadURL = iframeParsedHTML.select("p:has(a)").first().child(0).attr("abs:href");
+                songFileName = iframeParsedHTML.select("p[dir]").first().text();
+            }
+        }
+        // Works for hqconvertor site!
+        else if (songDownloadIframe.contains("hqconvertor")) {
+            if (iframeParsedHTML.getElementById("button_download") != null) {
+                songFinalDownloadURL = iframeParsedHTML.getElementById("button_download").child(0).attr("abs:href");
+                songFileName = iframeParsedHTML.getElementsByClass("songname").first().text();
+            }
+        } else {
+            /** TODO: not throw this exception for the
+             *   mainActivity to catch - catch it in the for loop and write to log (without
+             *   stopping the loop
+             */
+            throw new UnRecognizedSongEngineException(songDownloadIframe + " - לא מוכר");
+        }
+
+        return (new SongResult(songFileName, songFinalDownloadURL));
     }
+
 }

@@ -97,21 +97,23 @@ public class MainActivity extends Activity {
         @Override
         protected String doInBackground(String... params) {
             SongResult chosenSongResult = null;
+            FetchSongs fetchSongsInstance = FetchSongs.getInstance();
             try {
                 // TODO: implement listView which will display this list of song results
-
-                List<SongResult> songResults = FetchSongs.getSongResults(songQuerySearch.getQuery().toString());
+                List<SongResult> songResults = fetchSongsInstance.getSongResults(songQuerySearch.getQuery().toString());
 
                 // TODO: remove this line (its only for test the first result for downloading song)
-
-                chosenSongResult = songResults.get(1);
+                if (!songResults.isEmpty()) {
+                    chosenSongResult = songResults.get(1);
+                } else {
+                    errorContent = "נמצאו תוצאות אך התוצאות פגומות";
+                }
             } catch (NoSongFoundException noSongException) {
                 errorContent = "לא נמצא שיר, נסה שם מפורט יותר";
             } catch (UnRecognizedSongEngineException noRecognitionException) {
                 //errorContent = "לא נמצא מנוע לשיר"
                 errorContent = noRecognitionException.getMessage();
             } catch (Exception exc) {
-                //System.out.println(exc.getMessage());
                 errorContent = "הרעה שגיאה";
             }
             if (chosenSongResult == null) {
@@ -130,7 +132,8 @@ public class MainActivity extends Activity {
                     HttpEntity entity = responseSongFile.getEntity();
                     songFileLengthInBytes = (int) entity.getContentLength();
                     BufferedInputStream bfInputStream = new BufferedInputStream(entity.getContent());
-                    String filePath = SONGS_DIRECTORY + File.separator + songFileName + FetchSongs.SONG_FILE_MP3_SUFFIX;
+                    String filePath = SONGS_DIRECTORY + File.separator + songFileName +
+                                      fetchSongsInstance.SONG_FILE_MP3_SUFFIX;
                     BufferedOutputStream bfOutputStream = new BufferedOutputStream(new FileOutputStream(filePath));
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     byte[] buffer = new byte[8192];
