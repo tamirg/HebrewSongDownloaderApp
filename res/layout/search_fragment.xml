@@ -51,15 +51,7 @@
 				android:baselineAligned="false"
 				android:layout_gravity="right"/>
 
-		  <TextView
-				android:id="@+id/textShowingPercentage"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:textAppearance="?android:attr/textAppearanceMedium"
-				android:text=""
-				android:textColor="#3f8cff"/>
-
-	   </LinearLayout>
+       </LinearLayout>
     </LinearLayout>
 
     <!-- loading pane -->
@@ -76,18 +68,17 @@
 			 android:layout_height="match_parent"
 			 android:layout_width="match_parent"
 			 android:layout_weight="1"
-			 android:orientation="vertical">
+             android:orientation="vertical" android:weightSum="1">
 
-		  <!-- song download progress bar -->
+           <!-- song download progress bar -->
 		  <ProgressBar
 				android:id="@+id/progressBar"
 				style="?android:attr/progressBarStyleHorizontal"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_gravity="center"
-				android:indeterminate="false"/>
+                android:layout_width="301dp"
+                android:layout_height="70dp"
+                android:indeterminate="false"/>
 
-		  <TextView
+           <TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:textAppearance="?android:attr/textAppearanceLarge"
@@ -95,9 +86,9 @@
 				android:id="@+id/loadingText"
 				android:layout_gravity="right"/>
 
-	   </LinearLayout>
+       </LinearLayout>
 
-	   <!-- loading wheel pane -->
+        <!-- loading wheel pane -->
 	   <LinearLayout
 			 android:background="#629bff"
 			 android:layout_height="match_parent"
@@ -112,8 +103,15 @@
 				android:layout_height="wrap_content"
 				android:layout_gravity="right"
 				android:indeterminate="false"/>
+           <TextView
+                   android:id="@+id/textShowingPercentage"
+                   android:layout_width="fill_parent"
+                   android:layout_height="fill_parent"
+                   android:textAppearance="?android:attr/textAppearanceSmall"
+                   android:text=""
+                   android:textColor="#ce55ff"/>
 
-	   </LinearLayout>
+       </LinearLayout>
 
 
     </LinearLayout>

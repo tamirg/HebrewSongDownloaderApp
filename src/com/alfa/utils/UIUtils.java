@@ -59,6 +59,7 @@ public class UIUtils {
                 fAct.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        fPB.setProgress(0);
                         fPB.setVisibility(View.VISIBLE);
                     }
                 });
@@ -86,7 +87,7 @@ public class UIUtils {
                 fAct.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        fPB.setVisibility(View.INVISIBLE);
+                        fPB.setVisibility(View.GONE);
                     }
                 });
             }
@@ -111,6 +112,7 @@ public class UIUtils {
                 fAct.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        fTv.setText("");
                         fTv.setVisibility(View.VISIBLE);
                     }
                 });

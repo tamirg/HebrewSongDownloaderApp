@@ -8,7 +8,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Environment;
+import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.alfa.HebrewSongDownloaderApp.R;
 import engine.FetchSongs;
@@ -20,8 +23,6 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import java.io.*;
 import java.net.URI;
 
-// JUST FOR TEST DONT FREAK OUT!!!!
-
 /**
  * Background Async Task to download file
  */
@@ -29,6 +30,9 @@ public class DownloadSongResultAsyncTask extends AsyncTask<String, String, Strin
     String SONGS_DIRECTORY = Environment.getExternalStorageDirectory().toString();
     private Context context;
     private String errorContent = "";
+    private ProgressBar songDownloadprogressBar;
+    private TextView showPercentagetextView;
+    private TextView showHeadlineViewText;
 
     public DownloadSongResultAsyncTask(Context appContext) {
         this.context = appContext;
@@ -42,7 +46,11 @@ public class DownloadSongResultAsyncTask extends AsyncTask<String, String, Strin
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+        songDownloadprogressBar = (ProgressBar) ((Activity) this.context).findViewById(R.id.progressBar);
+        showPercentagetextView = (TextView) ((Activity) this.context).findViewById(R.id.textShowingPercentage);
         UIUtils.PrintToast(context, "ההורדה החלה", Toast.LENGTH_LONG);
+        UIUtils.showProgressBar(songDownloadprogressBar, this.context);
+        UIUtils.showTextView(showPercentagetextView, this.context);
     }
 
     /**
@@ -95,7 +103,11 @@ public class DownloadSongResultAsyncTask extends AsyncTask<String, String, Strin
      */
     protected void onProgressUpdate(String... progress) {
         // setting progress percentage
-        //int progressPercentage = Integer.parseInt(progress[0]);
+        int progressPercentage = Integer.parseInt(progress[0]);
+        songDownloadprogressBar = (ProgressBar) ((Activity) this.context).findViewById(R.id.progressBar);
+        showPercentagetextView = (TextView) ((Activity) this.context).findViewById(R.id.textShowingPercentage);
+        songDownloadprogressBar.setProgress(progressPercentage);
+        showPercentagetextView.setText(progressPercentage + "%\\" + songDownloadprogressBar.getMax() + "%");
     }
 
     /**
@@ -106,17 +118,23 @@ public class DownloadSongResultAsyncTask extends AsyncTask<String, String, Strin
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
+        songDownloadprogressBar = (ProgressBar) ((Activity) this.context).findViewById(R.id.progressBar);
+        showPercentagetextView = (TextView) ((Activity) this.context).findViewById(R.id.textShowingPercentage);
+        showHeadlineViewText = (TextView) ((Activity) this.context).findViewById(R.id.loadingText);
+        UIUtils.hideProgressBar(songDownloadprogressBar, this.context);
+        UIUtils.hideTextView(showPercentagetextView, this.context);
+        UIUtils.showTextView(showHeadlineViewText, this.context);
         if (errorContent.equals("")) {
             UIUtils.PrintToast(context, "השיר ירד בהצלחה", Toast.LENGTH_LONG);
         } else {
-            Toast.makeText(context, errorContent, Toast.LENGTH_LONG).show();
+            UIUtils.PrintToast(context, errorContent, Toast.LENGTH_LONG);
             View rootView = ((Activity) context).getWindow().getDecorView().findViewById(android.R.id.content);
             View songQuerySearchEditText = rootView.findViewById(R.id.searchSongQuery);
             songQuerySearchEditText.requestFocus();
             try {
                 Thread.sleep(3000);
             } catch (Exception exc) {
-                System.out.println(exc.getMessage());
+                Log.e("error:", exc.toString());
             }
         }
     }
