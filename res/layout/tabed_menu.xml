@@ -28,23 +28,20 @@
 
 			 <LinearLayout
 				    android:id="@+id/search"
-				    android:layout_width="match_parent"
-				    android:layout_height="499dp">
-
-				<TextView
-					   android:layout_width="wrap_content"
-					   android:layout_height="wrap_content"
-					   android:textAppearance="?android:attr/textAppearanceLarge"
-					   android:text="1"
-					   android:id="@+id/tst1"/>
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content">
 
 				<fragment
 					   android:id="@+id/search_fragment_view"
 					   android:name="com.alfa.HebrewSongDownloaderApp.SearchFragment"
-					   android:layout_width="match_parent"
-					   android:layout_height="match_parent">
+					   android:layout_width="wrap_content"
+					   android:layout_height="wrap_content">
 				</fragment>
 
+				<FrameLayout
+					   android:id="@+id/list_container"
+					   android:layout_width="fill_parent"
+					   android:layout_height="fill_parent"/>
 			 </LinearLayout>
 
 			 <LinearLayout

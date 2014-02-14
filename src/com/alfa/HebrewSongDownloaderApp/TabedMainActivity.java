@@ -18,6 +18,7 @@ public class TabedMainActivity extends Activity implements
 
         setupTabHost();
 
+
     }
 
     /**
@@ -49,10 +50,14 @@ public class TabedMainActivity extends Activity implements
 
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, int i) {
+        Toast.makeText(getBaseContext(), i + "", Toast.LENGTH_LONG).show();
+
         switch (i) {
+            case 1: {
+                Log.w("asd", "asd");
+            }
             default: {
-                Toast.makeText(getBaseContext(), i + "", Toast.LENGTH_LONG).show();
-                Log.w("debug", i + "");
+
             }
         }
     }

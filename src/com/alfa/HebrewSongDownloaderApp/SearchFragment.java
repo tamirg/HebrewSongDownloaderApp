@@ -1,10 +1,13 @@
 package com.alfa.HebrewSongDownloaderApp;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * Created by Micha on 2/13/14.
@@ -21,7 +24,42 @@ public class SearchFragment extends Fragment {
         // the view to the parent when necessary.
         View view = inflater.inflate(R.layout.search_fragment, container, false);
 
+        Button searchBtn = (Button) view.findViewById(R.id.searchSongBtn);
+
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Switch the tab content to display the list view.
+                loadSongFragment();
+            }
+        });
+
         return view;
+    }
+
+    private void loadSongFragment() {
+
+
+        FragmentManager fm = getFragmentManager();
+
+        /*
+        if (fm.findFragmentById(android.R.id.content) == null) {
+            SongListFragment list = new SongListFragment();
+            fm.beginTransaction().add(android.R.id.content, list).commit();
+        }*/
+
+
+        if (fm != null) {
+            // Perform the FragmentTransaction to load in the list tab content.
+            // Using FragmentTransaction#replace will destroy any Fragments
+            // currently inside R.id.fragment_content and add the new Fragment
+            // in its place.
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.list_container, new SongListFragment());
+            ft.commit();
+        }
+
+
     }
 
 }
