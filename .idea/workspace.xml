@@ -26,6 +26,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a3d188e-0acd-4df5-844f-22d39649ba13" name="Default" comment="Exception package fix">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.properties" afterPath="$PROJECT_DIR$/project.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="4e1d4315-0995-4ac8-970f-1847ac98cff3" name="others" comment="" />
@@ -85,6 +86,25 @@
     <breakpoint_rules />
     <ui_properties />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="project.properties" pinned="false" current="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/project.properties">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="HebrewSongDownloaderApp" />
@@ -94,7 +114,7 @@
       <file leaf-file-name="SongListFragment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SongListFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="40" selection-start="1567" selection-end="1567" vertical-scroll-proportion="0.0" vertical-offset="658" max-vertical-offset="1242">
+            <state line="53" column="40" selection-start="1567" selection-end="1567" vertical-scroll-proportion="0.0" vertical-offset="901" max-vertical-offset="1173">
               <folding />
             </state>
           </provider>
@@ -102,29 +122,20 @@
       </file>
       <file leaf-file-name="search_fragment.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/layout/search_fragment.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="20" selection-start="1104" selection-end="1104" vertical-scroll-proportion="0.0" vertical-offset="517" max-vertical-offset="1836">
+            <state line="40" column="20" selection-start="1108" selection-end="1108" vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="1734">
               <folding />
             </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="TabedMainActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/TabedMainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="0" selection-start="553" selection-end="553" vertical-scroll-proportion="0.0" vertical-offset="79" max-vertical-offset="1242">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RadioGroup.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/android/widget/RadioGroup.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="13" selection-start="1687" selection-end="1687" vertical-scroll-proportion="0.0" vertical-offset="648" max-vertical-offset="1044">
+            <state line="22" column="0" selection-start="553" selection-end="553" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="1173">
               <folding />
             </state>
           </provider>
@@ -133,7 +144,7 @@
       <file leaf-file-name="TutFragment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/TutFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="0" selection-start="483" selection-end="483" vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="990">
+            <state line="18" column="0" selection-start="483" selection-end="483" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="935">
               <folding />
             </state>
           </provider>
@@ -142,34 +153,25 @@
       <file leaf-file-name="SearchFragment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SearchFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="288" column="10" selection-start="10857" selection-end="10857" vertical-scroll-proportion="0.0" vertical-offset="5184" max-vertical-offset="5652">
+            <state line="288" column="10" selection-start="10857" selection-end="10857" vertical-scroll-proportion="0.0" vertical-offset="4896" max-vertical-offset="5338">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FetchSongs.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="FetchSongs.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/engine/FetchSongs.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="17" selection-start="34" selection-end="34" vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="2502">
+            <state line="3" column="17" selection-start="74" selection-end="74" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2363">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="List.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/java/util/List.class">
+      <file leaf-file-name="workspace.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="17" selection-start="156" selection-end="156" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="1116">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Log.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/android/util/Log.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="19" selection-start="142" selection-end="167" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="990">
+            <state line="30" column="25" selection-start="1203" selection-end="1203" vertical-scroll-proportion="0.55956113" vertical-offset="153" max-vertical-offset="28407">
               <folding />
             </state>
           </provider>
@@ -178,7 +180,7 @@
       <file leaf-file-name="SongResult.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/entities/SongResult.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="5" selection-start="925" selection-end="925" vertical-scroll-proportion="0.0" vertical-offset="738" max-vertical-offset="882">
+            <state line="41" column="5" selection-start="925" selection-end="925" vertical-scroll-proportion="0.0" vertical-offset="697" max-vertical-offset="833">
               <folding />
             </state>
           </provider>
@@ -237,13 +239,15 @@
         <option value="$PROJECT_DIR$/src/entities/SongResult.java" />
         <option value="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SongListFragment.java" />
         <option value="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SearchFragment.java" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="960" />
-    <option name="width" value="960" />
-    <option name="height" value="1040" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1176" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -521,7 +525,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Exceptions" />
+              <option name="myItemId" value="exceptions" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1071,6 +1075,7 @@
       <workItem from="1392366240726" duration="9207000" />
       <workItem from="1392378567398" duration="26000" />
       <workItem from="1392378762151" duration="69000" />
+      <workItem from="1392378874274" duration="312000" />
     </task>
     <task id="LOCAL-00001" summary="new project commit">
       <created>1391779743123</created>
@@ -1116,11 +1121,15 @@
       <created>1392378793363</created>
       <updated>1392378793363</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Exception package fix">
+      <created>1392379152204</created>
+      <updated>1392379152204</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="137204000" />
+    <option name="totallyTimeSpent" value="137516000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1143,11 +1152,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="960" y="0" width="960" height="1040" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1682641" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="-378" y="177" width="1732" height="976" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33408833" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33333334" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32814237" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1158,18 +1168,17 @@
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3381535" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14238042" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14231136" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32616082" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32569245" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4079096" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32983795" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3314856" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3312034" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33259177" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1682641" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="-378" y="177" width="1732" height="976" />
       <window_info id="SVN Repositories" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32983795" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1179,16 +1188,16 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24653888" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="-378" y="177" width="1732" height="976" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24653888" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="-378" y="177" width="1732" height="976" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2513312" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1206,13 +1215,13 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3285578" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3285578" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
-    <option name="RECENTLY_FILTERED_USERS">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
       <collection />
     </option>
   </component>
@@ -1255,6 +1264,58 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SongListFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="40" selection-start="1567" selection-end="1567" vertical-scroll-proportion="0.0" vertical-offset="901" max-vertical-offset="1173">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/search_fragment.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="20" selection-start="1108" selection-end="1108" vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="1734">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/TabedMainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="0" selection-start="553" selection-end="553" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="1173">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/TutFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="0" selection-start="483" selection-end="483" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="935">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SearchFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="288" column="10" selection-start="10857" selection-end="10857" vertical-scroll-proportion="0.0" vertical-offset="4896" max-vertical-offset="5338">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/engine/FetchSongs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="17" selection-start="34" selection-end="34" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2363">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/entities/SongResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="5" selection-start="925" selection-end="925" vertical-scroll-proportion="0.0" vertical-offset="697" max-vertical-offset="833">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="51" selection-start="79" selection-end="102" vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="216">
@@ -1274,19 +1335,14 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="486" />
       </provider>
     </entry>
-    <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/android/os/AsyncTask.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="0" selection-start="2155" selection-end="2155" vertical-scroll-proportion="0.0" vertical-offset="918" max-vertical-offset="1008" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state line="38" column="0" selection-start="1978" selection-end="1978" vertical-scroll-proportion="0.0" vertical-offset="444" max-vertical-offset="828">
           <folding />
         </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SearchableActivity.java">
@@ -1312,11 +1368,6 @@
         <state line="23" column="34" selection-start="857" selection-end="857" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="578">
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gen/com/alfa/HebrewSongDownloaderApp/BuildConfig.java">
@@ -1365,81 +1416,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Programming Center/Android Developement/SporTeam/SporTeam/src/com/appengine/utils/AeLoadingCenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="0" selection-start="1155" selection-end="1155" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="15858" />
-      </provider>
-    </entry>
-    <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/android/drm/DrmManagerClient.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="13" selection-start="450" selection-end="450" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1584" />
-      </provider>
-    </entry>
-    <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/android/widget/ListView.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="13" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="2412" />
-      </provider>
-    </entry>
-    <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/android/widget/ProgressBar.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="13" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1584" />
-      </provider>
-    </entry>
-    <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/java/lang/Boolean.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="54" selection-start="193" selection-end="193" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="738" />
-      </provider>
-    </entry>
-    <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/java/io/Serializable.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="17" selection-start="154" selection-end="154" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="216" />
-      </provider>
-    </entry>
-    <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/java/util/Map.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="17" selection-start="156" selection-end="156" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918" />
-      </provider>
-    </entry>
-    <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/android/view/Window.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="29" selection-start="3824" selection-end="3824" vertical-scroll-proportion="0.0" vertical-offset="1638" max-vertical-offset="4356" />
-      </provider>
-    </entry>
-    <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/android/app/SearchManager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="154" selection-end="154" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1620" />
-      </provider>
-    </entry>
-    <entry file="file://D:/Programming Center/Android Developement/SporTeam/SporTeam/src/com/sporteamws/NetworkManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="22" selection-start="428" selection-end="428" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1368" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Exceptions/NoSongFoundException.java">
+    <entry file="file://$PROJECT_DIR$/src/exceptions/NoSongFoundException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="13" selection-start="75" selection-end="75" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/android/view/LayoutInflater.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="0" selection-start="2845" selection-end="2845" vertical-scroll-proportion="0.0" vertical-offset="488" max-vertical-offset="1062" />
-      </provider>
-    </entry>
-    <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/android/app/Activity.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="440" column="0" selection-start="19689" selection-end="19689" vertical-scroll-proportion="0.0" vertical-offset="7436" max-vertical-offset="8010" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HebrewSongDownloaderApp.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="486" />
-      </provider>
-    </entry>
-    <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/android/os/AsyncTask.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="0" selection-start="2155" selection-end="2155" vertical-scroll-proportion="0.0" vertical-offset="339" max-vertical-offset="1008" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/alfa/utils/CachingUtils.java">
@@ -1495,13 +1481,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/android/widget/RadioGroup.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="13" selection-start="1687" selection-end="1687" vertical-scroll-proportion="0.0" vertical-offset="465" max-vertical-offset="1026">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/TutFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="0" selection-start="483" selection-end="483" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="774">
@@ -1517,13 +1496,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/tabed_menu.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="39" column="49" selection-start="1194" selection-end="1194" vertical-scroll-proportion="0.0" vertical-offset="702" max-vertical-offset="1530">
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/TabedMainActivity.java">
@@ -1534,33 +1513,33 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/tut_fragment.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="470">
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/search_fragment.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/search_fragment.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="20" selection-start="1104" selection-end="1104" vertical-scroll-proportion="0.0" vertical-offset="517" max-vertical-offset="1836">
+        <state line="40" column="20" selection-start="1108" selection-end="1108" vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="1734">
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="32" column="18" selection-start="1627" selection-end="1627" vertical-scroll-proportion="-4.9423075" vertical-offset="319" max-vertical-offset="828">
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SearchableActivity.java">
@@ -1573,20 +1552,6 @@
     <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="39" column="48" selection-start="1295" selection-end="1307" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3276">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/android/util/Log.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="19" selection-start="142" selection-end="167" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="972">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/java/util/List.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="17" selection-start="156" selection-end="156" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1098">
           <folding />
         </state>
       </provider>
@@ -1614,7 +1579,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/engine/FetchSongs.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="34" selection-end="34" vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="2502">
+        <state line="3" column="17" selection-start="74" selection-end="74" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2363">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="25" selection-start="1203" selection-end="1203" vertical-scroll-proportion="0.55956113" vertical-offset="153" max-vertical-offset="28407">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
           <folding />
         </state>
       </provider>
