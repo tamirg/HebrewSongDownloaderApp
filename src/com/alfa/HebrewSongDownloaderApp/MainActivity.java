@@ -133,7 +133,7 @@ public class MainActivity extends Activity {
                     songFileLengthInBytes = (int) entity.getContentLength();
                     BufferedInputStream bfInputStream = new BufferedInputStream(entity.getContent());
                     String filePath = SONGS_DIRECTORY + File.separator + songFileName +
-                                      fetchSongsInstance.SONG_FILE_MP3_SUFFIX;
+                            fetchSongsInstance.SONG_FILE_MP3_SUFFIX;
                     BufferedOutputStream bfOutputStream = new BufferedOutputStream(new FileOutputStream(filePath));
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     byte[] buffer = new byte[8192];
