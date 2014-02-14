@@ -279,7 +279,7 @@ public class SearchFragment extends Fragment {
                 imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
             }*/
 
-
+            // TODO : remove, test commit to dev branch
             // TODO : should be here?
             LoadListFragment();
 
