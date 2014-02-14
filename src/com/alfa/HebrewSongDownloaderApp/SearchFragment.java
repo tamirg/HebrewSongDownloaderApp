@@ -46,18 +46,6 @@ public class SearchFragment extends Fragment {
 
     private void setupSearchView(final View hostView) {
 
-        /*
-        Button searchBtn = (Button) view.findViewById(R.id.searchSongBtn);
-
-        searchBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Switch the tab content to display the list view.
-                loadSongFragment();
-            }
-        });
-*/
-
 
         SONGS_DIRECTORY += getString(R.string.downloadFolder);
         progressBar = (ProgressBar) hostView.findViewById(R.id.progressBar);
@@ -89,33 +77,6 @@ public class SearchFragment extends Fragment {
 
 
     }
-
-
-    private void loadSongFragment() {
-
-
-        FragmentManager fm = getFragmentManager();
-
-        /*
-        if (fm.findFragmentById(android.R.id.content) == null) {
-            SongListFragment list = new SongListFragment();
-            fm.beginTransaction().add(android.R.id.content, list).commit();
-        }*/
-
-/*
-        if (fm != null) {
-            // Perform the FragmentTransaction to load in the list tab content.
-            // Using FragmentTransaction#replace will destroy any Fragments
-            // currently inside R.id.fragment_content and add the new Fragment
-            // in its place.
-            FragmentTransaction ft = fm.beginTransaction();
-            ft.replace(R.id.list_container, new SongListFragment());
-            ft.commit();
-        }
- */
-
-    }
-
 
     /**
      * Background Async Task to download file
