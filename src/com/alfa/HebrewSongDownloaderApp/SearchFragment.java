@@ -66,6 +66,7 @@ public class SearchFragment extends Fragment {
         loadingWheel.setVisibility(View.GONE);
         loadingText.setVisibility(View.GONE);
 
+
         File folder = new File(SONGS_DIRECTORY);
         boolean success = true;
         if (!folder.exists()) {
@@ -129,6 +130,9 @@ public class SearchFragment extends Fragment {
             loadingText.setText(fixedLoadingInfo + q + " ... ");
             UIUtils.showTextView(loadingText, this.context);
             UIUtils.showProgressBar(loadingWheel, this.context);
+
+            // load empty list fragment
+            LoadListFragment(null);
 
             progressBar.setProgress(0);
             progressBar.setVisibility(View.VISIBLE);
@@ -266,7 +270,7 @@ public class SearchFragment extends Fragment {
 
 
             // TODO : should it be here?
-            LoadListFragment();
+            LoadListFragment(this.songResults);
 
 
         }
@@ -274,18 +278,15 @@ public class SearchFragment extends Fragment {
         /**
          * TODO : should be here?
          */
-        private void LoadListFragment() {
+        private void LoadListFragment(List<SongResult> songResults) {
             FragmentManager fm = getFragmentManager();
 
             if (fm != null) {
-                // Perform the FragmentTransaction to load in the list tab content.
-                // Using FragmentTransaction#replace will destroy any Fragments
-                // currently inside R.id.fragment_content and add the new Fragment
-                // in its place.
+
                 FragmentTransaction ft = fm.beginTransaction();
 
                 Log.w("data:fetch_songs", "before replacing fragment..");
-                ft.replace(R.id.list_container, new SongListFragment(this.songResults));
+                ft.replace(R.id.list_container, new SongListFragment(songResults));
                 ft.commit();
             }
         }

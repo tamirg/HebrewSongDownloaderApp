@@ -26,10 +26,14 @@ public class SongListFragment extends ListFragment {
     }
 
     public SongListFragment(List<SongResult> songResults) {
-        this.listOfSongResults = songResults;
         songNames = new LinkedList<String>();
-        for (SongResult res : songResults) {
-            songNames.add(res.getNameOfSong());
+        this.listOfSongResults = songResults;
+
+        if (songResults != null) {
+
+            for (SongResult res : songResults) {
+                songNames.add(res.getNameOfSong());
+            }
         }
     }
 
