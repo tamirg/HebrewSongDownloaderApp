@@ -286,7 +286,7 @@ public class SearchFragment extends Fragment {
         }
 
         /**
-         * // TODO : should be here?
+         * TODO : should be here?
          */
         private void LoadListFragment() {
             FragmentManager fm = getFragmentManager();
