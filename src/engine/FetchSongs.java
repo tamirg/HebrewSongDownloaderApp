@@ -2,19 +2,14 @@ package engine;
 
 import Exceptions.NoSongFoundException;
 import Exceptions.UnRecognizedSongEngineException;
-import com.alfa.utils.URLUtils;
+import android.util.Log;
 import entities.SongResult;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.*;
-import java.net.URI;
+import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.LinkedList;
 import java.util.List;
@@ -26,7 +21,7 @@ import java.util.List;
 public class FetchSongs {
     public final String UNIDOWN_URL_QUERY = "http://www.unidown.com/search.php?q=";
     public final String QUERY_ENCODING = "UTF-8";
-    public  final String SONG_FILE_MP3_SUFFIX = ".mp3";
+    public final String SONG_FILE_MP3_SUFFIX = ".mp3";
     private static FetchSongs fetchSongsEngine = null;
 
     protected FetchSongs() {
@@ -66,30 +61,32 @@ public class FetchSongs {
                     SongResult newSongResult = fetchSingleSongResult(songDownloadIframe, iframeParsedHTML);
 
                     if (!newSongResult.getDownloadURL().equals("") &&
-                        !newSongResult.getNameOfSong().equals("")) {
+                            !newSongResult.getNameOfSong().equals("")) {
                         songResults.add(newSongResult);
                     }
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    //e.printStackTrace();
+                    Log.e("error:fetching songs", e.toString());
                 } catch (UnRecognizedSongEngineException e) {
-                    e.printStackTrace();
+                    //e.printStackTrace();
+                    Log.e("error:fetching songs", e.toString());
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    //e.printStackTrace();
+                    Log.e("error:fetching songs", e.toString());
                 }
             }
+
 
             return songResults;
         }
     }
 
     /**
-     *
      * @param songDownloadIframe - the website's URL which we need to extract the song result from.
-     * @param iframeParsedHTML - the website's DOM HTML elements tree which contains all page's data.
+     * @param iframeParsedHTML   - the website's DOM HTML elements tree which contains all page's data.
      * @return SongResult type object which contains
-     *         1.song's name
-     *         2.song's download URL
-     * @return
+     * 1.song's name
+     * 2.song's download URL
      */
     private SongResult fetchSingleSongResult(String songDownloadIframe,
                                              Document iframeParsedHTML) throws UnRecognizedSongEngineException {

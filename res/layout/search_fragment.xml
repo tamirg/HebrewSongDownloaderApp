@@ -60,7 +60,7 @@
 
     <!-- p2 -->
     <LinearLayout
-		  android:background="#47ff56"
+		  android:background="#a6ffb2"
 		  android:layout_height="match_parent"
 		  android:layout_width="match_parent"
 		  android:layout_weight="2">
