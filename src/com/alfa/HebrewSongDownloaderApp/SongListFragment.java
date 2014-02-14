@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 import entities.SongResult;
 
 import java.util.LinkedList;
@@ -20,12 +19,14 @@ import java.util.List;
 public class SongListFragment extends ListFragment {
 
     List<String> songNames;
+    List<SongResult> listOfSongResults;
 
     public SongListFragment(LinkedList<String> songNames) {
         this.songNames = songNames;
     }
 
     public SongListFragment(List<SongResult> songResults) {
+        this.listOfSongResults = songResults;
         songNames = new LinkedList<String>();
         for (SongResult res : songResults) {
             songNames.add(res.getNameOfSong());
@@ -43,7 +44,6 @@ public class SongListFragment extends ListFragment {
     }
 
     private String[] getSongs() {
-        //String[] songs = {"song1", "song2", "song3","song4","song5"};
         String[] songs = new String[this.songNames.size()];
         int i = 0;
 
@@ -57,8 +57,18 @@ public class SongListFragment extends ListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        Toast.makeText(getActivity().getBaseContext(), "this is test", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getActivity().getBaseContext(), "this is test", Toast.LENGTH_LONG).show();
+        SongResult chosenSongResult = this.getSongResultByName((String) l.getItemAtPosition(position));
+        chosenSongResult.downloadSongResult(v);
+    }
 
+    public SongResult getSongResultByName(String songName) {
+        for (SongResult currSongResult : this.listOfSongResults) {
+            if (currSongResult.getNameOfSong().equals(songName)) {
+                return currSongResult;
+            }
+        }
+        return null;
     }
 
 }

@@ -1,5 +1,8 @@
 package entities;
 
+import android.view.View;
+import com.alfa.utils.DownloadSongResultAsyncTask;
+
 /**
  * Created by Tamir on 11/02/14.
  */
@@ -35,6 +38,11 @@ public class SongResult {
     public void setDownloadURL(String downloadURL) {
         this.downloadURL = downloadURL;
     }
+
+    public void downloadSongResult(View v) {
+        new DownloadSongResultAsyncTask(v.getContext()).execute(this.getDownloadURL(), this.getNameOfSong());
+    }
+
 
     @Override
     public String toString() {

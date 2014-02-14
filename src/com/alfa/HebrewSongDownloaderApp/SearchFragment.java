@@ -3,6 +3,7 @@ package com.alfa.HebrewSongDownloaderApp;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.app.Service;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,7 +12,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
+import com.alfa.utils.UIUtils;
 import engine.FetchSongs;
 import entities.SongResult;
 
@@ -65,8 +68,8 @@ public class SearchFragment extends Fragment {
             public void onClick(View v) {
                 // Perform action on click
                 songQuerySearch = (SearchView) hostView.findViewById(R.id.searchSongQuery);
-                //InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Service.INPUT_METHOD_SERVICE);
-                //imm.hideSoftInputFromWindow(songQuerySearch.getWindowToken(), 0);
+                InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Service.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(songQuerySearch.getWindowToken(), 0);
                 try {
                     new DownloadFileFromURL(v.getContext(), hostView).execute(null, null, null);
                 } catch (Exception e) {
@@ -81,7 +84,7 @@ public class SearchFragment extends Fragment {
     /**
      * Background Async Task to download file
      */
-    private class DownloadFileFromURL extends AsyncTask<String, String, String> {
+    public class DownloadFileFromURL extends AsyncTask<String, String, String> {
 
         private Context context;
         private View hostView;
@@ -106,7 +109,7 @@ public class SearchFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            Toast.makeText(context, "ההורדה החלה", Toast.LENGTH_LONG).show();
+            UIUtils.PrintToast(context, "החיפוש החל", Toast.LENGTH_LONG);
             progressBar.setProgress(0);
             progressBar.setVisibility(View.VISIBLE);
             showPercentageTextView.setText("");
@@ -125,25 +128,19 @@ public class SearchFragment extends Fragment {
             try {
                 // TODO: implement listView which will display this list of song results
                 String q = songQuerySearch.getQuery().toString();
-                //List<SongResult> songResults = fetchSongsInstance.getSongResults(q);
 
                 // TODO for tamir: remove , this is just for test
-                songResults = new LinkedList<SongResult>();
-                songResults.add(new SongResult(q + "_op1", ""));
-                songResults.add(new SongResult(q + "_op2", ""));
-                songResults.add(new SongResult(q + "_op3", ""));
-
+                songResults = fetchSongsInstance.getSongResults(q);
 
                 Log.w("data:fetch_songs", songResults.toString());
 
-
                 // TODO: remove this line (its only for test the first result for downloading song)
-                if (!songResults.isEmpty()) {
+            /*  if (!songResults.isEmpty()) {
                     chosenSongResult = songResults.get(1);
                 } else {
                     errorContent = "נמצאו תוצאות אך התוצאות פגומות";
                 }
-            /*} catch (NoSongFoundException noSongException) {
+            } catch (NoSongFoundException noSongException) {
                 errorContent = "לא נמצא שיר, נסה שם מפורט יותר";
             } catch (UnRecognizedSongEngineException noRecognitionException) {
                 //errorContent = "לא נמצא מנוע לשיר"
@@ -197,8 +194,6 @@ public class SearchFragment extends Fragment {
 
             */
             return errorContent;
-
-
         }
 
         /**
