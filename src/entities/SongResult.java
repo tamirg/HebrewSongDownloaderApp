@@ -35,4 +35,9 @@ public class SongResult {
     public void setDownloadURL(String downloadURL) {
         this.downloadURL = downloadURL;
     }
+
+    @Override
+    public String toString() {
+        return nameOfSong;
+    }
 }
