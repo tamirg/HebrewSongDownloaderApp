@@ -17,8 +17,6 @@ public class TabedMainActivity extends Activity implements
         setContentView(R.layout.tabed_menu);
 
         setupTabHost();
-
-
     }
 
     /**

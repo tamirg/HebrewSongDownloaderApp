@@ -13,7 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.SearchView;
+import android.widget.TextView;
 import com.alfa.utils.UIUtils;
 import engine.FetchSongs;
 import entities.SongResult;
@@ -29,17 +32,14 @@ public class SearchFragment extends Fragment {
 
     private String SONGS_DIRECTORY = Environment.getExternalStorageDirectory().toString();
     private ProgressBar progressBar;
+    private ProgressBar loadingWheel;
+    private TextView loadingText;
     TextView showPercentageTextView;
     SearchView songQuerySearch;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        // onCreateView() is a lifecycle event that is unique to a Fragment. This is called when Android
-        // needs the layout for this Fragment. The call to LayoutInflater::inflate() simply takes the layout
-        // ID for the layout file, the parent view that will hold the layout, and an option to add the inflated
-        // view to the parent. This should always be false or an exception will be thrown. Android will add
-        // the view to the parent when necessary.
         View view = inflater.inflate(R.layout.search_fragment, container, false);
 
         setupSearchView(view);
@@ -49,12 +49,22 @@ public class SearchFragment extends Fragment {
 
     private void setupSearchView(final View hostView) {
 
+        // setup view widgets
+        progressBar = (ProgressBar) hostView.findViewById(R.id.progressBar);
+        loadingWheel = (ProgressBar) hostView.findViewById(R.id.loadingWheel);
+        loadingText = (TextView) hostView.findViewById(R.id.loadingText);
+        showPercentageTextView = (TextView) hostView.findViewById(R.id.textShowingPercentage);
+
 
         SONGS_DIRECTORY += getString(R.string.downloadFolder);
-        progressBar = (ProgressBar) hostView.findViewById(R.id.progressBar);
-        showPercentageTextView = (TextView) hostView.findViewById(R.id.textShowingPercentage);
+
+        // setup progress bar
         progressBar.setVisibility(View.GONE);
         progressBar.setMax(100);
+
+        // setup widget initial state
+        loadingWheel.setVisibility(View.GONE);
+        loadingText.setVisibility(View.GONE);
 
         File folder = new File(SONGS_DIRECTORY);
         boolean success = true;
@@ -109,7 +119,17 @@ public class SearchFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            UIUtils.PrintToast(context, "החיפוש החל", Toast.LENGTH_LONG);
+
+            // TODO : remove
+            //UIUtils.PrintToast(context, "החיפוש החל", Toast.LENGTH_LONG);
+
+            // show loading information
+            String q = songQuerySearch.getQuery().toString();
+            String fixedLoadingInfo = "מחפש תוצאות עבור ";
+            loadingText.setText(fixedLoadingInfo + q + " ... ");
+            UIUtils.showTextView(loadingText, this.context);
+            UIUtils.showProgressBar(loadingWheel, this.context);
+
             progressBar.setProgress(0);
             progressBar.setVisibility(View.VISIBLE);
             showPercentageTextView.setText("");
@@ -215,6 +235,15 @@ public class SearchFragment extends Fragment {
         @Override
         protected void onPostExecute(String result) {
 
+            // hide loading information
+            //UIUtils.hideTextView(loadingText, this.context);
+            loadingText.setText("");
+
+            String q = songQuerySearch.getQuery().toString();
+            String fixedLoadingInfo = "שירים שנמצאו עבור ";
+            loadingText.setText(fixedLoadingInfo + q + " : ");
+
+            UIUtils.hideProgressBar(loadingWheel, this.context);
 
             /*super.onPostExecute(result);
             progressBar.setVisibility(View.GONE);

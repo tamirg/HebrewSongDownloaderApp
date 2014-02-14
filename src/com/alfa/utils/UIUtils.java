@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -86,6 +87,56 @@ public class UIUtils {
                     @Override
                     public void run() {
                         fPB.setVisibility(View.INVISIBLE);
+                    }
+                });
+            }
+        };
+
+        // execute thread
+        t.start();
+    }
+
+    /**
+     * @param tv
+     * @param context
+     */
+    public static void showTextView(TextView tv, Context context) {
+        // setup final variables for thread
+        final TextView fTv = tv;
+        final Activity fAct = (Activity) context;
+
+        // setup thread for execution
+        Thread t = new Thread() {
+            public void run() {
+                fAct.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        fTv.setVisibility(View.VISIBLE);
+                    }
+                });
+            }
+        };
+
+        // execute thread
+        t.start();
+    }
+
+    /**
+     * @param tv
+     * @param context
+     */
+    public static void hideTextView(TextView tv, Context context) {
+        // setup final variables for thread
+        final TextView fTv = tv;
+        final Activity fAct = (Activity) context;
+
+        // setup thread for execution
+        Thread t = new Thread() {
+            public void run() {
+                fAct.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        fTv.setVisibility(View.GONE);
                     }
                 });
             }

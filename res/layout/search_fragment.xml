@@ -3,33 +3,37 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		    android:orientation="vertical"
 		    android:layout_width="match_parent"
-		    android:layout_height="match_parent">
+		    android:layout_height="match_parent"
+		    android:weightSum="7">
 
-    <!-- p1 -->
+    <!-- search pane -->
     <LinearLayout
 		  android:background="#ff2e00"
 		  android:orientation="horizontal"
 		  android:layout_height="match_parent"
 		  android:layout_width="match_parent"
-		  android:layout_weight="2">
+		  android:layout_weight="3">
 
-	   <!-- L1 -->
+	   <!-- button pane -->
 	   <LinearLayout
-			 android:background="#ffc04c"
+			 android:background="#b69aff"
 			 android:layout_height="match_parent"
 			 android:layout_width="match_parent"
-			 android:layout_weight="2">
+			 android:layout_weight="2"
+			 android:orientation="vertical">
 
 		  <Button
 				android:id="@+id/searchSongBtn"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:layout_gravity="right"
 				android:text="חפש"
-				style="?android:attr/buttonStyleSmall"/>
+				style="?android:attr/buttonStyleSmall" android:focusable="false" android:enabled="true"
+				android:focusableInTouchMode="false"/>
 
 	   </LinearLayout>
 
-	   <!-- L2 -->
+	   <!-- search query pane -->
 	   <LinearLayout
 			 android:background="#b69aff"
 			 android:layout_height="match_parent"
@@ -58,28 +62,68 @@
 	   </LinearLayout>
     </LinearLayout>
 
-    <!-- p2 -->
+    <!-- loading pane -->
     <LinearLayout
-		  android:background="#a6ffb2"
+		  android:background="#629bff"
 		  android:layout_height="match_parent"
 		  android:layout_width="match_parent"
-		  android:layout_weight="2">
+		  android:layout_weight="3"
+		  android:orientation="horizontal">
 
-	   <ProgressBar
-			 android:id="@+id/progressBar"
-			 style="?android:attr/progressBarStyleHorizontal"
-			 android:layout_width="wrap_content"
-			 android:layout_height="wrap_content"/>
+	   <!-- main loading pane -->
+	   <LinearLayout
+			 android:background="#629bff"
+			 android:layout_height="match_parent"
+			 android:layout_width="match_parent"
+			 android:layout_weight="1"
+			 android:orientation="vertical">
+
+		  <!-- song download progress bar -->
+		  <ProgressBar
+				android:id="@+id/progressBar"
+				style="?android:attr/progressBarStyleHorizontal"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center"
+				android:indeterminate="false"/>
+
+		  <TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textAppearance="?android:attr/textAppearanceLarge"
+				android:text=""
+				android:id="@+id/loadingText"
+				android:layout_gravity="right"/>
+
+	   </LinearLayout>
+
+	   <!-- loading wheel pane -->
+	   <LinearLayout
+			 android:background="#629bff"
+			 android:layout_height="match_parent"
+			 android:layout_width="match_parent"
+			 android:layout_weight="10"
+			 android:orientation="vertical">
+
+		  <!-- loading wheel progress bar -->
+		  <ProgressBar
+				android:id="@+id/loadingWheel"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="right"
+				android:indeterminate="false"/>
+
+	   </LinearLayout>
+
 
     </LinearLayout>
 
-    <!-- p3 -->
+    <!-- song list pane -->
     <LinearLayout
 		  android:background="#629bff"
 		  android:layout_height="match_parent"
 		  android:layout_width="match_parent"
 		  android:layout_weight="1">
-
 
 	   <FrameLayout
 			 android:id="@+id/list_container"
@@ -87,7 +131,6 @@
 			 android:layout_height="fill_parent"/>
 
     </LinearLayout>
-
 
 </LinearLayout>
 
