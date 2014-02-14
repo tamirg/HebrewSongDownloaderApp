@@ -24,7 +24,6 @@ public class FetchSongs {
     public final String SONG_FILE_MP3_SUFFIX = ".mp3";
     private static FetchSongs fetchSongsEngine = null;
 
-    //
     protected FetchSongs() {
     }
 
