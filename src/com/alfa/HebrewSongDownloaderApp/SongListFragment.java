@@ -63,7 +63,7 @@ public class SongListFragment extends ListFragment {
     public void onListItemClick(ListView l, View v, int position, long id) {
         //Toast.makeText(getActivity().getBaseContext(), "this is test", Toast.LENGTH_LONG).show();
         SongResult chosenSongResult = this.getSongResultByName((String) l.getItemAtPosition(position));
-        chosenSongResult.downloadSongResult(v);
+        chosenSongResult.downloadSongResult(v, getFragmentManager());
     }
 
     public SongResult getSongResultByName(String songName) {
