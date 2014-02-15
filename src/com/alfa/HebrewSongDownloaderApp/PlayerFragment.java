@@ -52,6 +52,7 @@ public class PlayerFragment extends Fragment {
         playButton.setText("pause");
         playButton.setEnabled(true);
         stopButton.setEnabled(true);
+
     }
 
     public void stopSong() {
