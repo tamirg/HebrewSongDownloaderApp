@@ -1,7 +1,9 @@
 package com.alfa.utils;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -33,6 +35,52 @@ public class UIUtils {
                     @Override
                     public void run() {
                         Toast.makeText(fContext, fMsg, fToastLength).show();
+                    }
+                });
+            }
+        };
+
+        // execute thread
+        t.start();
+    }
+
+    /**
+     * prints error toast on the UI thread or a dialog in case of debug mode
+     *
+     * @param context
+     * @param errMsg
+     */
+    public static void printError(Context context, String errMsg) {
+        // setup final variables for thread
+        final Context fContext = context;
+        final Activity fAct = (Activity) context;
+        final String fErrMsg = "Error: " + errMsg;
+        final int fToastLength = Toast.LENGTH_LONG;
+        final boolean fDebugMode = SharedPref.DEBUG_MODE;
+
+        // setup alert dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(fContext);
+        builder.setMessage(fErrMsg);
+        builder.setCancelable(true);
+        builder.setPositiveButton("dismiss", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        final AlertDialog fDialog = builder.create();
+
+        // setup thread for execution
+        Thread t = new Thread() {
+            public void run() {
+                fAct.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (!fDebugMode) {
+                            Toast.makeText(fContext, fErrMsg, fToastLength).show();
+                        } else {
+                            fDialog.show();
+                        }
                     }
                 });
             }
