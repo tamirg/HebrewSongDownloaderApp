@@ -1,5 +1,6 @@
 package entities;
 
+import android.app.FragmentManager;
 import android.view.View;
 import com.alfa.utils.AsyncTaskManager;
 
@@ -41,8 +42,8 @@ public class SongResult {
         this.downloadURL = downloadURL;
     }
 
-    public void downloadSongResult(View v) {
-        AsyncTaskManager.downloadSong(v.getContext(), this.getDownloadURL(), this.getNameOfSong());
+    public void downloadSongResult(View v, FragmentManager fm) {
+        AsyncTaskManager.downloadSong(v.getContext(), this.getDownloadURL(), this.getNameOfSong(), fm);
 
     }
 

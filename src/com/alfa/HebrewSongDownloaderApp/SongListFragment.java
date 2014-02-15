@@ -1,5 +1,6 @@
 package com.alfa.HebrewSongDownloaderApp;
 
+import android.app.FragmentManager;
 import android.app.ListFragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +21,7 @@ public class SongListFragment extends ListFragment {
 
     List<String> songNames;
     List<SongResult> listOfSongResults;
+    private FragmentManager fm;
 
     public SongListFragment(LinkedList<String> songNames) {
         this.songNames = songNames;
@@ -44,6 +46,9 @@ public class SongListFragment extends ListFragment {
                 inflater.getContext(), android.R.layout.simple_list_item_1,
                 getSongs());
         setListAdapter(adapter);
+
+        this.fm = getFragmentManager();
+
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
@@ -61,9 +66,8 @@ public class SongListFragment extends ListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        //Toast.makeText(getActivity().getBaseContext(), "this is test", Toast.LENGTH_LONG).show();
         SongResult chosenSongResult = this.getSongResultByName((String) l.getItemAtPosition(position));
-        chosenSongResult.downloadSongResult(v);
+        chosenSongResult.downloadSongResult(v, this.fm);
     }
 
     public SongResult getSongResultByName(String songName) {

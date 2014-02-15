@@ -48,8 +48,8 @@ public class AsyncTaskManager {
         new SearchSongResults(context, songQuerySearch, loadingText, loadingWheel, fm).execute();
     }
 
-    public static void downloadSong(Context context, String downloadUrl, String songName) {
-        new DownloadSongResult(context).execute(downloadUrl, songName);
+    public static void downloadSong(Context context, String downloadUrl, String songName, FragmentManager fm) {
+        new DownloadSongResult(context, fm).execute(downloadUrl, songName);
     }
 
     // fetch song result task
@@ -148,9 +148,11 @@ public class AsyncTaskManager {
         private TextView headlineViewText;
         private View rootView;
         private View songQuerySearchEditText;
+        private FragmentManager fm;
 
-        public DownloadSongResult(Context appContext) {
+        public DownloadSongResult(Context appContext, FragmentManager fm) {
             this.context = appContext;
+            this.fm = fm;
             SONGS_DIRECTORY += "/HebrewSongDownloads";
 
             // setup view widgets
@@ -247,18 +249,19 @@ public class AsyncTaskManager {
 
             if (errorContent.equals("")) {
                 UIUtils.PrintToast(context, "השיר ירד בהצלחה", Toast.LENGTH_LONG);
+                loadLibraryFragment();
             } else {
                 UIUtils.PrintToast(context, errorContent, Toast.LENGTH_LONG);
-
-
                 songQuerySearchEditText.requestFocus();
+            }
+        }
 
-                try {
-                    // TODO : tamir , why sleep here?
-                    Thread.sleep(3000);
-                } catch (Exception e) {
-                    LogUtils.logError("download_song", e.toString());
-                }
+        private void loadLibraryFragment() {
+            if (fm != null) {
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.replace(R.id.library_files_container,
+                        new SongListFragment((LinkedList<String>) DataUtils.listFiles(SharedPref.songDirectory)));
+                ft.commit();
             }
         }
     }
