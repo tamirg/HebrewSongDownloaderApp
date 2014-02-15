@@ -24,6 +24,7 @@ import java.util.List;
 public class LibrarySongsFragment extends ListFragment {
 
     List<String> songNames;
+    PlayerFragment player;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,8 +36,9 @@ public class LibrarySongsFragment extends ListFragment {
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
-    public LibrarySongsFragment(LinkedList<String> songNames) {
+    public LibrarySongsFragment(PlayerFragment player, LinkedList<String> songNames) {
         this.songNames = songNames;
+        this.player = player;
     }
 
     private String[] getSongs() {
@@ -58,7 +60,7 @@ public class LibrarySongsFragment extends ListFragment {
 
         try {
 
-            String filePath = SharedPref.songDirectory + "/" + songNames.get(position);
+            String filePath = SharedPref.songDirectory + "/" + songNames.get(position) + ".mp3";
             File file = new File(filePath);
 
             if (!file.exists()) {
@@ -66,11 +68,14 @@ public class LibrarySongsFragment extends ListFragment {
                 return;
             }
 
-            MediaPlayer mPlayer = MediaPlayer.create(v.getContext(), Uri.fromFile(file));
-            if (mPlayer.isPlaying()) {
-                mPlayer.stop();
-            }
-            mPlayer.start();
+            MediaPlayer mPlayer;
+
+            player.stopPreviousSong();
+
+            mPlayer = MediaPlayer.create(c, Uri.fromFile(file));
+            player.setMediaPlayer(mPlayer);
+            player.startSong();
+            player.setPreviousPlayer(mPlayer);
 
         } catch (Exception e) {
             UIUtils.printError(c, e.toString());

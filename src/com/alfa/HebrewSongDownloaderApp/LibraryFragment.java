@@ -32,10 +32,16 @@ public class LibraryFragment extends Fragment {
         FragmentManager fm = getFragmentManager();
 
         if (fm != null) {
+
             FragmentTransaction ft = fm.beginTransaction();
-            // replaced with
-            //ft.replace(R.id.library_files_container, new SongListFragment(getSongNamesFromDirectory()));
-            ft.replace(R.id.library_files_container, new LibrarySongsFragment(getSongNamesFromDirectory()));
+
+            PlayerFragment player = new PlayerFragment();
+            // load player
+            ft.replace(R.id.player_container, player);
+
+            // load file list
+            ft.replace(R.id.library_files_container, new LibrarySongsFragment(player, getSongNamesFromDirectory()));
+
             ft.commit();
         }
     }

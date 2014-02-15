@@ -127,9 +127,8 @@
 				    style="?android:attr/progressBarStyleHorizontal"
 				    android:layout_width="fill_parent"
 				    android:layout_height="wrap_content"
-				    android:progressDrawable="@drawable/custom_progress_bar" android:visibility="invisible"/>
-
-
+				    android:progressDrawable="@drawable/custom_progress_bar"
+				    android:visibility="invisible"/>
 		  </LinearLayout>
 
 
