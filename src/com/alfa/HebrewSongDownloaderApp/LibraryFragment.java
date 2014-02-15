@@ -23,19 +23,19 @@ public class LibraryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.library_fragment, container, false);
-
-        setupFragmentView();
-
+        setupFragmentView(view);
         return view;
     }
 
-    private void setupFragmentView() {
+    private void setupFragmentView(View view) {
 
         FragmentManager fm = getFragmentManager();
 
         if (fm != null) {
             FragmentTransaction ft = fm.beginTransaction();
-            ft.replace(R.id.library_files_container, new SongListFragment(getSongNamesFromDirectory()));
+            // replaced with
+            //ft.replace(R.id.library_files_container, new SongListFragment(getSongNamesFromDirectory()));
+            ft.replace(R.id.library_files_container, new LibrarySongsFragment(getSongNamesFromDirectory()));
             ft.commit();
         }
     }
@@ -47,10 +47,7 @@ public class LibraryFragment extends Fragment {
         songNames = (LinkedList<String>) DataUtils.listFiles(SharedPref.songDirectory);
 
         if (songNames.size() == 0) {
-            songNames.add("song1");
-            songNames.add("song2");
-            songNames.add("song3");
-            songNames.add("song4");
+            songNames.add("no songs in library");
         }
         return songNames;
     }

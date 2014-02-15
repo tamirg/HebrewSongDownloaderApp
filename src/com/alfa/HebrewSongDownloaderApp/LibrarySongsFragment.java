@@ -1,6 +1,9 @@
 package com.alfa.HebrewSongDownloaderApp;
 
 import android.app.ListFragment;
+import android.content.Context;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,18 +11,19 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import com.alfa.utils.LogUtils;
-import entities.SongResult;
+import com.alfa.utils.SharedPref;
+import com.alfa.utils.UIUtils;
 
+import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Created by Micha on 2/13/14.
  */
-public class SongListFragment extends ListFragment {
+public class LibrarySongsFragment extends ListFragment {
 
     List<String> songNames;
-    List<SongResult> listOfSongResults;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -31,20 +35,8 @@ public class SongListFragment extends ListFragment {
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
-    public SongListFragment(LinkedList<String> songNames) {
+    public LibrarySongsFragment(LinkedList<String> songNames) {
         this.songNames = songNames;
-    }
-
-    public SongListFragment(List<SongResult> songResults) {
-        songNames = new LinkedList<String>();
-        this.listOfSongResults = songResults;
-
-        if (songResults != null) {
-
-            for (SongResult res : songResults) {
-                songNames.add(res.getNameOfSong());
-            }
-        }
     }
 
     private String[] getSongs() {
@@ -55,24 +47,37 @@ public class SongListFragment extends ListFragment {
             songs[i++] = songName;
         }
 
-        LogUtils.logData("loading_songs", songs.toString());
+        LogUtils.logData("library_songs", songs.toString());
         return songs;
     }
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        //Toast.makeText(getActivity().getBaseContext(), "this is test", Toast.LENGTH_LONG).show();
-        SongResult chosenSongResult = this.getSongResultByName((String) l.getItemAtPosition(position));
-        chosenSongResult.downloadSongResult(v);
+
+        Context c = v.getContext();
+
+        try {
+
+            String filePath = SharedPref.songDirectory + "/" + songNames.get(position);
+            File file = new File(filePath);
+
+            if (!file.exists()) {
+                UIUtils.printError(c, "file at: " + filePath + " does not exist!");
+                return;
+            }
+
+            MediaPlayer mPlayer = MediaPlayer.create(v.getContext(), Uri.fromFile(file));
+            if (mPlayer.isPlaying()) {
+                mPlayer.stop();
+            }
+            mPlayer.start();
+
+        } catch (Exception e) {
+            UIUtils.printError(c, e.toString());
+        }
+
+
     }
 
-    public SongResult getSongResultByName(String songName) {
-        for (SongResult currSongResult : this.listOfSongResults) {
-            if (currSongResult.getNameOfSong().equals(songName)) {
-                return currSongResult;
-            }
-        }
-        return null;
-    }
 
 }
