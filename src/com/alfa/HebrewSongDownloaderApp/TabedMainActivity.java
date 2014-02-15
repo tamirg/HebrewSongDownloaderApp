@@ -2,10 +2,8 @@ package com.alfa.HebrewSongDownloaderApp;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.RadioGroup;
 import android.widget.TabHost;
-import android.widget.Toast;
 
 /**
  * Created by Micha on 2/12/14.
@@ -38,7 +36,7 @@ public class TabedMainActivity extends Activity implements
         specs.setIndicator("download");
         OptionTabHost.addTab(specs);
 
-        // setup library tab
+        // setup library_fragment tab
         specs = OptionTabHost.newTabSpec("tag library");
         specs.setContent(R.id.library);
         specs.setIndicator("library");
@@ -46,17 +44,9 @@ public class TabedMainActivity extends Activity implements
 
     }
 
+
     @Override
-    public void onCheckedChanged(RadioGroup radioGroup, int i) {
-        Toast.makeText(getBaseContext(), i + "", Toast.LENGTH_LONG).show();
-
-        switch (i) {
-            case 1: {
-                Log.w("asd", "asd");
-            }
-            default: {
-
-            }
-        }
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        // do nothing
     }
 }

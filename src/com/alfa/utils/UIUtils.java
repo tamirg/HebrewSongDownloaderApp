@@ -87,7 +87,34 @@ public class UIUtils {
                 fAct.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        fPB.setVisibility(View.GONE);
+                        fPB.setVisibility(View.INVISIBLE);
+                    }
+                });
+            }
+        };
+
+        // execute thread
+        t.start();
+    }
+
+    /**
+     * @param tv
+     * @param context
+     */
+    public static void showTextView(TextView tv, String text, Context context) {
+        // setup final variables for thread
+        final TextView fTv = tv;
+        final String fText = text;
+        final Activity fAct = (Activity) context;
+
+        // setup thread for execution
+        Thread t = new Thread() {
+            public void run() {
+                fAct.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        fTv.setText(fText);
+                        fTv.setVisibility(View.VISIBLE);
                     }
                 });
             }
@@ -112,7 +139,6 @@ public class UIUtils {
                 fAct.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        fTv.setText("");
                         fTv.setVisibility(View.VISIBLE);
                     }
                 });
@@ -138,7 +164,7 @@ public class UIUtils {
                 fAct.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        fTv.setVisibility(View.GONE);
+                        fTv.setVisibility(View.INVISIBLE);
                     }
                 });
             }

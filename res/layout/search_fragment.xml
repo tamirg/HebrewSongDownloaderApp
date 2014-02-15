@@ -51,7 +51,7 @@
 				android:baselineAligned="false"
 				android:layout_gravity="right"/>
 
-       </LinearLayout>
+	   </LinearLayout>
     </LinearLayout>
 
     <!-- loading pane -->
@@ -60,7 +60,7 @@
 		  android:layout_height="match_parent"
 		  android:layout_width="match_parent"
 		  android:layout_weight="3"
-		  android:orientation="horizontal">
+		  android:orientation="horizontal" android:layout_gravity="left|top">
 
 	   <!-- main loading pane -->
 	   <LinearLayout
@@ -68,27 +68,74 @@
 			 android:layout_height="match_parent"
 			 android:layout_width="match_parent"
 			 android:layout_weight="1"
-             android:orientation="vertical" android:weightSum="1">
+			 android:orientation="vertical"
+			 android:weightSum="2">
 
-           <!-- song download progress bar -->
-		  <ProgressBar
-				android:id="@+id/progressBar"
-				style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="301dp"
-                android:layout_height="70dp"
-                android:indeterminate="false"/>
+		  <LinearLayout
+				android:background="#629bff"
+				android:layout_height="match_parent"
+				android:layout_width="match_parent"
+				android:layout_weight="1"
+				android:orientation="horizontal"
+				android:weightSum="5">
 
-           <TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:textAppearance="?android:attr/textAppearanceLarge"
-				android:text=""
-				android:id="@+id/loadingText"
-				android:layout_gravity="right"/>
+			 <LinearLayout
+				    android:background="#629bff"
+				    android:layout_height="match_parent"
+				    android:layout_width="match_parent"
+				    android:layout_weight="4"
+				    android:orientation="vertical">
 
-       </LinearLayout>
+				<TextView
+					   android:id="@+id/percentageProgress"
+					   android:layout_width="wrap_content"
+					   android:layout_height="wrap_content"
+					   android:textAppearance="?android:attr/textAppearanceMedium"
+					   android:textColor="#CE3CE1"
+					   android:layout_gravity="bottom"/>
+			 </LinearLayout>
 
-        <!-- loading wheel pane -->
+			 <LinearLayout
+				    android:background="#629bff"
+				    android:layout_height="match_parent"
+				    android:layout_width="match_parent"
+				    android:layout_weight="1"
+				    android:orientation="vertical">
+
+				<TextView
+					   android:id="@+id/loadingText"
+					   android:layout_width="wrap_content"
+					   android:layout_height="wrap_content"
+					   android:textAppearance="?android:attr/textAppearanceLarge"
+					   android:layout_gravity="right"
+					   android:textStyle="italic"
+					   android:visibility="visible"/>
+
+			 </LinearLayout>
+
+		  </LinearLayout>
+
+		  <LinearLayout
+				android:background="#629bff"
+				android:layout_height="match_parent"
+				android:layout_width="match_parent"
+				android:layout_weight="1"
+				android:orientation="vertical">
+
+			 <ProgressBar
+				    android:id="@+id/progressBar"
+				    style="?android:attr/progressBarStyleHorizontal"
+				    android:layout_width="fill_parent"
+				    android:layout_height="wrap_content"
+				    android:progressDrawable="@drawable/custom_progress_bar" android:visibility="invisible"/>
+
+
+		  </LinearLayout>
+
+
+	   </LinearLayout>
+
+	   <!-- loading wheel pane -->
 	   <LinearLayout
 			 android:background="#629bff"
 			 android:layout_height="match_parent"
@@ -102,16 +149,9 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_gravity="right"
-				android:indeterminate="false"/>
-           <TextView
-                   android:id="@+id/textShowingPercentage"
-                   android:layout_width="fill_parent"
-                   android:layout_height="fill_parent"
-                   android:textAppearance="?android:attr/textAppearanceSmall"
-                   android:text=""
-                   android:textColor="#ce55ff"/>
+				android:indeterminate="false" android:visibility="invisible"/>
 
-       </LinearLayout>
+	   </LinearLayout>
 
 
     </LinearLayout>

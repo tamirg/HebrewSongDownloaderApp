@@ -31,14 +31,14 @@
 				android:id="@+id/search"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
-				android:background="#C5C6E1">
+				android:background="#629bff">
 
 
 			 <fragment
 				    android:id="@+id/search_fragment_view"
-					   android:name="com.alfa.HebrewSongDownloaderApp.SearchFragment"
-					   android:layout_width="match_parent"
-					   android:layout_height="match_parent">
+				    android:name="com.alfa.HebrewSongDownloaderApp.SearchFragment"
+				    android:layout_width="match_parent"
+				    android:layout_height="match_parent">
 			 </fragment>
 
 
@@ -63,18 +63,18 @@
 				android:id="@+id/library"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
-				android:background="#C5C6E1">
+				android:background="#629bff">
 
-			 <TextView
-				    android:layout_width="wrap_content"
-				    android:layout_height="wrap_content"
-				    android:textAppearance="?android:attr/textAppearanceSmall"
-				    android:text="library"
-				    android:id="@+id/tst3"/>
+
+			 <fragment
+				    android:id="@+id/library_fragment_view"
+				    android:name="com.alfa.HebrewSongDownloaderApp.LibraryFragment"
+				    android:layout_width="match_parent"
+				    android:layout_height="match_parent">
+			 </fragment>
+
+
 		  </LinearLayout>
-
-
 	   </FrameLayout>
     </LinearLayout>
-
 </TabHost>

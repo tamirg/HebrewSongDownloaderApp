@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.main);
         SONGS_DIRECTORY += getString(R.string.downloadFolder);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        showPercentageTextView = (TextView) findViewById(R.id.textShowingPercentage);
+        showPercentageTextView = (TextView) findViewById(R.id.percentageProgress);
         progressBar.setVisibility(View.GONE);
         progressBar.setMax(100);
 

@@ -2,7 +2,7 @@ package engine;
 
 import Exceptions.NoSongFoundException;
 import Exceptions.UnRecognizedSongEngineException;
-import android.util.Log;
+import com.alfa.utils.LogUtils;
 import entities.SongResult;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -65,17 +65,13 @@ public class FetchSongs {
                         songResults.add(newSongResult);
                     }
                 } catch (IOException e) {
-                    //e.printStackTrace();
-                    Log.e("error:fetching songs", e.toString());
+                    LogUtils.logError("fetching songs", e.toString());
                 } catch (UnRecognizedSongEngineException e) {
-                    //e.printStackTrace();
-                    Log.e("error:fetching songs", e.toString());
+                    LogUtils.logError("fetching songs", e.toString());
                 } catch (Exception e) {
-                    //e.printStackTrace();
-                    Log.e("error:fetching songs", e.toString());
+                    LogUtils.logError("fetching songs", e.toString());
                 }
             }
-
 
             return songResults;
         }
