@@ -24,7 +24,7 @@ public class DataUtils {
         if (fileList != null) {
 
             for (File file : fileList) {
-                fileNames.add(file.getName());
+                fileNames.add(file.getName().substring(0, file.getName().lastIndexOf(".")));
             }
         }
 
