@@ -2,17 +2,19 @@ package engine;
 
 import Exceptions.NoSongFoundException;
 import Exceptions.UnRecognizedSongEngineException;
-import com.alfa.utils.LogUtils;
+import android.util.Log;
 import entities.SongResult;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -35,42 +37,24 @@ public class FetchSongs {
     }
 
     public List<SongResult> getSongResults(String nameOfSong) throws Exception {
-        List<SongResult> songResults = new LinkedList<SongResult>();
+        final List<SongResult> songResults = new LinkedList<SongResult>();
         nameOfSong = URLEncoder.encode(nameOfSong, QUERY_ENCODING);
         Document pageDoc = Jsoup.connect(UNIDOWN_URL_QUERY + nameOfSong).get();
         Elements downloadButtonElements = pageDoc.getElementsByClass("download_button");
         if (downloadButtonElements.isEmpty()) {
             throw new NoSongFoundException();
         } else {
+
+            ExecutorService threadPool = Executors.newFixedThreadPool(downloadButtonElements.size());
             for (Element singleDownloadButton : downloadButtonElements) {
-
-                try {
-                    String songDownloadURL = singleDownloadButton.child(0).attr("abs:href");
-
-                    Document songDownloadParsedHTML = Jsoup.connect(songDownloadURL).get();
-                    Elements elementsWithClassIframe = songDownloadParsedHTML.getElementsByClass("iframecontent").select("iframe");
-                    String iframeURL = elementsWithClassIframe.attr("abs:src");
-
-                    Document iframeSongDownloadDocument = Jsoup.connect(iframeURL).get();
-                    String songDownloadIframe = iframeSongDownloadDocument.getElementsByTag("iframe").attr("abs:src");
-
-                    // Gets the iframe for the download, can be more than one website
-                    Document iframeParsedHTML = Jsoup.connect(songDownloadIframe)
-                            .userAgent("Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1667.0 Safari/537.36").get();
-
-                    SongResult newSongResult = fetchSingleSongResult(songDownloadIframe, iframeParsedHTML);
-
-                    if (!newSongResult.getDownloadURL().equals("") &&
-                            !newSongResult.getNameOfSong().equals("")) {
-                        songResults.add(newSongResult);
-                    }
-                } catch (IOException e) {
-                    LogUtils.logError("fetching songs", e.toString());
-                } catch (UnRecognizedSongEngineException e) {
-                    LogUtils.logError("fetching songs", e.toString());
-                } catch (Exception e) {
-                    LogUtils.logError("fetching songs", e.toString());
-                }
+                Runnable r = new SearchSingleResultThread(singleDownloadButton, songResults);
+                threadPool.execute(r);
+            }
+            threadPool.shutdown();
+            try {
+                threadPool.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+            } catch (InterruptedException e) {
+                Log.e("error:", e.toString());
             }
 
             return songResults;
@@ -84,8 +68,8 @@ public class FetchSongs {
      * 1.song's name
      * 2.song's download URL
      */
-    private SongResult fetchSingleSongResult(String songDownloadIframe,
-                                             Document iframeParsedHTML) throws UnRecognizedSongEngineException {
+    public SongResult fetchSingleSongResult(String songDownloadIframe,
+                                            Document iframeParsedHTML) throws UnRecognizedSongEngineException {
         String songFinalDownloadURL = "";
         String songFileName = "";
 
