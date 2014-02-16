@@ -3,50 +3,67 @@ package com.alfa.HebrewSongDownloaderApp;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.Service;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.speech.RecognizerIntent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.SearchView;
-import android.widget.TextView;
+import android.widget.*;
 import com.alfa.utils.AsyncTaskManager;
 import com.alfa.utils.LogUtils;
+import com.alfa.utils.UIUtils;
 
 import java.io.File;
+import java.util.ArrayList;
 
 /**
  * Created by Micha on 2/13/14.
  */
-public class SearchFragment extends Fragment {
+public class SearchFragment extends Fragment implements View.OnClickListener {
 
     private String SONGS_DIRECTORY = Environment.getExternalStorageDirectory().toString();
+
     private ProgressBar progressBar;
     private ProgressBar loadingWheel;
+
+    private Button songSearchButton;
+    private Button voiceRecognitionBtn;
+
     private TextView loadingText;
     private FragmentManager fm;
     private TextView percentageProgress;
     private SearchView songQuerySearch;
+    private View view;
+
+
+    protected static final int REQUEST_OK = 1;
+    protected static final int RESULT_OK = 1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.search_fragment, container, false);
-        setupSearchView(view);
+        setupFragmentView(view);
+        this.view = view;
         return view;
     }
 
-    private void setupSearchView(final View hostView) {
+    private void setupFragmentView(final View view) {
 
         // setup view widgets
-        progressBar = (ProgressBar) hostView.findViewById(R.id.progressBar);
-        loadingWheel = (ProgressBar) hostView.findViewById(R.id.loadingWheel);
-        loadingText = (TextView) hostView.findViewById(R.id.loadingText);
-        percentageProgress = (TextView) hostView.findViewById(R.id.percentageProgress);
-        final Button songSearchButton = (Button) hostView.findViewById(R.id.searchSongBtn);
+
+        progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
+        loadingWheel = (ProgressBar) view.findViewById(R.id.loadingWheel);
+
+        loadingText = (TextView) view.findViewById(R.id.loadingText);
+        percentageProgress = (TextView) view.findViewById(R.id.percentageProgress);
+
+        songSearchButton = (Button) view.findViewById(R.id.searchSongBtn);
+        voiceRecognitionBtn = (Button) view.findViewById(R.id.voiceRecognitionBtn);
 
         SONGS_DIRECTORY += getString(R.string.downloadFolder);
 
@@ -68,12 +85,14 @@ public class SearchFragment extends Fragment {
             success = folder.mkdir();
         }
 
+        // setup voice recognition button listener
+        voiceRecognitionBtn.setOnClickListener(this);
 
         // setup song search button listener
         songSearchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
-                songQuerySearch = (SearchView) hostView.findViewById(R.id.searchSongQuery);
+                songQuerySearch = (SearchView) view.findViewById(R.id.searchSongQuery);
                 InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Service.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(songQuerySearch.getWindowToken(), 0);
                 try {
@@ -88,4 +107,34 @@ public class SearchFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onClick(View v) {
+        Intent i = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        i.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "en-US");
+        try {
+            startActivityForResult(i, REQUEST_OK);
+        } catch (Exception e) {
+            LogUtils.logError("Voice Recognition fail!", e.toString());
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // if (requestCode==REQUEST_OK  && resultCode==RESULT_OK) {
+        ArrayList<String> recognizedText = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+
+        Context c = this.getActivity().getApplicationContext();
+        if (recognizedText != null) {
+
+            UIUtils.PrintToast(this.view.getContext(), recognizedText.get(0), Toast.LENGTH_LONG);
+
+            // UIUtils.setQuery(c, songQuerySearch, recognizedText.get(0), false);
+
+
+        }
+
+
+        //}
+    }
 }

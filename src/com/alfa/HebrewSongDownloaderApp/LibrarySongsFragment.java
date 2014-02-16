@@ -71,7 +71,6 @@ public class LibrarySongsFragment extends ListFragment {
             MediaPlayer mPlayer;
 
             player.stopPreviousSong();
-
             mPlayer = MediaPlayer.create(c, Uri.fromFile(file));
             player.setMediaPlayer(mPlayer);
             player.startSong();

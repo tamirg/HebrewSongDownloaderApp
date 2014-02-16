@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -222,4 +223,28 @@ public class UIUtils {
         t.start();
     }
 
+    public static void setQuery(Context context, SearchView searchView, String text, boolean submit) {
+        // setup final variables for thread
+        final SearchView fSearchView = searchView;
+        final String fText = text;
+        final boolean fSubmit = submit;
+        final Activity fAct = (Activity) context;
+
+        // setup thread for execution
+        Thread t = new Thread() {
+            public void run() {
+                fAct.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        fSearchView.setQuery(fText, fSubmit);
+                    }
+                });
+            }
+        };
+
+
+        // execute thread
+        t.start();
+
+    }
 }

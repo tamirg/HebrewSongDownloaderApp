@@ -28,7 +28,21 @@
 				android:layout_height="wrap_content"
 				android:layout_gravity="right"
 				android:text="חפש"
-				style="?android:attr/buttonStyleSmall" android:focusable="false" android:enabled="true"
+				style="?android:attr/buttonStyleSmall"
+				android:focusable="false"
+				android:enabled="true"
+				android:focusableInTouchMode="false"/>
+
+		  <Button
+				android:id="@+id/voiceRecognitionBtn"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="right"
+				android:src="@android:drawable/ic_btn_speak_now"
+				android:text="הקלט"
+				style="?android:attr/buttonStyleSmall"
+				android:focusable="false"
+				android:enabled="true"
 				android:focusableInTouchMode="false"/>
 
 	   </LinearLayout>
