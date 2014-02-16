@@ -121,7 +121,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        // if (requestCode==REQUEST_OK  && resultCode==RESULT_OK) {
+
         ArrayList<String> recognizedText = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 
         Context c = this.getActivity().getApplicationContext();
@@ -134,7 +134,5 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 
         }
 
-
-        //}
     }
 }
