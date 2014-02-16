@@ -1,30 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-		    android:orientation="horizontal"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="horizontal"
 		    android:layout_width="match_parent"
 		    android:layout_height="match_parent">
 
-    <Button
-		  android:id="@+id/playBtn"
+    <ImageButton
+            android:id="@+id/playBtn"
 		  android:layout_width="wrap_content"
 		  android:layout_height="wrap_content"
-		  android:text="play"
-		  android:visibility="invisible" style="@android:style/MediaButton.Play"/>
+          android:src="@drawable/ic_play"
+          android:visibility="invisible" style="@android:style/MediaButton.Play"
+          android:singleLine="false" android:layout_gravity="center_horizontal" android:layout_alignParentLeft="false"
+          android:layout_marginLeft="0dp" android:layout_alignParentTop="false" android:layout_marginTop="0dp"
+          android:layout_alignParentEnd="false" android:layout_alignParentStart="false"
+          android:layout_centerHorizontal="true"/>
 
-    <Button
-		  android:id="@+id/stopBtn"
+    <ImageButton
+            android:id="@+id/stopBtn"
 		  android:layout_width="wrap_content"
 		  android:layout_height="wrap_content"
-		  android:text="stop"
-		  android:visibility="invisible" style="@android:style/MediaButton.Rew"/>
+          android:src="@drawable/ic_stop"
+          android:visibility="invisible" style="@android:style/MediaButton.Rew"
+          android:singleLine="false" android:layout_gravity="center_horizontal"
+          android:layout_alignParentTop="true" android:layout_alignParentEnd="true"/>
 
-    <ProgressBar
-		  android:id="@+id/progressBar"
-		  style="?android:attr/progressBarStyleHorizontal"
-		  android:layout_width="fill_parent"
-		  android:layout_height="47dp"
-		  android:progressDrawable="@drawable/custom_progress_bar"
-		  android:visibility="invisible"/>
+    <ImageButton
+            android:id="@+id/forwardBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_ff"
+            android:visibility="invisible" style="@android:style/MediaButton.Rew"
+            android:singleLine="false" android:layout_gravity="center_horizontal"
+            android:layout_alignParentTop="true" android:layout_toRightOf="@+id/playBtn"
+            android:layout_marginLeft="10dp"/>
 
-</LinearLayout>
+    <ImageButton
+            android:id="@+id/backwardBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_bw"
+            android:visibility="invisible" style="@android:style/MediaButton.Rew"
+            android:singleLine="false" android:layout_gravity="center_horizontal"
+            android:layout_alignParentTop="true" android:layout_toLeftOf="@+id/playBtn"
+            android:layout_marginRight="10dp"/>
+
+</RelativeLayout>
