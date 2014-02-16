@@ -7,8 +7,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Environment;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.alfa.HebrewSongDownloaderApp.R;
@@ -43,7 +43,7 @@ public class AsyncTaskManager {
      * @param loadingWheel
      * @param fm
      */
-    public static void getSongResult(Context context, SearchView songQuerySearch, TextView loadingText, ProgressBar loadingWheel, FragmentManager fm) {
+    public static void getSongResult(Context context, EditText songQuerySearch, TextView loadingText, ProgressBar loadingWheel, FragmentManager fm) {
 
         new SearchSongResults(context, songQuerySearch, loadingText, loadingWheel, fm).execute();
     }
@@ -55,7 +55,7 @@ public class AsyncTaskManager {
     // fetch song result task
     private static class SearchSongResults extends AsyncTask<String, String, String> {
 
-        private SearchView songQuerySearch;
+        private EditText songQuerySearch;
         private Context context;
         private ProgressBar loadingWheel;
         private TextView loadingText;
@@ -66,7 +66,7 @@ public class AsyncTaskManager {
 
         // TODO micha : think of better way of passing the song list to postExecute (pass to context?)
 
-        public SearchSongResults(Context context, SearchView songQuerySearch, TextView loadingText, ProgressBar loadingWheel, FragmentManager fm) {
+        public SearchSongResults(Context context, EditText songQuerySearch, TextView loadingText, ProgressBar loadingWheel, FragmentManager fm) {
             this.context = context;
             this.songQuerySearch = songQuerySearch;
             this.loadingText = loadingText;
@@ -81,7 +81,7 @@ public class AsyncTaskManager {
             super.onPreExecute();
 
             // show loading information
-            this.query = songQuerySearch.getQuery().toString();
+            this.query = songQuerySearch.getText().toString();
 
             String fixedLoadingInfo = "מחפש תוצאות עבור ";
             UIUtils.showTextView(loadingText, fixedLoadingInfo + query + " ... ", this.context);

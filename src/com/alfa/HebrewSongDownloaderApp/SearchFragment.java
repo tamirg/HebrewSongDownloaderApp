@@ -30,13 +30,13 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
     private ProgressBar progressBar;
     private ProgressBar loadingWheel;
 
-    private Button songSearchButton;
+    private ImageButton songSearchButton;
     private Button voiceRecognitionBtn;
 
     private TextView loadingText;
     private FragmentManager fm;
     private TextView percentageProgress;
-    private SearchView songQuerySearch;
+    private EditText songQuerySearch;
     private View view;
 
 
@@ -62,7 +62,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
         loadingText = (TextView) view.findViewById(R.id.loadingText);
         percentageProgress = (TextView) view.findViewById(R.id.percentageProgress);
 
-        songSearchButton = (Button) view.findViewById(R.id.searchSongBtn);
+        songSearchButton = (ImageButton) view.findViewById(R.id.searchSongBtn);
         voiceRecognitionBtn = (Button) view.findViewById(R.id.voiceRecognitionBtn);
 
         SONGS_DIRECTORY += getString(R.string.downloadFolder);
@@ -92,7 +92,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
         songSearchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
-                songQuerySearch = (SearchView) view.findViewById(R.id.searchSongQuery);
+                songQuerySearch = (EditText) view.findViewById(R.id.searchSongQuery);
                 InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Service.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(songQuerySearch.getWindowToken(), 0);
                 try {
