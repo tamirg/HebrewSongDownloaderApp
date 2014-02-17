@@ -50,6 +50,21 @@ public class PlayerFragment extends Fragment {
     public void initMediaPlayer(Uri song) {
         prevPlayer = mPlayer;
         mPlayer = MediaPlayer.create(context, song);
+
+        mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            public void onCompletion(MediaPlayer player) {
+
+                if (currentSongPosition > songs.size()) {
+                    nextButton.setEnabled(false);
+                    return;
+                }
+
+                prevPlayer = mPlayer;
+                mPlayer = MediaPlayer.create(context, songs.get(currentSongPosition + 1));
+                currentSongPosition++;
+                startSong();
+            }
+        });
     }
 
     public void playSongAt(int position) {
@@ -61,7 +76,6 @@ public class PlayerFragment extends Fragment {
         currentSongPosition = position;
         initMediaPlayer(songs.get(position));
         startSong();
-
     }
 
     public void startSong() {
@@ -172,11 +186,15 @@ public class PlayerFragment extends Fragment {
     }
 
 
-    public void reloadSongList(LinkedList<String> songNames) {
+    public void reloadSongList(List<String> songNames) {
 
-        songs = new LinkedList<Uri>();
-        for (String songName : songNames) {
-            songs.add(Uri.fromFile(new File(SharedPref.songDirectory + "/" + songName + ".mp3")));
+        try {
+            songs = new LinkedList<Uri>();
+            for (String songName : songNames) {
+                songs.add(Uri.fromFile(new File(SharedPref.songDirectory + "/" + songName + ".mp3")));
+            }
+        } catch (Exception e) {
+            UIUtils.printError(context, "error on reload" + e.toString());
         }
     }
 

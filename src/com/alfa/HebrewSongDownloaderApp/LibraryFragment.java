@@ -8,9 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.alfa.utils.DataUtils;
-import com.alfa.utils.SharedPref;
-
-import java.util.LinkedList;
 
 /**
  * Created by Micha on 2/13/14.
@@ -35,28 +32,17 @@ public class LibraryFragment extends Fragment {
 
             FragmentTransaction ft = fm.beginTransaction();
 
-            PlayerFragment player = new PlayerFragment(view.getContext());
+            LibrarySongsFragment libSongFragment = new LibrarySongsFragment(DataUtils.getSongNamesFromDirectory());
+            PlayerFragment player = libSongFragment.createPlayer(view.getContext());
 
             // load player
             ft.replace(R.id.player_container, player);
 
             // load file list
-            ft.replace(R.id.library_files_container, new LibrarySongsFragment(player, getSongNamesFromDirectory()));
+            ft.replace(R.id.library_files_container, libSongFragment);
 
             ft.commit();
         }
-    }
-
-    private LinkedList<String> getSongNamesFromDirectory() {
-        LinkedList<String> songNames = new LinkedList<String>();
-
-
-        songNames = (LinkedList<String>) DataUtils.listFiles(SharedPref.songDirectory);
-
-        if (songNames.size() == 0) {
-            songNames.add("no songs in library");
-        }
-        return songNames;
     }
 
 }

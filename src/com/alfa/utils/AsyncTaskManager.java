@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.alfa.HebrewSongDownloaderApp.LibrarySongsFragment;
+import com.alfa.HebrewSongDownloaderApp.PlayerFragment;
 import com.alfa.HebrewSongDownloaderApp.R;
 import com.alfa.HebrewSongDownloaderApp.SongListFragment;
 import engine.FetchSongs;
@@ -259,11 +261,25 @@ public class AsyncTaskManager {
         private void loadLibraryFragment() {
             if (fm != null) {
                 FragmentTransaction ft = fm.beginTransaction();
-                ft.replace(R.id.library_files_container,
-                        new SongListFragment((LinkedList<String>) DataUtils.listFiles(SharedPref.songDirectory)));
+
+                // should NOT be SongListFragment!! tamir I will literally kill you
+              /*  ft.replace(R.id.library_files_container,
+                        new SongListFragment((LinkedList<String>) DataUtils.listFiles(SharedPref.songDirectory))); */
+
+
+                LibrarySongsFragment libSongFragment = new LibrarySongsFragment(DataUtils.getSongNamesFromDirectory());
+                PlayerFragment player = libSongFragment.createPlayer(context);
+
+                // load player
+                ft.replace(R.id.player_container, player);
+
+                // load file list
+                ft.replace(R.id.library_files_container, libSongFragment);
+
                 ft.commit();
             }
         }
+
     }
 
 }

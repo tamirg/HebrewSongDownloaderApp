@@ -42,5 +42,17 @@ public class DataUtils {
         return fileNames;
     }
 
+    public static LinkedList<String> getSongNamesFromDirectory() {
+        LinkedList<String> songNames = new LinkedList<String>();
+
+
+        songNames = (LinkedList<String>) DataUtils.listFiles(SharedPref.songDirectory);
+
+        if (songNames.size() == 0) {
+            songNames.add("no songs in library");
+        }
+        return songNames;
+    }
+
 
 }

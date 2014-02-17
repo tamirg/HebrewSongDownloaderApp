@@ -32,7 +32,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
     private ProgressBar loadingWheel;
 
     private ImageButton songSearchButton;
-    private Button voiceRecognitionBtn;
+    private ImageButton voiceRecognitionBtn;
 
     private TextView loadingText;
     private FragmentManager fm;
@@ -64,7 +64,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
         percentageProgress = (TextView) view.findViewById(R.id.percentageProgress);
 
         songSearchButton = (ImageButton) view.findViewById(R.id.searchSongBtn);
-        voiceRecognitionBtn = (Button) view.findViewById(R.id.voiceRecognitionBtn);
+        voiceRecognitionBtn = (ImageButton) view.findViewById(R.id.voiceRecognitionBtn);
 
         SONGS_DIRECTORY += getString(R.string.downloadFolder);
 
