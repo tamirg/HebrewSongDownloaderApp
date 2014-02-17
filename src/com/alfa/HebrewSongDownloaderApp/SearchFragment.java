@@ -19,6 +19,7 @@ import com.alfa.utils.UIUtils;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by Micha on 2/13/14.
@@ -109,30 +110,38 @@ public class SearchFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Intent i = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        i.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "en-US");
         try {
+            Intent i = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+            i.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, Locale.US.toString());
             startActivityForResult(i, REQUEST_OK);
         } catch (Exception e) {
             LogUtils.logError("Voice Recognition fail!", e.toString());
         }
+
+
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        ArrayList<String> recognizedText = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+        try {
+            ArrayList<String> recognizedText = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 
-        Context c = this.getActivity().getApplicationContext();
-        if (recognizedText != null) {
+            Context c = this.view.getContext();
+            if (recognizedText != null) {
 
-            UIUtils.PrintToast(this.view.getContext(), recognizedText.get(0), Toast.LENGTH_LONG);
+                UIUtils.PrintToast(this.view.getContext(), recognizedText.get(0), Toast.LENGTH_LONG);
 
-            // UIUtils.setQuery(c, songQuerySearch, recognizedText.get(0), false);
+                // UIUtils.setQuery(c, songQuerySearch, recognizedText.get(0), false);
 
-
+                //UIUtils.editText(c, songQuerySearch, recognizedText.get(0));
+            }
+        } catch (Exception e) {
+            LogUtils.logError("voice recognition", requestCode + resultCode + e.toString());
         }
 
     }
+
+
 }

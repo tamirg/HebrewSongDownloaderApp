@@ -1,9 +1,6 @@
 package com.alfa.HebrewSongDownloaderApp;
 
 import android.app.ListFragment;
-import android.content.Context;
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import com.alfa.utils.LogUtils;
-import com.alfa.utils.SharedPref;
 import com.alfa.utils.UIUtils;
 
-import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -39,6 +34,7 @@ public class LibrarySongsFragment extends ListFragment {
     public LibrarySongsFragment(PlayerFragment player, LinkedList<String> songNames) {
         this.songNames = songNames;
         this.player = player;
+        this.player.reloadSongList(songNames);
     }
 
     private String[] getSongs() {
@@ -56,30 +52,11 @@ public class LibrarySongsFragment extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
 
-        Context c = v.getContext();
-
         try {
-
-            String filePath = SharedPref.songDirectory + "/" + songNames.get(position) + ".mp3";
-            File file = new File(filePath);
-
-            if (!file.exists()) {
-                UIUtils.printError(c, "file at: " + filePath + " does not exist!");
-                return;
-            }
-
-            MediaPlayer mPlayer;
-
-            player.stopPreviousSong();
-            mPlayer = MediaPlayer.create(c, Uri.fromFile(file));
-            player.setMediaPlayer(mPlayer);
-            player.startSong();
-            player.setPreviousPlayer(mPlayer);
-
+            player.playSongAt(position);
         } catch (Exception e) {
-            UIUtils.printError(c, e.toString());
+            UIUtils.printError(v.getContext(), "play song from list item:" + e.toString());
         }
-
 
     }
 

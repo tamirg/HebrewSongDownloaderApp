@@ -35,7 +35,8 @@ public class LibraryFragment extends Fragment {
 
             FragmentTransaction ft = fm.beginTransaction();
 
-            PlayerFragment player = new PlayerFragment();
+            PlayerFragment player = new PlayerFragment(view.getContext());
+
             // load player
             ft.replace(R.id.player_container, player);
 

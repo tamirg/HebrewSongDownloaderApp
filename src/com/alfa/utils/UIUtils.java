@@ -5,10 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.SearchView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 
 /**
  * Created by Micha on 2/7/14.
@@ -81,6 +78,36 @@ public class UIUtils {
                             Toast.makeText(fContext, fErrMsg, fToastLength).show();
                         } else {
                             fDialog.show();
+                        }
+                    }
+                });
+            }
+        };
+
+        // execute thread
+        t.start();
+    }
+
+    /**
+     * prints toast on the UI thread
+     *
+     * @param context
+     * @param debugMsg
+     */
+    public static void printDebug(Context context, String debugMsg) {
+        // setup final variables for thread
+        final Context fContext = context;
+        final Activity fAct = (Activity) context;
+        final String fMsg = debugMsg;
+
+        // setup thread for execution
+        Thread t = new Thread() {
+            public void run() {
+                fAct.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (SharedPref.DEBUG_MODE) {
+                            Toast.makeText(fContext, fMsg, Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -246,5 +273,28 @@ public class UIUtils {
         // execute thread
         t.start();
 
+    }
+
+    public static void editText(Context context, EditText editText, String text) {
+        // setup final variables for thread
+        final EditText fEditText = editText;
+        final String fText = text;
+        final Activity fAct = (Activity) context;
+
+        // setup thread for execution
+        Thread t = new Thread() {
+            public void run() {
+                fAct.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        fEditText.setText(fText);
+                    }
+                });
+            }
+        };
+
+
+        // execute thread
+        t.start();
     }
 }
