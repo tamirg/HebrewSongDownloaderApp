@@ -78,7 +78,7 @@ public class PlayerFragment extends Fragment {
                 prevPlayer.stop();
             }
 
-            // unexpected, should not heppen
+            // unexpected, should not happen
             if (mPlayer == null) {
                 return;
             }
