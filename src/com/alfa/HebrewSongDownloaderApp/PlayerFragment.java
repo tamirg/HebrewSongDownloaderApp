@@ -123,7 +123,7 @@ public class PlayerFragment extends Fragment {
 
     public void playNextSong() {
 
-        if (currentSongPosition > songs.size()) {
+        if (currentSongPosition >= songs.size() - 1) {
             nextButton.setEnabled(false);
             return;
         }
