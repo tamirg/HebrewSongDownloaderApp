@@ -116,12 +116,13 @@
 
 				<TextView
 					   android:id="@+id/loadingText"
-					   android:layout_width="wrap_content"
-					   android:layout_height="wrap_content"
-					   android:textAppearance="?android:attr/textAppearanceLarge"
+					   android:layout_width="fill_parent"
+					   android:layout_height="fill_parent"
+					   android:textAppearance="?android:attr/textAppearanceMedium"
 					   android:layout_gravity="right"
 					   android:textStyle="italic"
-					   android:visibility="visible"/>
+					   android:visibility="visible"
+					   android:ellipsize="none"/>
 
 			 </LinearLayout>
 

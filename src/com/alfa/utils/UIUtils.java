@@ -107,7 +107,7 @@ public class UIUtils {
                     @Override
                     public void run() {
                         if (SharedPref.DEBUG_MODE) {
-                            Toast.makeText(fContext, fMsg, Toast.LENGTH_LONG).show();
+                            Toast.makeText(fContext, fMsg, Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
