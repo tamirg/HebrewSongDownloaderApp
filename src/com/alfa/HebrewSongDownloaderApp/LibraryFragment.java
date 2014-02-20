@@ -1,13 +1,12 @@
 package com.alfa.HebrewSongDownloaderApp;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.alfa.utils.DataUtils;
+import com.alfa.utils.FragmentUtils;
 
 /**
  * Created by Micha on 2/13/14.
@@ -26,23 +25,8 @@ public class LibraryFragment extends Fragment {
 
     private void setupFragmentView(View view) {
 
-        FragmentManager fm = getFragmentManager();
-
-        if (fm != null) {
-
-            FragmentTransaction ft = fm.beginTransaction();
-
-            LibrarySongsFragment libSongFragment = new LibrarySongsFragment(DataUtils.getSongNamesFromDirectory());
-            PlayerFragment player = libSongFragment.createPlayer(view.getContext());
-
-            // load player
-            ft.replace(R.id.player_container, player);
-
-            // load file list
-            ft.replace(R.id.library_files_container, libSongFragment);
-
-            ft.commit();
-        }
+        // load library fragment (player and library list)
+        FragmentUtils.loadLibraryFragment(this, view);
     }
 
 }

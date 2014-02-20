@@ -1,11 +1,12 @@
 package com.alfa.utils;
 
 import android.app.Activity;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Environment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -52,6 +53,11 @@ public class AsyncTaskManager {
 
     public static void downloadSong(Context context, String downloadUrl, String songName, FragmentManager fm) {
         new DownloadSongResult(context, fm).execute(downloadUrl, songName);
+    }
+
+    // TOOD : remove!! just for test
+    public static void syncData(MenuItem refreshMenuItem) {
+        new SyncData(refreshMenuItem).execute();
     }
 
     // fetch song result task
@@ -262,16 +268,14 @@ public class AsyncTaskManager {
             if (fm != null) {
                 FragmentTransaction ft = fm.beginTransaction();
 
-                // should NOT be SongListFragment!! tamir I will literally kill you
-              /*  ft.replace(R.id.library_files_container,
-                        new SongListFragment((LinkedList<String>) DataUtils.listFiles(SharedPref.songDirectory))); */
-
-
                 LibrarySongsFragment libSongFragment = new LibrarySongsFragment(DataUtils.getSongNamesFromDirectory());
                 PlayerFragment player = libSongFragment.createPlayer(context);
 
                 // load player
-                ft.replace(R.id.player_container, player);
+                if (LibrarySongsFragment.isPlayerInited()) {
+                    ft.replace(R.id.player_container, player);
+                }
+
 
                 // load file list
                 ft.replace(R.id.library_files_container, libSongFragment);
@@ -280,6 +284,49 @@ public class AsyncTaskManager {
             }
         }
 
+    }
+
+
+    // TOOD : remove!! just for test
+
+    /**
+     * Async task to load the data from server
+     * *
+     */
+    private static class SyncData extends AsyncTask<String, Void, String> {
+
+        private final MenuItem refreshMenuItem;
+
+        public SyncData(MenuItem refreshMenuItem) {
+            this.refreshMenuItem = refreshMenuItem;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            // set the progress bar view
+            refreshMenuItem.setActionView(R.layout.action_progressbar);
+
+            refreshMenuItem.expandActionView();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            // not making real request in this demo
+            // for now we use a timer to wait for sometime
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            refreshMenuItem.collapseActionView();
+            // remove the progress bar view
+            refreshMenuItem.setActionView(null);
+        }
     }
 
 }

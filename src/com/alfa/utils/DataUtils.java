@@ -15,28 +15,41 @@ public class DataUtils {
     public static List<String> listFiles(String directoryPath) {
         List<String> fileNames = new LinkedList<String>();
 
-        // get all files from directory
-        File directory = new File(directoryPath);
+        try {
 
-        // get file names
-        if (directory.listFiles() != null) {
-            List<File> songFilesCollection = Arrays.asList(directory.listFiles());
+            // get all files from directory
+            File directory = new File(directoryPath);
+            int dotIndex = 0;
+            // get file names
+            if (directory.listFiles() != null) {
+                List<File> songFilesCollection = Arrays.asList(directory.listFiles());
 
-            final Map<File, Long> staticLastModifiedTimesOfSongFiles = new HashMap<File, Long>();
-            for (final File currentSongFile : songFilesCollection) {
-                staticLastModifiedTimesOfSongFiles.put(currentSongFile, currentSongFile.lastModified());
-            }
-            Collections.sort(songFilesCollection, new Comparator<File>() {
-                @Override
-                public int compare(final File f1, final File f2) {
-                    return staticLastModifiedTimesOfSongFiles.get(f2)
-                            .compareTo(staticLastModifiedTimesOfSongFiles.get(f1));
+                final Map<File, Long> staticLastModifiedTimesOfSongFiles = new HashMap<File, Long>();
+                for (final File currentSongFile : songFilesCollection) {
+                    staticLastModifiedTimesOfSongFiles.put(currentSongFile, currentSongFile.lastModified());
                 }
-            });
-            // Removing the .mp3 suffix from all downloaded files
-            for (File currentSongFile : songFilesCollection) {
-                fileNames.add(currentSongFile.getName().substring(0, currentSongFile.getName().lastIndexOf(".")));
+                Collections.sort(songFilesCollection, new Comparator<File>() {
+                    @Override
+                    public int compare(final File f1, final File f2) {
+                        return staticLastModifiedTimesOfSongFiles.get(f2)
+                                .compareTo(staticLastModifiedTimesOfSongFiles.get(f1));
+                    }
+                });
+
+                // Removing the .mp3 suffix from all downloaded files
+                for (File currentSongFile : songFilesCollection) {
+
+                    dotIndex = currentSongFile.getName().lastIndexOf(".");
+                    if (dotIndex > 0) {
+                        fileNames.add(currentSongFile.getName().substring(0, dotIndex));
+                    } else {
+                        fileNames.add(currentSongFile.getName());
+                    }
+
+                }
             }
+        } catch (Exception e) {
+            LogUtils.logError("list_files", e.toString());
         }
 
         return fileNames;

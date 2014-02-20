@@ -1,6 +1,7 @@
 package entities;
 
-import android.app.FragmentManager;
+
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import com.alfa.utils.AsyncTaskManager;
 

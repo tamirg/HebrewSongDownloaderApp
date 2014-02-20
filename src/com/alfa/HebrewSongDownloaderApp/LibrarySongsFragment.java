@@ -1,8 +1,9 @@
 package com.alfa.HebrewSongDownloaderApp;
 
-import android.app.ListFragment;
+
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ public class LibrarySongsFragment extends ListFragment {
 
     private List<String> songNames;
     private static PlayerFragment player = null;
+    private static boolean PlayerInited = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,10 +34,21 @@ public class LibrarySongsFragment extends ListFragment {
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
+    public static boolean isPlayerInited() {
+        if (PlayerInited) {
+            PlayerInited = !PlayerInited;
+            return !PlayerInited;
+        }
+
+        return PlayerInited;
+    }
+
     public PlayerFragment createPlayer(Context context) {
         if (player == null) {
             player = new PlayerFragment(context);
+            PlayerInited = true;
         }
+
         player.reloadSongList(songNames);
         return player;
     }

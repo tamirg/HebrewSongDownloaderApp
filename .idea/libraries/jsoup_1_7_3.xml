@@ -2,6 +2,7 @@
   <library name="jsoup-1.7.3">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/jsoup-1.7.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/android-support-v13.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
