@@ -1,4 +1,4 @@
-package com.alfa.utils;
+package com.alfa.utils.ui;
 
 import entities.SongResult;
 

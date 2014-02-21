@@ -3,6 +3,7 @@ package com.alfa.HebrewSongDownloaderApp;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import com.alfa.utils.logic.SharedPref;
 
 
 public class TabsPagerAdapter extends FragmentPagerAdapter {
@@ -42,8 +43,8 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        // get item count - equal to number of tabs
-        return 3;
+        // get item count
+        return SharedPref.tabCount;
     }
 
 }

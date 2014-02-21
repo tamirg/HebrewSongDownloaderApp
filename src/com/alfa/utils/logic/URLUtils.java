@@ -1,4 +1,4 @@
-package com.alfa.utils;
+package com.alfa.utils.logic;
 
 import java.net.URI;
 import java.net.URL;

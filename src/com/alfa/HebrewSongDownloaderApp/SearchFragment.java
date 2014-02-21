@@ -15,7 +15,7 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.alfa.utils.AsyncTaskManager;
-import com.alfa.utils.LogUtils;
+import com.alfa.utils.logic.LogUtils;
 
 import java.io.File;
 

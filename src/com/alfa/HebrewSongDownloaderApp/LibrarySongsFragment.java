@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import com.alfa.utils.LogUtils;
-import com.alfa.utils.UIUtils;
+import com.alfa.utils.logic.LogUtils;
+import com.alfa.utils.ui.UIUtils;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -21,8 +21,6 @@ import java.util.List;
 public class LibrarySongsFragment extends ListFragment {
 
     private List<String> songNames;
-    private static PlayerFragment player = null;
-    private static boolean PlayerInited = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,22 +32,14 @@ public class LibrarySongsFragment extends ListFragment {
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
-    public static boolean isPlayerInited() {
-        if (PlayerInited) {
-            PlayerInited = !PlayerInited;
-            return !PlayerInited;
-        }
-
-        return PlayerInited;
-    }
-
     public PlayerFragment createPlayer(Context context) {
-        if (player == null) {
-            player = new PlayerFragment(context);
-            PlayerInited = true;
-        }
 
-        player.reloadSongList(songNames);
+        // create new player instance
+        PlayerFragment player = new PlayerFragment(context);
+
+        // reload song list in case of library update
+        PlayerFragment.reloadSongList(songNames);
+
         return player;
     }
 
@@ -69,15 +59,11 @@ public class LibrarySongsFragment extends ListFragment {
         return songs;
     }
 
-    public PlayerFragment getPlayer() {
-        return player;
-    }
-
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
 
         try {
-            player.playSongAt(position);
+            PlayerFragment.playSongAt(position);
         } catch (Exception e) {
             UIUtils.printError(v.getContext(), "play song from list item:" + e.toString());
         }

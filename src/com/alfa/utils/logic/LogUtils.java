@@ -1,4 +1,4 @@
-package com.alfa.utils;
+package com.alfa.utils.logic;
 
 import android.util.Log;
 

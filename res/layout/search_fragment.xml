@@ -50,18 +50,6 @@
 				android:layout_alignParentTop="true"
 				android:layout_alignBottom="@+id/searchSongQuery"
 				android:layout_alignParentStart="true"/>
-		  <ImageButton
-				android:id="@+id/voiceRecognitionBtn"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:src="@android:drawable/ic_btn_speak_now"
-				style="?android:attr/buttonStyleSmall"
-				android:focusable="false"
-				android:enabled="true"
-				android:focusableInTouchMode="false"
-				android:layout_alignParentBottom="true"
-				android:layout_alignParentStart="true"
-				android:layout_below="@+id/searchSongBtn"/>
 
 	   </RelativeLayout>
     </LinearLayout>

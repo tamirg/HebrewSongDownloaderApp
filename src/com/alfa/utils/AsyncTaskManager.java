@@ -16,6 +16,10 @@ import com.alfa.HebrewSongDownloaderApp.LibrarySongsFragment;
 import com.alfa.HebrewSongDownloaderApp.PlayerFragment;
 import com.alfa.HebrewSongDownloaderApp.R;
 import com.alfa.HebrewSongDownloaderApp.SongListFragment;
+import com.alfa.utils.logic.DataUtils;
+import com.alfa.utils.logic.LogUtils;
+import com.alfa.utils.logic.URLUtils;
+import com.alfa.utils.ui.UIUtils;
 import engine.FetchSongs;
 import entities.SongResult;
 import org.apache.http.HttpEntity;
@@ -265,17 +269,16 @@ public class AsyncTaskManager {
         }
 
         private void loadLibraryFragment() {
+
             if (fm != null) {
+
                 FragmentTransaction ft = fm.beginTransaction();
 
                 LibrarySongsFragment libSongFragment = new LibrarySongsFragment(DataUtils.getSongNamesFromDirectory());
                 PlayerFragment player = libSongFragment.createPlayer(context);
 
                 // load player
-                if (LibrarySongsFragment.isPlayerInited()) {
-                    ft.replace(R.id.player_container, player);
-                }
-
+                ft.replace(R.id.player_container, player);
 
                 // load file list
                 ft.replace(R.id.library_files_container, libSongFragment);
@@ -283,9 +286,7 @@ public class AsyncTaskManager {
                 ft.commit();
             }
         }
-
     }
-
 
     // TOOD : remove!! just for test
 
@@ -330,3 +331,6 @@ public class AsyncTaskManager {
     }
 
 }
+
+
+

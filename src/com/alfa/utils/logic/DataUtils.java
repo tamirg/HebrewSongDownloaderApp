@@ -1,4 +1,4 @@
-package com.alfa.utils;
+package com.alfa.utils.logic;
 
 import java.io.File;
 import java.util.*;
@@ -36,7 +36,7 @@ public class DataUtils {
                     }
                 });
 
-                // Removing the .mp3 suffix from all downloaded files
+                // Removing the .mp3 extension from all downloaded files
                 for (File currentSongFile : songFilesCollection) {
 
                     dotIndex = currentSongFile.getName().lastIndexOf(".");

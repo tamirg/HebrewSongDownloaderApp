@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.alfa.utils.FragmentUtils;
+import com.alfa.utils.ui.FragmentUtils;
 
 /**
  * Created by Micha on 2/13/14.

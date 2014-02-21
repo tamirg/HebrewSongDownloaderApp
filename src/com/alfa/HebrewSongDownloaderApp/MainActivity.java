@@ -19,6 +19,12 @@ import com.alfa.utils.AsyncTaskManager;
 public class MainActivity extends FragmentActivity implements
         ActionBar.TabListener {
 
+    /**
+     * ******************************************************************
+     * ****************** activity data members *************************
+     * ******************************************************************
+     */
+
     private ActionBar actionBar;
     private MenuItem refreshMenuItem;
     private static Menu menu;
@@ -27,7 +33,6 @@ public class MainActivity extends FragmentActivity implements
 
     // Tab titles
     private String[] tabs = {"Search", "Downloads", "Library"};
-
 
     private SearchFragment searchFragment;
     private DownloadsFragment downloadsFragment;
@@ -38,11 +43,45 @@ public class MainActivity extends FragmentActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setupMainView();
+
+    }
+
+    /**
+     * ******************************************************************
+     * ****************** activity setup functions **********************
+     * ******************************************************************
+     */
+
+    private void setupMainView() {
+
+        setupTabFragments();
+        setupActionBar();
+        setupTabs();
+    }
+
+    // setup tab functionality
+    private void setupTabs() {
+
+        setupViewPager();
+
+        mAdapter = new TabsPagerAdapter(getSupportFragmentManager(), searchFragment, downloadsFragment, libraryFragment);
+
+        viewPager.setAdapter(mAdapter);
+
+        // add Tabs
+        for (String tab_name : tabs) {
+            actionBar.addTab(actionBar.newTab().setText(tab_name)
+                    .setTabListener(this));
+        }
+
+    }
+
+    // setup view pager functionality
+    private void setupViewPager() {
         viewPager = (ViewPager) findViewById(R.id.pager);
-        this.actionBar = getActionBar();
-        /**
-         * on swiping the viewpager make respective tab selected
-         * */
+
+        // make tabs swipable
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             @Override
@@ -60,26 +99,25 @@ public class MainActivity extends FragmentActivity implements
             public void onPageScrollStateChanged(int arg0) {
             }
         });
+    }
 
+    private void setupActionBar() {
+        this.actionBar = getActionBar();
+        actionBar.setHomeButtonEnabled(false);
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+    }
 
+    private void setupTabFragments() {
         searchFragment = new SearchFragment();
         downloadsFragment = new DownloadsFragment();
         libraryFragment = new LibraryFragment();
-
-        mAdapter = new TabsPagerAdapter(getSupportFragmentManager(), searchFragment, downloadsFragment, libraryFragment);
-
-        viewPager.setAdapter(mAdapter);
-        actionBar.setHomeButtonEnabled(false);
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
-        // add Tabs
-        for (String tab_name : tabs) {
-            actionBar.addTab(actionBar.newTab().setText(tab_name)
-                    .setTabListener(this));
-        }
-
-
     }
+
+    /**
+     * ******************************************************************
+     * ***************** Menu Item event handling ***********************
+     * ******************************************************************
+     */
 
     public static void initMenu(Menu menuInit) {
         menu = menuInit;
@@ -106,10 +144,7 @@ public class MainActivity extends FragmentActivity implements
         return super.onCreateOptionsMenu(menu);
     }
 
-
-    /**
-     * On selecting action bar icons
-     */
+    // setup menu item functionality
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Take appropriate action for each action item click
@@ -133,6 +168,12 @@ public class MainActivity extends FragmentActivity implements
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    /**
+     * ******************************************************************
+     * ********************* Tab event handling *************************
+     * ******************************************************************
+     */
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {

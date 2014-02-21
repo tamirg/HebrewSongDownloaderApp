@@ -3,6 +3,7 @@ package engine;
 import Exceptions.NoSongFoundException;
 import Exceptions.UnRecognizedSongEngineException;
 import android.util.Log;
+import com.alfa.utils.logic.SharedPref;
 import entities.SongResult;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -21,9 +22,9 @@ import java.util.concurrent.TimeUnit;
  * Created by Tamir on 24/01/14.
  */
 public class FetchSongs {
-    public final String UNIDOWN_URL_QUERY = "http://www.unidown.com/search.php?q=";
-    public final String QUERY_ENCODING = "UTF-8";
-    public final String SONG_FILE_MP3_SUFFIX = ".mp3";
+    public final String UNIDOWN_URL_QUERY = SharedPref.unidownUrlQuery;
+    public final String QUERY_ENCODING = SharedPref.queryEncoding;
+    public final String SONG_FILE_MP3_SUFFIX = SharedPref.songExtension;
     private static FetchSongs fetchSongsEngine = null;
 
     protected FetchSongs() {

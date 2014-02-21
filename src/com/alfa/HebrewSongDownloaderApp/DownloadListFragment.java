@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import com.alfa.utils.UIUtils;
+import com.alfa.utils.ui.UIUtils;
 
 import java.util.LinkedList;
 import java.util.List;

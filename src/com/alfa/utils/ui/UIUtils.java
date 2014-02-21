@@ -1,4 +1,4 @@
-package com.alfa.utils;
+package com.alfa.utils.ui;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.view.View;
 import android.widget.*;
+import com.alfa.utils.logic.SharedPref;
 
 /**
  * Created by Micha on 2/7/14.
