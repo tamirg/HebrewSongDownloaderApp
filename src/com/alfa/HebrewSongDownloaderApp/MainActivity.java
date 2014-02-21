@@ -79,10 +79,6 @@ public class MainActivity extends FragmentActivity implements
         if (libraryFragment == null) {
             libraryFragment = new LibraryFragment();
         }
-
-        searchFragment.setRetainInstance(true);
-        downloadsFragment.setRetainInstance(true);
-        libraryFragment.setRetainInstance(true);
     }
 
     private void setupActionBar() {

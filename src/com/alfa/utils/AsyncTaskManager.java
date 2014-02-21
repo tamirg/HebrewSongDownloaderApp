@@ -16,6 +16,7 @@ import com.alfa.HebrewSongDownloaderApp.R;
 import com.alfa.HebrewSongDownloaderApp.SongListFragment;
 import com.alfa.utils.logic.LogUtils;
 import com.alfa.utils.logic.URLUtils;
+import com.alfa.utils.ui.FragmentUtils;
 import com.alfa.utils.ui.UIUtils;
 import engine.FetchSongs;
 import entities.SongResult;
@@ -257,7 +258,7 @@ public class AsyncTaskManager {
 
                 LogUtils.logData("flow_debug", "DownloadSongResult__song was downloaded successfully");
                 LogUtils.logData("flow_debug", "DownloadSongResult__reloading library fragment..");
-                //FragmentUtils.loadLibraryFragment(fm,context);
+                FragmentUtils.loadLibraryFragment(fm, context);
             } else {
                 UIUtils.PrintToast(context, errorContent, Toast.LENGTH_LONG);
                 songQuerySearchEditText.requestFocus();

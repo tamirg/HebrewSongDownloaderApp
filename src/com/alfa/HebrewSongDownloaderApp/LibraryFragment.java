@@ -31,4 +31,8 @@ public class LibraryFragment extends Fragment {
         FragmentUtils.loadLibraryFragment(getFragmentManager(), view.getContext());
     }
 
+    @Override
+    public String toString() {
+        return "LibraryFragment";
+    }
 }

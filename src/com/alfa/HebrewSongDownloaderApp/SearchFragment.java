@@ -103,5 +103,9 @@ public class SearchFragment extends Fragment {
         });
     }
 
+    @Override
+    public String toString() {
+        return "SearchFragment";
+    }
 
 }

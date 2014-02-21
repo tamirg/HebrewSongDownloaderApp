@@ -28,10 +28,12 @@ public class SharedPref {
 
     /**
      * ******************************************************************
-     * ********************** Tab constants *****************************
+     * ***************** Tab handling constants *************************
      * ******************************************************************
      */
 
+    public final static boolean destroyTabFragmentOnAction = false;
     public final static int tabCount = 3;
+
 
 }

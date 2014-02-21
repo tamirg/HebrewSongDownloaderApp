@@ -40,4 +40,9 @@ public class DownloadsFragment extends Fragment {
         }
     }
 
+    @Override
+    public String toString() {
+        return "DownloadsFragment";
+    }
+
 }
