@@ -7,8 +7,6 @@ import android.os.Environment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,54 +37,44 @@ import java.util.List;
  */
 public class AsyncTaskManager {
 
+
     /**
-     * handles song result fetching
+     * handles song result fetch
      *
      * @param context
-     * @param songQuerySearch
+     * @param query
      * @param loadingText
-     * @param loadingWheel
+     * @param actionBarProgressBar
      * @param fm
      */
-    public static void getSongResult(Context context, EditText songQuerySearch, TextView loadingText, ProgressBar loadingWheel,
+    public static void getSongResult(Context context, String query, TextView loadingText,
                                      MenuItem actionBarProgressBar, FragmentManager fm) {
 
-        new SearchSongResults(context, songQuerySearch, loadingText, loadingWheel, actionBarProgressBar, fm).execute();
+        new SearchSongResults(context, query, loadingText, actionBarProgressBar, fm).execute();
     }
 
     public static void downloadSong(Context context, String downloadUrl, String songName, FragmentManager fm) {
         new DownloadSongResult(context, fm).execute(downloadUrl, songName);
     }
 
-    // TOOD : remove!! just for test
-    public static void syncData(MenuItem refreshMenuItem) {
-        new SyncData(refreshMenuItem).execute();
-    }
-
     // fetch song result task
     private static class SearchSongResults extends AsyncTask<String, String, String> {
 
-        private EditText songQuerySearch;
-        private Context context;
-        private ProgressBar loadingWheel;
+        private String query;
         private MenuItem actionBarProgressBar;
         private TextView loadingText;
         private FragmentManager fm;
         private String errorContent = "";
         private List<SongResult> songResults;
-        private String query;
 
         // TODO micha : think of better way of passing the song list to postExecute (pass to context?)
 
-        public SearchSongResults(Context context, EditText songQuerySearch, TextView loadingText, ProgressBar loadingWheel,
+        public SearchSongResults(Context context, String query, TextView loadingText,
                                  MenuItem actionBarProgressBar, FragmentManager fm) {
-            this.context = context;
-            this.songQuerySearch = songQuerySearch;
+            this.query = query;
             this.loadingText = loadingText;
-            this.loadingWheel = loadingWheel;
             this.actionBarProgressBar = actionBarProgressBar;
             this.fm = fm;
-
             this.songResults = new LinkedList<SongResult>();
         }
 
@@ -95,11 +83,6 @@ public class AsyncTaskManager {
             super.onPreExecute();
 
             // show loading information
-            this.query = songQuerySearch.getText().toString();
-
-            String fixedLoadingInfo = "מחפש תוצאות עבור ";
-            UIUtils.showTextView(loadingText, fixedLoadingInfo + query + " ... ", this.context);
-            UIUtils.showProgressBar(loadingWheel, this.context);
 
             actionBarProgressBar.setActionView(R.layout.action_progressbar);
             actionBarProgressBar.expandActionView();
@@ -132,7 +115,6 @@ public class AsyncTaskManager {
             String fixedLoadingInfo = "שירים שנמצאו עבור ";
             loadingText.setText(fixedLoadingInfo + this.query + " : ");
 
-            UIUtils.hideProgressBar(loadingWheel, this.context);
             actionBarProgressBar.collapseActionView();
             actionBarProgressBar.setActionView(null);
 
@@ -162,11 +144,9 @@ public class AsyncTaskManager {
         String SONGS_DIRECTORY = Environment.getExternalStorageDirectory().toString();
         private Context context;
         private String errorContent = "";
-        private ProgressBar songDownloadprogressBar;
+        private ProgressBar songDownloadProgressBar;
         private TextView percentageText;
         private TextView headlineViewText;
-        private View rootView;
-        private View songQuerySearchEditText;
         private FragmentManager fm;
 
         public DownloadSongResult(Context appContext, FragmentManager fm) {
@@ -175,10 +155,9 @@ public class AsyncTaskManager {
             SONGS_DIRECTORY += "/HebrewSongDownloads";
 
             // setup view widgets
-            songDownloadprogressBar = (ProgressBar) ((Activity) this.context).findViewById(R.id.progressBar);
+            songDownloadProgressBar = (ProgressBar) ((Activity) this.context).findViewById(R.id.progressBar);
             percentageText = (TextView) ((Activity) this.context).findViewById(R.id.percentageProgress);
             headlineViewText = (TextView) ((Activity) this.context).findViewById(R.id.loadingText);
-            rootView = ((Activity) context).getWindow().getDecorView().findViewById(android.R.id.content);
         }
 
         @Override
@@ -186,9 +165,8 @@ public class AsyncTaskManager {
             super.onPreExecute();
 
             UIUtils.PrintToast(context, "ההורדה החלה", Toast.LENGTH_LONG);
-            UIUtils.showProgressBar(songDownloadprogressBar, this.context);
+            UIUtils.showProgressBar(songDownloadProgressBar, this.context);
 
-            songQuerySearchEditText = rootView.findViewById(R.id.searchSongQuery);
         }
 
         /**
@@ -246,10 +224,10 @@ public class AsyncTaskManager {
             // setting progress percentage
             int progressPercentage = Integer.parseInt(progress[0]);
 
-            songDownloadprogressBar.setProgress(progressPercentage);
+            songDownloadProgressBar.setProgress(progressPercentage);
 
             // update percentage text with current percentage of the downloaded file
-            UIUtils.showTextView(percentageText, progressPercentage + "\\" + songDownloadprogressBar.getMax(), this.context);
+            UIUtils.showTextView(percentageText, progressPercentage + "\\" + songDownloadProgressBar.getMax(), this.context);
 
         }
 
@@ -257,67 +235,26 @@ public class AsyncTaskManager {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            // hide loading information when down downloading
-            UIUtils.hideProgressBar(songDownloadprogressBar, this.context);
-            UIUtils.hideTextView(percentageText, this.context);
-            UIUtils.showTextView(headlineViewText, this.context);
-
-            if (errorContent.equals("")) {
-                UIUtils.PrintToast(context, "השיר ירד בהצלחה", Toast.LENGTH_LONG);
-
-                LogUtils.logData("flow_debug", "DownloadSongResult__song was downloaded successfully");
-                LogUtils.logData("flow_debug", "DownloadSongResult__reloading library fragment..");
-                FragmentUtils.loadLibraryFragment(fm, context);
-            } else {
-                UIUtils.PrintToast(context, errorContent, Toast.LENGTH_LONG);
-                songQuerySearchEditText.requestFocus();
-            }
-        }
-
-    }
-
-    // TODO : remove!! just for test
-
-    /**
-     * Async task to load the data from server
-     * *
-     */
-    private static class SyncData extends AsyncTask<String, Void, String> {
-
-        private final MenuItem refreshMenuItem;
-
-        public SyncData(MenuItem refreshMenuItem) {
-            this.refreshMenuItem = refreshMenuItem;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            // set the progress bar view
-            refreshMenuItem.setActionView(R.layout.action_progressbar);
-
-            refreshMenuItem.expandActionView();
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-            // not making real request in this demo
-            // for now we use a timer to wait for sometime
             try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
+                // hide loading information when down downloading
+                UIUtils.hideProgressBar(songDownloadProgressBar, this.context);
+                UIUtils.hideTextView(percentageText, this.context);
+                UIUtils.showTextView(headlineViewText, this.context);
 
-        @Override
-        protected void onPostExecute(String result) {
-            refreshMenuItem.collapseActionView();
-            // remove the progress bar view
-            refreshMenuItem.setActionView(null);
+                if (errorContent.equals("")) {
+                    UIUtils.PrintToast(context, "השיר ירד בהצלחה", Toast.LENGTH_LONG);
+
+                    //LogUtils.logData("flow_debug", "DownloadSongResult__song was downloaded successfully");
+                    //LogUtils.logData("flow_debug", "DownloadSongResult__reloading library fragment..");
+                    FragmentUtils.loadLibraryFragment(fm, context);
+                } else {
+                    UIUtils.printError(context, errorContent);
+                }
+            } catch (Exception e) {
+                UIUtils.printError(context, e.toString());
+            }
         }
     }
-
 }
 
 

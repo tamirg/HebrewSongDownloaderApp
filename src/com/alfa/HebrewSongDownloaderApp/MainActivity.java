@@ -8,8 +8,10 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.SearchView;
-import com.alfa.utils.AsyncTaskManager;
+import android.widget.TextView;
 import com.alfa.utils.logic.LogUtils;
 
 /**
@@ -25,10 +27,11 @@ public class MainActivity extends FragmentActivity implements
      */
 
     private ActionBar actionBar;
-    private MenuItem refreshMenuItem;
+    private MenuItem actionBarProgressBar;
     private static Menu menu;
     private ViewPager viewPager;
     private TabsPagerAdapter mAdapter;
+    private String query;
 
     // Tab titles
     private String[] tabs = {"Search", "Downloads", "Library"};
@@ -77,6 +80,7 @@ public class MainActivity extends FragmentActivity implements
         if (libraryFragment == null) {
             libraryFragment = new LibraryFragment();
         }
+
     }
 
     private void setupActionBar() {
@@ -166,12 +170,7 @@ public class MainActivity extends FragmentActivity implements
         sv.setOnQueryTextListener(this);
         item.setActionView(sv);
 
-        /*
-        refreshMenuItem = menu.add("search_load");
-        refreshMenuItem.setIcon(android.R.drawable.ic_btn_speak_now);
-        refreshMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS); */
-
-        refreshMenuItem = menu.findItem(R.id.action_refresh);
+        actionBarProgressBar = menu.findItem(R.id.action_refresh);
 
         initMenu(menu);
 
@@ -183,14 +182,9 @@ public class MainActivity extends FragmentActivity implements
     public boolean onOptionsItemSelected(MenuItem item) {
         // Take appropriate action for each action item click
         switch (item.getItemId()) {
-            //case R.id.action_search:
-            // search action
-            //return true;
             case R.id.action_refresh:
-                // refresh
-                refreshMenuItem = item;
                 // load the data from server
-                AsyncTaskManager.syncData(refreshMenuItem);
+                executeSongSearch(query);
                 return true;
             case R.id.settings:
                 return true;
@@ -198,6 +192,25 @@ public class MainActivity extends FragmentActivity implements
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    /**
+     * Hides the soft keyboard
+     */
+    public void hideSoftKeyboard() {
+        if (getCurrentFocus() != null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        }
+    }
+
+    /**
+     * Shows the soft keyboard
+     */
+    public void showSoftKeyboard(View view) {
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        view.requestFocus();
+        inputMethodManager.showSoftInput(view, 0);
     }
 
     /**
@@ -223,15 +236,24 @@ public class MainActivity extends FragmentActivity implements
     }
 
     @Override
-    public boolean onQueryTextSubmit(String query) {
-        LogUtils.logData("search_debug", "on submit, submitted : " + query);
-
-        this.searchFragment.executeSongSearch(this, query, refreshMenuItem);
+    public boolean onQueryTextSubmit(String submittedText) {
+        executeSongSearch(submittedText);
         return false;
+    }
+
+    private void executeSongSearch(String query) {
+        LogUtils.logData("search_debug", "on submit, submitted : " + query);
+        hideSoftKeyboard();
+        TextView loadingText = searchFragment.getLoadingText();
+        loadingText.setText(loadingText.getText() + "...");
+        this.searchFragment.executeSongSearch(this, query, actionBarProgressBar);
     }
 
     @Override
     public boolean onQueryTextChange(String newText) {
+        query = newText;
+        String fixed = "מחפש תוצאות עבור ";
+        searchFragment.getLoadingText().setText(fixed + newText);
         LogUtils.logData("search_debug", "on change, new text : " + newText);
         return false;
     }
