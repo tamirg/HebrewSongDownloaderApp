@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.SearchView;
 import com.alfa.utils.AsyncTaskManager;
+import com.alfa.utils.logic.LogUtils;
 
 /**
  * Created by Micha on 2/18/14.
@@ -34,12 +35,15 @@ public class MainActivity extends FragmentActivity implements
     // Tab titles
     private String[] tabs = {"Search", "Downloads", "Library"};
 
-    private SearchFragment searchFragment;
-    private DownloadsFragment downloadsFragment;
-    private LibraryFragment libraryFragment;
+    private static SearchFragment searchFragment = null;
+    private static DownloadsFragment downloadsFragment = null;
+    public static LibraryFragment libraryFragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        LogUtils.logData("flow_debug", "MainActivity__create");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -55,9 +59,36 @@ public class MainActivity extends FragmentActivity implements
 
     private void setupMainView() {
 
+        LogUtils.logData("flow_debug", "MainActivity__setup");
+
         setupTabFragments();
         setupActionBar();
         setupTabs();
+    }
+
+    private void setupTabFragments() {
+
+        LogUtils.logData("flow_debug", "MainActivity__setup tab fragments");
+
+        if (searchFragment == null) {
+            searchFragment = new SearchFragment();
+        }
+        if (downloadsFragment == null) {
+            downloadsFragment = new DownloadsFragment();
+        }
+        if (libraryFragment == null) {
+            libraryFragment = new LibraryFragment();
+        }
+
+        searchFragment.setRetainInstance(true);
+        downloadsFragment.setRetainInstance(true);
+        libraryFragment.setRetainInstance(true);
+    }
+
+    private void setupActionBar() {
+        this.actionBar = getActionBar();
+        actionBar.setHomeButtonEnabled(false);
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
     }
 
     // setup tab functionality
@@ -86,8 +117,7 @@ public class MainActivity extends FragmentActivity implements
 
             @Override
             public void onPageSelected(int position) {
-                // on changing the page
-                // make respected tab selected
+                // select tab on swipe
                 actionBar.setSelectedNavigationItem(position);
             }
 
@@ -99,18 +129,6 @@ public class MainActivity extends FragmentActivity implements
             public void onPageScrollStateChanged(int arg0) {
             }
         });
-    }
-
-    private void setupActionBar() {
-        this.actionBar = getActionBar();
-        actionBar.setHomeButtonEnabled(false);
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-    }
-
-    private void setupTabFragments() {
-        searchFragment = new SearchFragment();
-        downloadsFragment = new DownloadsFragment();
-        libraryFragment = new LibraryFragment();
     }
 
     /**
@@ -129,6 +147,9 @@ public class MainActivity extends FragmentActivity implements
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
+        LogUtils.logData("flow_debug", "MainActivity__setup menu");
+
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.activity_main_actions, menu);
 
@@ -177,17 +198,13 @@ public class MainActivity extends FragmentActivity implements
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-        // on tab selected
-        // show respected fragment view
+        // select tab on click
         viewPager.setCurrentItem(tab.getPosition());
     }
 
     @Override
     public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
-        // if (mFragment != null) {
-        // Detach the fragment, because another one is being attached
-        //     ft.detach(mFragment);
-        // }
+
     }
 
     @Override

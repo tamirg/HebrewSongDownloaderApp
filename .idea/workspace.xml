@@ -16,28 +16,17 @@
     <option name="TOOL_WINDOW_LOG_LEVEL" value="ERROR" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a3d188e-0acd-4df5-844f-22d39649ba13" name="Default" comment="Exception package fix">
-      <change type="DELETED" beforePath="C:\Users\Micha\IdeaProjects\HebrewSongDownloaderApp\res\layout\tabed_menu.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Micha\IdeaProjects\HebrewSongDownloaderApp\src\com\alfa\HebrewSongDownloaderApp\TabedMainActivity.java" afterPath="" />
-      <change type="MOVED" beforePath="C:\Users\Micha\IdeaProjects\HebrewSongDownloaderApp\src\com\alfa\utils\CachingUtils.java" afterPath="$PROJECT_DIR$/src/com/alfa/utils/ui/CachingUtils.java" />
-      <change type="MOVED" beforePath="C:\Users\Micha\IdeaProjects\HebrewSongDownloaderApp\src\com\alfa\utils\DataUtils.java" afterPath="$PROJECT_DIR$/src/com/alfa/utils/logic/DataUtils.java" />
-      <change type="MOVED" beforePath="C:\Users\Micha\IdeaProjects\HebrewSongDownloaderApp\src\com\alfa\utils\FragmentUtils.java" afterPath="$PROJECT_DIR$/src/com/alfa/utils/ui/FragmentUtils.java" />
-      <change type="MOVED" beforePath="C:\Users\Micha\IdeaProjects\HebrewSongDownloaderApp\src\com\alfa\utils\LogUtils.java" afterPath="$PROJECT_DIR$/src/com/alfa/utils/logic/LogUtils.java" />
-      <change type="MOVED" beforePath="C:\Users\Micha\IdeaProjects\HebrewSongDownloaderApp\src\com\alfa\utils\SharedPref.java" afterPath="$PROJECT_DIR$/src/com/alfa/utils/logic/SharedPref.java" />
-      <change type="MOVED" beforePath="C:\Users\Micha\IdeaProjects\HebrewSongDownloaderApp\src\com\alfa\utils\UIUtils.java" afterPath="$PROJECT_DIR$/src/com/alfa/utils/ui/UIUtils.java" />
-      <change type="MOVED" beforePath="C:\Users\Micha\IdeaProjects\HebrewSongDownloaderApp\src\com\alfa\utils\URLUtils.java" afterPath="$PROJECT_DIR$/src/com/alfa/utils/logic/URLUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
+    <list default="true" id="2a3d188e-0acd-4df5-844f-22d39649ba13" name="Default" comment="cleanup and bugfixes:&#10;1) rearanged utils in packages&#10;2) cleaned player fragment and main activitiy">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/alfa/utils/AsyncTaskManager.java" afterPath="$PROJECT_DIR$/src/com/alfa/utils/AsyncTaskManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/DownloadListFragment.java" afterPath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/DownloadListFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/FetchSongs.java" afterPath="$PROJECT_DIR$/src/engine/FetchSongs.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/alfa/utils/ui/FragmentUtils.java" afterPath="$PROJECT_DIR$/src/com/alfa/utils/ui/FragmentUtils.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/LibraryFragment.java" afterPath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/LibraryFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/LibrarySongsFragment.java" afterPath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/LibrarySongsFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/MainActivity.java" afterPath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/MainActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/PlayerFragment.java" afterPath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/PlayerFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SearchFragment.java" afterPath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SearchFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/alfa/utils/logic/SharedPref.java" afterPath="$PROJECT_DIR$/src/com/alfa/utils/logic/SharedPref.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SongListFragment.java" afterPath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SongListFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/TabsPagerAdapter.java" afterPath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/TabsPagerAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/search_fragment.xml" afterPath="$PROJECT_DIR$/res/layout/search_fragment.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="4e1d4315-0995-4ac8-970f-1847ac98cff3" name="others" comment="" />
@@ -103,28 +92,93 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="FragmentUtils.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/alfa/utils/ui/FragmentUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="23" selection-start="649" selection-end="649" vertical-scroll-proportion="0.22222222" vertical-offset="324" max-vertical-offset="900">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="LibrarySongsFragment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/LibrarySongsFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="31" selection-start="1209" selection-end="1223" vertical-scroll-proportion="0.0" vertical-offset="275" max-vertical-offset="1206">
+            <state line="24" column="13" selection-start="581" selection-end="581" vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="1242">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FetchSongs.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/engine/FetchSongs.java">
+      <file leaf-file-name="LibraryFragment.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/LibraryFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="47" selection-start="715" selection-end="715" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1890">
+            <state line="30" column="37" selection-start="913" selection-end="913" vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="594">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AsyncTaskManager.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/alfa/utils/AsyncTaskManager.java">
+      <file leaf-file-name="SearchFragment.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SearchFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="277" column="56" selection-start="10134" selection-end="10134" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5616">
+            <state line="25" column="13" selection-start="650" selection-end="650" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1692">
+              <folding>
+                <element signature="e#2319#2353#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TabsPagerAdapter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/TabsPagerAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="36" column="51" selection-start="1209" selection-end="1209" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="954">
+              <folding>
+                <element signature="e#1304#1305#0" expanded="true" />
+                <element signature="e#1372#1373#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="201" column="43" selection-start="6234" selection-end="6234" vertical-scroll-proportion="-6.12" vertical-offset="3465" max-vertical-offset="3978">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#4235#4236#0" expanded="true" />
+                <element signature="e#4262#4263#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActionBar.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/sources/android-17/android/app/ActionBar.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="730" column="34" selection-start="27182" selection-end="27182" vertical-scroll-proportion="0.0" vertical-offset="12546" max-vertical-offset="17082">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Fragment.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/lib/android-support-v13.jar!/android/support/v4/app/Fragment.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="114" column="29" selection-start="4249" selection-end="4249" vertical-scroll-proportion="-6.76" vertical-offset="1865" max-vertical-offset="3906">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ViewPager.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/lib/android-support-v13.jar!/android/support/v4/view/ViewPager.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="13" selection-start="166" selection-end="166" vertical-scroll-proportion="-3.6" vertical-offset="0" max-vertical-offset="2664">
               <folding />
             </state>
           </provider>
@@ -133,77 +187,8 @@
       <file leaf-file-name="PlayerFragment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/PlayerFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="141" column="92" selection-start="4268" selection-end="4268" vertical-scroll-proportion="-8.84" vertical-offset="2065" max-vertical-offset="4770">
-              <folding>
-                <element signature="e#2535#2781#0" expanded="true" />
-                <element signature="e#2770#2771#0" expanded="true" />
-                <element signature="e#2861#2983#0" expanded="true" />
-                <element signature="e#2972#2973#0" expanded="true" />
-                <element signature="e#3063#3189#0" expanded="true" />
-                <element signature="e#3178#3179#0" expanded="true" />
-                <element signature="e#3269#3399#0" expanded="true" />
-                <element signature="e#3388#3389#0" expanded="true" />
-                <element signature="e#3841#3996#0" expanded="true" />
-                <element signature="e#3985#3986#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataUtils.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/alfa/utils/logic/DataUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="46" selection-start="1394" selection-end="1394" vertical-scroll-proportion="0.0" vertical-offset="383" max-vertical-offset="1314">
+            <state line="135" column="6" selection-start="4054" selection-end="4133" vertical-scroll-proportion="-14.84" vertical-offset="1537" max-vertical-offset="4536">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SharedPref.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/alfa/utils/logic/SharedPref.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="0" selection-start="658" selection-end="658" vertical-scroll-proportion="-13.68" vertical-offset="54" max-vertical-offset="756">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/MainActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="7" selection-start="1434" selection-end="1667" vertical-scroll-proportion="0.42857143" vertical-offset="486" max-vertical-offset="3438">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SongResult.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/entities/SongResult.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="0" selection-start="917" selection-end="917" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="954">
-              <folding>
-                <element signature="e#962#963#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="URLUtils.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/alfa/utils/logic/URLUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="13" selection-start="128" selection-end="128" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="432">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TabsPagerAdapter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/TabsPagerAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="25" selection-start="1248" selection-end="1248" vertical-scroll-proportion="0.0" vertical-offset="216" max-vertical-offset="954">
-              <folding>
-                <element signature="e#1289#1290#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -254,21 +239,24 @@
         <option value="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/TabedMainActivity.java" />
         <option value="$PROJECT_DIR$/res/layout/tabed_menu.xml" />
         <option value="$PROJECT_DIR$/src/entities/SongResult.java" />
-        <option value="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SongListFragment.java" />
-        <option value="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SearchFragment.java" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/com/alfa/utils/FragmentUtils.java" />
-        <option value="$PROJECT_DIR$/src/com/alfa/utils/AsyncTaskManager.java" />
-        <option value="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/LibrarySongsFragment.java" />
         <option value="$PROJECT_DIR$/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/res/layout/search_fragment.xml" />
-        <option value="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/MainActivity.java" />
         <option value="$PROJECT_DIR$/src/com/alfa/utils/SharedPref.java" />
-        <option value="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/TabsPagerAdapter.java" />
-        <option value="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/PlayerFragment.java" />
         <option value="$PROJECT_DIR$/src/com/alfa/utils/logic/DataUtils.java" />
         <option value="$PROJECT_DIR$/src/engine/FetchSongs.java" />
         <option value="$PROJECT_DIR$/src/com/alfa/utils/logic/SharedPref.java" />
+        <option value="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SongListFragment.java" />
+        <option value="$PROJECT_DIR$/src/com/alfa/utils/AsyncTaskManager.java" />
+        <option value="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SearchFragment.java" />
+        <option value="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/PlayerFragment.java" />
+        <option value="$PROJECT_DIR$/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/src/com/alfa/utils/ui/FragmentUtils.java" />
+        <option value="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/LibrarySongsFragment.java" />
+        <option value="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/MainActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/TabsPagerAdapter.java" />
+        <option value="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/LibraryFragment.java" />
       </list>
     </option>
   </component>
@@ -554,46 +542,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Exceptions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HebrewSongDownloaderApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HebrewSongDownloaderApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entities" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HebrewSongDownloaderApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HebrewSongDownloaderApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -788,7 +736,7 @@
     <property name="recentsLimit" value="5" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FullScreen" value="false" />
-    <property name="options.lastSelected" value="editor.preferences.appearance" />
+    <property name="options.lastSelected" value="preferences.keymap" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -1191,7 +1139,7 @@
       <workItem from="1392380264015" duration="78000" />
       <workItem from="1392381217701" duration="74000" />
       <workItem from="1392381802628" duration="88000" />
-      <workItem from="1392970077730" duration="5099000" />
+      <workItem from="1392970077730" duration="11260000" />
     </task>
     <task id="LOCAL-00001" summary="new project commit">
       <created>1391779743123</created>
@@ -1237,11 +1185,15 @@
       <created>1392378793363</created>
       <updated>1392378793363</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="cleanup and bugfixes:&#10;1) rearanged utils in packages&#10;2) cleaned player fragment and main activitiy">
+      <created>1392975409700</created>
+      <updated>1392975409700</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="142543000" />
+    <option name="totallyTimeSpent" value="148704000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1267,6 +1219,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15814696" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="-378" y="177" width="1732" height="976" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33333334" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1279,20 +1232,19 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32983795" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19914803" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33069083" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3303671" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32814237" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2057842" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27030033" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27030033" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3259177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40711904" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.40711904" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1682641" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="-378" y="177" width="1732" height="976" />
       <window_info id="SVN Repositories" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32983795" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1360,7 +1312,8 @@
     <MESSAGE value="redesigned tabhost to be relative and host the fragment template" />
     <MESSAGE value="loading fake lists from async task" />
     <MESSAGE value="Exception package fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Exception package fix" />
+    <MESSAGE value="cleanup and bugfixes:&#10;1) rearanged utils in packages&#10;2) cleaned player fragment and main activitiy" />
+    <option name="LAST_COMMIT_MESSAGE" value="cleanup and bugfixes:&#10;1) rearanged utils in packages&#10;2) cleaned player fragment and main activitiy" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1376,39 +1329,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/android/os/AsyncTask.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="0" selection-start="2155" selection-end="2155" vertical-scroll-proportion="0.0" vertical-offset="918" max-vertical-offset="1008" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SearchableActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="34" selection-start="857" selection-end="857" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="578">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="27" selection-start="911" selection-end="911" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="561">
-          <folding>
-            <element signature="e#470#488#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SearchableActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="34" selection-start="857" selection-end="857" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="578">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gen/com/alfa/HebrewSongDownloaderApp/BuildConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="19" selection-start="193" selection-end="193" vertical-scroll-proportion="0.12573965" vertical-offset="0" max-vertical-offset="676" />
@@ -1532,13 +1452,6 @@
         <state line="36" column="13" selection-start="1687" selection-end="1687" vertical-scroll-proportion="0.0" vertical-offset="465" max-vertical-offset="1026" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SearchableActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="37" selection-start="738" selection-end="738" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="558">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/android/util/Log.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="19" selection-start="142" selection-end="167" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="972" />
@@ -1640,13 +1553,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SearchFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="13" selection-start="1071" selection-end="1071" vertical-scroll-proportion="0.0" vertical-offset="688" max-vertical-offset="1584">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="0" selection-start="235" selection-end="235" vertical-scroll-proportion="-4.0" vertical-offset="0" max-vertical-offset="216">
@@ -1661,20 +1567,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SongListFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="0" selection-start="1487" selection-end="1487" vertical-scroll-proportion="0.0" vertical-offset="954" max-vertical-offset="1512">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/alfa/utils/ui/FragmentUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="52" selection-start="934" selection-end="934" vertical-scroll-proportion="0.0" vertical-offset="104" max-vertical-offset="792">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/search_fragment.xml">
       <provider editor-type-id="android-designer">
         <state />
@@ -1685,44 +1577,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/LibrarySongsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="31" selection-start="1209" selection-end="1223" vertical-scroll-proportion="0.0" vertical-offset="275" max-vertical-offset="1206">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/TabsPagerAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="25" selection-start="1248" selection-end="1248" vertical-scroll-proportion="0.0" vertical-offset="216" max-vertical-offset="954">
-          <folding>
-            <element signature="e#1289#1290#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/alfa/utils/logic/URLUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="13" selection-start="128" selection-end="128" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="432">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/PlayerFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="141" column="92" selection-start="4268" selection-end="4268" vertical-scroll-proportion="-8.84" vertical-offset="2065" max-vertical-offset="4770">
-          <folding>
-            <element signature="e#2535#2781#0" expanded="true" />
-            <element signature="e#2770#2771#0" expanded="true" />
-            <element signature="e#2861#2983#0" expanded="true" />
-            <element signature="e#2972#2973#0" expanded="true" />
-            <element signature="e#3063#3189#0" expanded="true" />
-            <element signature="e#3178#3179#0" expanded="true" />
-            <element signature="e#3269#3399#0" expanded="true" />
-            <element signature="e#3388#3389#0" expanded="true" />
-            <element signature="e#3841#3996#0" expanded="true" />
-            <element signature="e#3985#3986#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1737,15 +1595,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="41" column="0" selection-start="917" selection-end="917" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="954">
           <folding>
-            <element signature="e#962#963#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#659#660#0" expanded="false" />
+            <element signature="e#692#693#0" expanded="false" />
+            <element signature="e#744#745#0" expanded="false" />
+            <element signature="e#788#789#0" expanded="false" />
+            <element signature="e#826#827#0" expanded="false" />
+            <element signature="e#860#861#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/alfa/utils/AsyncTaskManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="277" column="56" selection-start="10134" selection-end="10134" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5616">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1758,15 +1615,120 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/alfa/utils/logic/SharedPref.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="658" selection-end="658" vertical-scroll-proportion="-13.68" vertical-offset="54" max-vertical-offset="756">
+        <state line="27" column="0" selection-start="986" selection-end="986" vertical-scroll-proportion="-19.44" vertical-offset="0" max-vertical-offset="774">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SearchableActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="37" selection-start="738" selection-end="738" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="558">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SongListFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="8" selection-start="1723" selection-end="1812" vertical-scroll-proportion="0.0" vertical-offset="666" max-vertical-offset="1314">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/alfa/utils/AsyncTaskManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="264" column="77" selection-start="9946" selection-end="9946" vertical-scroll-proportion="-13.4" vertical-offset="3859" max-vertical-offset="5256">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/activity_main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="71" selection-start="211" selection-end="211" vertical-scroll-proportion="-1.0384616" vertical-offset="0" max-vertical-offset="180">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/android-support-v13.jar!/android/support/v4/view/ViewPager.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="13" selection-start="166" selection-end="166" vertical-scroll-proportion="-3.6" vertical-offset="0" max-vertical-offset="2664">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/PlayerFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="135" column="6" selection-start="4054" selection-end="4133" vertical-scroll-proportion="-14.84" vertical-offset="1537" max-vertical-offset="4536">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/LibrarySongsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="13" selection-start="581" selection-end="581" vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="1242">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/android-support-v13.jar!/android/support/v4/app/Fragment.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="114" column="29" selection-start="4249" selection-end="4249" vertical-scroll-proportion="-6.76" vertical-offset="1865" max-vertical-offset="3906">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SearchFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="13" selection-start="650" selection-end="650" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1692">
+          <folding>
+            <element signature="e#2319#2353#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/TabsPagerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="51" selection-start="1209" selection-end="1209" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="954">
+          <folding>
+            <element signature="e#1304#1305#0" expanded="true" />
+            <element signature="e#1372#1373#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="7" selection-start="1434" selection-end="1667" vertical-scroll-proportion="0.42857143" vertical-offset="486" max-vertical-offset="3438">
+        <state line="201" column="43" selection-start="6234" selection-end="6234" vertical-scroll-proportion="-6.12" vertical-offset="3465" max-vertical-offset="3978">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4235#4236#0" expanded="true" />
+            <element signature="e#4262#4263#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/sources/android-17/android/app/ActionBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="730" column="34" selection-start="27182" selection-end="27182" vertical-scroll-proportion="0.0" vertical-offset="12546" max-vertical-offset="17082">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/LibraryFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="37" selection-start="913" selection-end="913" vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="594">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/alfa/utils/ui/FragmentUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="23" selection-start="649" selection-end="649" vertical-scroll-proportion="0.22222222" vertical-offset="324" max-vertical-offset="900">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

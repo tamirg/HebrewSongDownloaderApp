@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import com.alfa.utils.logic.LogUtils;
 import com.alfa.utils.logic.SharedPref;
 import com.alfa.utils.ui.UIUtils;
 
@@ -36,6 +37,8 @@ public class PlayerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        LogUtils.logData("flow_debug", "PlayerFragment__create");
+
         View view = inflater.inflate(R.layout.player_fragment, container, false);
         setupFragmentView(view);
         return view;
@@ -55,9 +58,12 @@ public class PlayerFragment extends Fragment {
     // constructor from a context
     public PlayerFragment(Context context) {
         if (!playerInitialized) {
+            LogUtils.logData("flow_debug", "PlayerFragment__initializing");
             initPlayer(context);
             playerInitialized = true;
         }
+
+        LogUtils.logData("flow_debug", "PlayerFragment__skipped initialization");
     }
 
 
@@ -68,6 +74,8 @@ public class PlayerFragment extends Fragment {
      */
 
     private static void setupFragmentView(View view) {
+
+        LogUtils.logData("flow_debug", "PlayerFragment__setup");
 
         playButton = (ImageButton) view.findViewById(R.id.playBtn);
         stopButton = (ImageButton) view.findViewById(R.id.stopBtn);
@@ -124,6 +132,9 @@ public class PlayerFragment extends Fragment {
     }
 
     public static void initMediaPlayer(Uri song) {
+
+        LogUtils.logData("flow_debug", "PlayerFragment__initializing media player");
+
         prevPlayer = mPlayer;
         mPlayer = MediaPlayer.create(context, song);
 
@@ -136,6 +147,8 @@ public class PlayerFragment extends Fragment {
 
     public static void reloadSongList(List<String> songNames) {
 
+        LogUtils.logData("flow_debug", "PlayerFragment__reloading song list");
+
         try {
             songs = new LinkedList<Uri>();
             for (String songName : songNames) {
@@ -144,6 +157,7 @@ public class PlayerFragment extends Fragment {
 
             // increment position in case of a song playing so that the automatic next song will work
             if (mPlayer != null && mPlayer.isPlaying()) {
+                LogUtils.logData("flow_debug", "PlayerFragment__incrementing song position to " + currentSongPosition + 1);
                 currentSongPosition++;
             }
 
@@ -223,9 +237,6 @@ public class PlayerFragment extends Fragment {
         // handling edge case of choosing last song first
         if (currentSongPosition + 1 >= songs.size()) {
             currentSongPosition = -1;
-            UIUtils.printDebug(context, (currentSongPosition + 1) + "");
-        } else {
-            UIUtils.printDebug(context, (currentSongPosition + 1) + "");
         }
 
         // initialize current media player with current position song
@@ -245,14 +256,9 @@ public class PlayerFragment extends Fragment {
 
     public static void playPreviousSong() {
 
-        UIUtils.printDebug(context, (currentSongPosition - 1) + "");
-
         // handling edge case of choosing first song first
         if (currentSongPosition <= 0) {
             currentSongPosition = songs.size();
-            UIUtils.printDebug(context, (currentSongPosition - 1) + "");
-        } else {
-            UIUtils.printDebug(context, (currentSongPosition - 1) + "");
         }
 
         // initialize current media player with current position song

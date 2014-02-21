@@ -8,18 +8,18 @@ import com.alfa.utils.logic.SharedPref;
 
 public class TabsPagerAdapter extends FragmentPagerAdapter {
 
-    private SearchFragment searchFragment;
-    private DownloadsFragment downloadsFragment;
-    private LibraryFragment libraryFragment;
+    private static SearchFragment searchFragmentInstance;
+    private static DownloadsFragment downloadsFragmentInstance;
+    private static LibraryFragment libraryFragmentInstance;
 
     public TabsPagerAdapter(FragmentManager fm,
                             SearchFragment searchFragment,
                             DownloadsFragment downloadsFragment,
                             LibraryFragment libraryFragment) {
         super(fm);
-        this.searchFragment = searchFragment;
-        this.downloadsFragment = downloadsFragment;
-        this.libraryFragment = libraryFragment;
+        searchFragmentInstance = searchFragment;
+        downloadsFragmentInstance = downloadsFragment;
+        libraryFragmentInstance = libraryFragment;
 
     }
 
@@ -28,13 +28,13 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
 
         switch (index) {
             case 0: {
-                return searchFragment;
+                return searchFragmentInstance;
             }
             case 1: {
-                return downloadsFragment;
+                return downloadsFragmentInstance;
             }
             case 2: {
-                return libraryFragment;
+                return MainActivity.libraryFragment;
             }
         }
 

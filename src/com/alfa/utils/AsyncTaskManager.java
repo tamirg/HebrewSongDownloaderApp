@@ -12,11 +12,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.alfa.HebrewSongDownloaderApp.LibrarySongsFragment;
-import com.alfa.HebrewSongDownloaderApp.PlayerFragment;
 import com.alfa.HebrewSongDownloaderApp.R;
 import com.alfa.HebrewSongDownloaderApp.SongListFragment;
-import com.alfa.utils.logic.DataUtils;
 import com.alfa.utils.logic.LogUtils;
 import com.alfa.utils.logic.URLUtils;
 import com.alfa.utils.ui.UIUtils;
@@ -246,49 +243,30 @@ public class AsyncTaskManager {
 
         }
 
-        /**
-         * After completing background task
-         * Dismiss the progress dialog
-         * *
-         */
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
+            // hide loading information when down downloading
             UIUtils.hideProgressBar(songDownloadprogressBar, this.context);
             UIUtils.hideTextView(percentageText, this.context);
             UIUtils.showTextView(headlineViewText, this.context);
 
             if (errorContent.equals("")) {
                 UIUtils.PrintToast(context, "השיר ירד בהצלחה", Toast.LENGTH_LONG);
-                loadLibraryFragment();
+
+                LogUtils.logData("flow_debug", "DownloadSongResult__song was downloaded successfully");
+                LogUtils.logData("flow_debug", "DownloadSongResult__reloading library fragment..");
+                //FragmentUtils.loadLibraryFragment(fm,context);
             } else {
                 UIUtils.PrintToast(context, errorContent, Toast.LENGTH_LONG);
                 songQuerySearchEditText.requestFocus();
             }
         }
 
-        private void loadLibraryFragment() {
-
-            if (fm != null) {
-
-                FragmentTransaction ft = fm.beginTransaction();
-
-                LibrarySongsFragment libSongFragment = new LibrarySongsFragment(DataUtils.getSongNamesFromDirectory());
-                PlayerFragment player = libSongFragment.createPlayer(context);
-
-                // load player
-                ft.replace(R.id.player_container, player);
-
-                // load file list
-                ft.replace(R.id.library_files_container, libSongFragment);
-
-                ft.commit();
-            }
-        }
     }
 
-    // TOOD : remove!! just for test
+    // TODO : remove!! just for test
 
     /**
      * Async task to load the data from server

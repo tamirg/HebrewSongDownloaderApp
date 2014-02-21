@@ -17,7 +17,7 @@ public class SharedPref {
 
     /**
      * ******************************************************************
-     * ******************** Song constants *****************************
+     * ********************* Song constants *****************************
      * ******************************************************************
      */
 
@@ -25,9 +25,10 @@ public class SharedPref {
     public final static String songExtension = ".mp3";
     public final static String queryEncoding = "UTF-8";
     public final static String unidownUrlQuery = "http://www.unidown.com/search.php?q=";
+
     /**
      * ******************************************************************
-     * ******************** Tab constants *****************************
+     * ********************** Tab constants *****************************
      * ******************************************************************
      */
 

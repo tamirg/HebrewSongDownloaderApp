@@ -3,12 +3,12 @@ package com.alfa.HebrewSongDownloaderApp;
 
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import com.alfa.utils.logic.LogUtils;
 import entities.SongResult;
 
 import java.util.LinkedList;
@@ -41,6 +41,7 @@ public class SongListFragment extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        LogUtils.logData("flow_debug", "SongListFragment__creating song list fragment view");
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 inflater.getContext(), android.R.layout.simple_list_item_1,
                 getSongs());
@@ -56,13 +57,12 @@ public class SongListFragment extends ListFragment {
             songs[i++] = songName;
         }
 
-        Log.w("data:loading_songs", songs.toString());
+        LogUtils.logData("flow_debug", "SongListFragment__loading songs [" + songs.length + "]");
         return songs;
     }
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        //Toast.makeText(getActivity().getBaseContext(), "this is test", Toast.LENGTH_LONG).show();
         SongResult chosenSongResult = this.getSongResultByName((String) l.getItemAtPosition(position));
         chosenSongResult.downloadSongResult(v, getFragmentManager());
     }

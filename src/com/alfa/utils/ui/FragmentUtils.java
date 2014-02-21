@@ -1,13 +1,13 @@
 package com.alfa.utils.ui;
 
-import android.support.v4.app.Fragment;
+import android.content.Context;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import com.alfa.HebrewSongDownloaderApp.LibrarySongsFragment;
 import com.alfa.HebrewSongDownloaderApp.PlayerFragment;
 import com.alfa.HebrewSongDownloaderApp.R;
 import com.alfa.utils.logic.DataUtils;
+import com.alfa.utils.logic.LogUtils;
 
 /**
  * Created by Micha on 2/20/14.
@@ -20,17 +20,15 @@ public class FragmentUtils {
 
     }
 
+    public static void loadLibraryFragment(FragmentManager fm, Context context) {
 
-    public static void loadLibraryFragment(Fragment fragment, View view) {
-
-        fm = fragment.getFragmentManager();
-
+        LogUtils.logData("flow_debug", "LibraryFragment__loading loadLibraryFragment..");
         if (fm != null) {
 
             FragmentTransaction ft = fm.beginTransaction();
 
             LibrarySongsFragment libSongFragment = new LibrarySongsFragment(DataUtils.getSongNamesFromDirectory());
-            PlayerFragment player = libSongFragment.createPlayer(view.getContext());
+            PlayerFragment player = libSongFragment.createPlayer(context);
 
             // load player
             ft.replace(R.id.player_container, player);
