@@ -48,9 +48,10 @@ public class AsyncTaskManager {
      * @param loadingWheel
      * @param fm
      */
-    public static void getSongResult(Context context, EditText songQuerySearch, TextView loadingText, ProgressBar loadingWheel, FragmentManager fm) {
+    public static void getSongResult(Context context, EditText songQuerySearch, TextView loadingText, ProgressBar loadingWheel,
+                                     MenuItem actionBarProgressBar, FragmentManager fm) {
 
-        new SearchSongResults(context, songQuerySearch, loadingText, loadingWheel, fm).execute();
+        new SearchSongResults(context, songQuerySearch, loadingText, loadingWheel, actionBarProgressBar, fm).execute();
     }
 
     public static void downloadSong(Context context, String downloadUrl, String songName, FragmentManager fm) {
@@ -68,6 +69,7 @@ public class AsyncTaskManager {
         private EditText songQuerySearch;
         private Context context;
         private ProgressBar loadingWheel;
+        private MenuItem actionBarProgressBar;
         private TextView loadingText;
         private FragmentManager fm;
         private String errorContent = "";
@@ -76,11 +78,13 @@ public class AsyncTaskManager {
 
         // TODO micha : think of better way of passing the song list to postExecute (pass to context?)
 
-        public SearchSongResults(Context context, EditText songQuerySearch, TextView loadingText, ProgressBar loadingWheel, FragmentManager fm) {
+        public SearchSongResults(Context context, EditText songQuerySearch, TextView loadingText, ProgressBar loadingWheel,
+                                 MenuItem actionBarProgressBar, FragmentManager fm) {
             this.context = context;
             this.songQuerySearch = songQuerySearch;
             this.loadingText = loadingText;
             this.loadingWheel = loadingWheel;
+            this.actionBarProgressBar = actionBarProgressBar;
             this.fm = fm;
 
             this.songResults = new LinkedList<SongResult>();
@@ -96,6 +100,9 @@ public class AsyncTaskManager {
             String fixedLoadingInfo = "מחפש תוצאות עבור ";
             UIUtils.showTextView(loadingText, fixedLoadingInfo + query + " ... ", this.context);
             UIUtils.showProgressBar(loadingWheel, this.context);
+
+            actionBarProgressBar.setActionView(R.layout.action_progressbar);
+            actionBarProgressBar.expandActionView();
 
             // load empty list fragment
             LoadListFragment(null);
@@ -126,6 +133,8 @@ public class AsyncTaskManager {
             loadingText.setText(fixedLoadingInfo + this.query + " : ");
 
             UIUtils.hideProgressBar(loadingWheel, this.context);
+            actionBarProgressBar.collapseActionView();
+            actionBarProgressBar.setActionView(null);
 
             // TODO : should it be here?
             LoadListFragment(this.songResults);

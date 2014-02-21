@@ -82,8 +82,21 @@ public class PlayerFragment extends Fragment {
         prevButton = (ImageButton) view.findViewById(R.id.prevBtn);
         nextButton = (ImageButton) view.findViewById(R.id.nextBtn);
 
+        // handle player reload in case the PlayerFragment is refreshed
+        handlePlayerReload();
+
         // setup all player button functionality
         setupPlayerButtons();
+
+    }
+
+    private static void handlePlayerReload() {
+
+        if (mPlayer == null) {
+            setInitialMode();
+        } else if (inPlayingMode()) {
+            setPlayingMode();
+        }
 
     }
 
@@ -91,7 +104,7 @@ public class PlayerFragment extends Fragment {
         // setup play button listener
         playButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (mPlayer.isPlaying()) {
+                if (inPlayingMode()) {
                     pauseSong();
                 } else {
                     startSong();
@@ -156,7 +169,7 @@ public class PlayerFragment extends Fragment {
             }
 
             // increment position in case of a song playing so that the automatic next song will work
-            if (mPlayer != null && mPlayer.isPlaying()) {
+            if (inPlayingMode()) {
                 LogUtils.logData("flow_debug", "PlayerFragment__incrementing song position to " + currentSongPosition + 1);
                 currentSongPosition++;
             }
@@ -193,18 +206,14 @@ public class PlayerFragment extends Fragment {
 
             // unexpected, should not happen
             if (mPlayer == null) {
+                playSongAt(currentSongPosition);
                 return;
             }
 
             // start current song
             mPlayer.start();
 
-            // handle UI consequences
-            playButton.setImageResource(R.drawable.ic_pause);
-            playButton.setEnabled(true);
-            stopButton.setEnabled(true);
-            prevButton.setEnabled(true);
-            nextButton.setEnabled(true);
+            setPlayingMode();
 
         } catch (Exception e) {
             UIUtils.printError(context, "play_song" + e.toString());
@@ -215,21 +224,15 @@ public class PlayerFragment extends Fragment {
 
         // stop current song
         mPlayer.stop();
-
-        // handle UI consequences
-        playButton.setImageResource(R.drawable.ic_play);
-        playButton.setEnabled(false);
-        stopButton.setEnabled(false);
+        mPlayer = null;
+        setStopMode();
     }
 
     public static void pauseSong() {
 
         // pause current song
         mPlayer.pause();
-
-        // handle UI consequences
-        playButton.setImageResource(R.drawable.ic_play);
-        stopButton.setEnabled(true);
+        setPauseMode();
     }
 
     public static void playNextSong() {
@@ -274,6 +277,49 @@ public class PlayerFragment extends Fragment {
         if (currentSongPosition <= 0) {
             currentSongPosition = songs.size();
         }
+    }
+
+    private static boolean inPlayingMode() {
+        return mPlayer != null && mPlayer.isPlaying();
+    }
+
+    /**
+     * ******************************************************************
+     * ******************* Player UI handling ***************************
+     * ******************************************************************
+     */
+
+
+    public static void setInitialMode() {
+        playButton.setImageResource(R.drawable.ic_play);
+        playButton.setEnabled(false);
+        stopButton.setEnabled(false);
+        prevButton.setEnabled(false);
+        nextButton.setEnabled(false);
+    }
+
+    public static void setPlayingMode() {
+        playButton.setImageResource(R.drawable.ic_pause);
+        playButton.setEnabled(true);
+        stopButton.setEnabled(true);
+        prevButton.setEnabled(true);
+        nextButton.setEnabled(true);
+    }
+
+    public static void setPauseMode() {
+        playButton.setImageResource(R.drawable.ic_play);
+        playButton.setEnabled(true);
+        stopButton.setEnabled(true);
+        prevButton.setEnabled(true);
+        nextButton.setEnabled(true);
+    }
+
+    public static void setStopMode() {
+        playButton.setImageResource(R.drawable.ic_play);
+        playButton.setEnabled(true);
+        stopButton.setEnabled(false);
+        prevButton.setEnabled(true);
+        nextButton.setEnabled(true);
     }
 
 

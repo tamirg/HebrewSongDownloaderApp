@@ -2,8 +2,6 @@ package com.alfa.HebrewSongDownloaderApp;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
-import android.app.SearchManager;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -18,7 +16,7 @@ import com.alfa.utils.logic.LogUtils;
  * Created by Micha on 2/18/14.
  */
 public class MainActivity extends FragmentActivity implements
-        ActionBar.TabListener {
+        ActionBar.TabListener, SearchView.OnQueryTextListener {
 
     /**
      * ******************************************************************
@@ -149,12 +147,31 @@ public class MainActivity extends FragmentActivity implements
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.activity_main_actions, menu);
 
+        /*
         // Associate searchable configuration with the SearchView
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView = (SearchView) menu.findItem(R.id.action_search)
                 .getActionView();
         searchView.setSearchableInfo(searchManager
                 .getSearchableInfo(getComponentName()));
+
+        searchView.setOnQueryTextListener(this); */
+
+        // add search view dynamically
+        MenuItem item = menu.add("Search");
+        item.setIcon(android.R.drawable.ic_menu_search);
+        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        item.setTitle("search");
+        SearchView sv = new SearchView(this);
+        sv.setOnQueryTextListener(this);
+        item.setActionView(sv);
+
+        /*
+        refreshMenuItem = menu.add("search_load");
+        refreshMenuItem.setIcon(android.R.drawable.ic_btn_speak_now);
+        refreshMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS); */
+
+        refreshMenuItem = menu.findItem(R.id.action_refresh);
 
         initMenu(menu);
 
@@ -166,21 +183,18 @@ public class MainActivity extends FragmentActivity implements
     public boolean onOptionsItemSelected(MenuItem item) {
         // Take appropriate action for each action item click
         switch (item.getItemId()) {
-            case R.id.action_search:
-                // search action
-                return true;
+            //case R.id.action_search:
+            // search action
+            //return true;
             case R.id.action_refresh:
                 // refresh
                 refreshMenuItem = item;
                 // load the data from server
                 AsyncTaskManager.syncData(refreshMenuItem);
                 return true;
-            case R.id.action_help:
-                // help action
+            case R.id.settings:
                 return true;
-            case R.id.action_check_updates:
-                // check for updates action
-                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -208,5 +222,17 @@ public class MainActivity extends FragmentActivity implements
 
     }
 
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        LogUtils.logData("search_debug", "on submit, submitted : " + query);
 
+        this.searchFragment.executeSongSearch(this, query, refreshMenuItem);
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        LogUtils.logData("search_debug", "on change, new text : " + newText);
+        return false;
+    }
 }

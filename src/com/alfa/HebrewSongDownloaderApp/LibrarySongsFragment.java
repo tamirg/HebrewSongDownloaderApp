@@ -21,6 +21,7 @@ import java.util.List;
 public class LibrarySongsFragment extends ListFragment {
 
     private List<String> songNames;
+    private static View prevSelected = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -64,6 +65,13 @@ public class LibrarySongsFragment extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
 
+        if (prevSelected != null) {
+            prevSelected.setSelected(false);
+        }
+
+        v.setSelected(true);
+        v.setBackgroundColor(getResources().getColor(android.R.color.tab_indicator_text));
+        prevSelected = v;
         try {
             PlayerFragment.playSongAt(position);
         } catch (Exception e) {

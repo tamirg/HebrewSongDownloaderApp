@@ -2,11 +2,13 @@ package com.alfa.HebrewSongDownloaderApp;
 
 
 import android.app.Service;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -29,6 +31,7 @@ public class SearchFragment extends Fragment {
 
     private ProgressBar progressBar;
     private ProgressBar loadingWheel;
+    private MenuItem actionBarProgressBar;
     private FragmentManager fm;
     private ImageButton songSearchButton;
     private TextView loadingText;
@@ -55,6 +58,7 @@ public class SearchFragment extends Fragment {
         loadingText = (TextView) view.findViewById(R.id.loadingText);
         percentageProgress = (TextView) view.findViewById(R.id.percentageProgress);
         songSearchButton = (ImageButton) view.findViewById(R.id.searchSongBtn);
+        songQuerySearch = (EditText) view.findViewById(R.id.searchSongQuery);
 
         // setup progress bar
         progressBar.setVisibility(View.INVISIBLE);
@@ -85,22 +89,30 @@ public class SearchFragment extends Fragment {
         // setup song search button listener
         songSearchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Perform action on click
-                songQuerySearch = (EditText) view.findViewById(R.id.searchSongQuery);
-                InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Service.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(songQuerySearch.getWindowToken(), 0);
-                try {
-
-                    LogUtils.logData("flow_debug", "SearchFragment__invoking song search for " + songQuerySearch.getText().toString());
-
-                    // get song result from search engine
-                    AsyncTaskManager.getSongResult(v.getContext(), songQuerySearch, loadingText, loadingWheel, fm);
-
-                } catch (Exception e) {
-                    LogUtils.logError("fetch_song_results", e.toString());
-                }
+                executeSongSearch(v.getContext(), "", null);
             }
         });
+    }
+
+    public void executeSongSearch(Context c, String query, MenuItem actionBarProgressBar) {
+        // Perform action on click
+
+        InputMethodManager imm = (InputMethodManager) c.getSystemService(Service.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(songQuerySearch.getWindowToken(), 0);
+        try {
+
+            LogUtils.logData("flow_debug", "SearchFragment__invoking song search for " + query);
+
+            if (query.length() > 0) {
+                songQuerySearch.setText(query);
+            }
+
+            // get song result from search engine
+            AsyncTaskManager.getSongResult(c, songQuerySearch, loadingText, loadingWheel, actionBarProgressBar, fm);
+
+        } catch (Exception e) {
+            LogUtils.logError("fetch_song_results", e.toString());
+        }
     }
 
     @Override

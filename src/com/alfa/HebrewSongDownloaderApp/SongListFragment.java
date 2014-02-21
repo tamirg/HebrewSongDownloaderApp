@@ -1,8 +1,11 @@
 package com.alfa.HebrewSongDownloaderApp;
 
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +20,7 @@ import java.util.List;
 /**
  * Created by Micha on 2/13/14.
  */
-public class SongListFragment extends ListFragment {
+public class SongListFragment extends ListFragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     List<String> songNames;
     List<SongResult> listOfSongResults;
@@ -76,4 +79,22 @@ public class SongListFragment extends ListFragment {
         return null;
     }
 
+
+    // loader functions
+
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
+        return null;
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
+
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> cursorLoader) {
+
+    }
 }
