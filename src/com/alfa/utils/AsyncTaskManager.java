@@ -149,6 +149,7 @@ public class AsyncTaskManager {
 
 
             // for tamir : example!
+            // you should replace it with read downloaded songs
             List<String> downloadedSongs = new ArrayList<String>();
             downloadedSongs.add("song 1");
             downloadedSongs.add("song 2");
