@@ -17,7 +17,8 @@
 			 android:layout_height="wrap_content"
 			 android:text="delete"
 			 android:id="@+id/libraryDeleteBtn"
-			 android:focusable="false"/>
+			 android:focusable="false"
+			 android:visibility="invisible"/>
 
     </LinearLayout>
 
@@ -41,7 +42,6 @@
 			 android:layout_width="fill_parent"
 			 android:layout_height="fill_parent"
 			 android:textAppearance="?android:attr/textAppearanceMedium"
-			 android:text="sample text"
 			 android:gravity="right"/>
 
     </LinearLayout>

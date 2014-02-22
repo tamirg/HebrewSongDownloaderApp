@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import com.alfa.utils.logic.LogUtils;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -41,7 +40,7 @@ public class LibrarySongsFragment extends ListFragment {
         return player;
     }
 
-    public LibrarySongsFragment(LinkedList<String> songNames) {
+    public LibrarySongsFragment(List<String> songNames) {
         this.songNames = songNames;
     }
 

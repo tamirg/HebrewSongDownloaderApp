@@ -60,7 +60,7 @@ public class DataUtils {
     public static void deleteFile(String fileName) {
 
         try {
-            String filePath = SharedPref.songDirectory + fileName + SharedPref.songExtension;
+            String filePath = SharedPref.songDirectory + "/" + fileName + SharedPref.songExtension;
             File file = new File(filePath);
             if (file.exists()) {
                 file.delete();

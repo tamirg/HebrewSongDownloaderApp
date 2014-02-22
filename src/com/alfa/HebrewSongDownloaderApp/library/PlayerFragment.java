@@ -101,7 +101,7 @@ public class PlayerFragment extends Fragment {
         if (mPlayer == null) {
             setInitialMode();
         } else if (inPlayingMode()) {
-            setPlayingMode();
+            setPlayingMode(currentSongPosition);
         }
 
     }
@@ -222,7 +222,7 @@ public class PlayerFragment extends Fragment {
             // start current song or continue already played one
             mPlayer.start();
 
-            setPlayingMode();
+            setPlayingMode(currentSongPosition);
 
         } catch (Exception e) {
             UIUtils.printError(context, "play_song" + e.toString());
@@ -254,6 +254,9 @@ public class PlayerFragment extends Fragment {
         // initialize current media player with current position song
         initMediaPlayer(currentSongPosition + 1);
 
+        // handle playing UI
+        setPlayingMode(currentSongPosition + 1);
+
         // update position
         currentSongPosition++;
 
@@ -262,9 +265,6 @@ public class PlayerFragment extends Fragment {
 
         // set previous position
         previousSongPosition = currentSongPosition - 1;
-
-        // handle playing UI
-        setPlayingMode();
 
         // circular functionality
         if (currentSongPosition + 1 >= songs.size()) {
@@ -282,6 +282,9 @@ public class PlayerFragment extends Fragment {
         // initialize current media player with current position song
         initMediaPlayer(currentSongPosition - 1);
 
+        // handle playing UI
+        setPlayingMode(currentSongPosition - 1);
+
         // update position
         currentSongPosition--;
 
@@ -290,9 +293,6 @@ public class PlayerFragment extends Fragment {
 
         // set previous position
         previousSongPosition = currentSongPosition + 1;
-
-        // handle playing UI
-        setPlayingMode();
 
         // circular functionality
         if (currentSongPosition <= 0) {
@@ -320,7 +320,7 @@ public class PlayerFragment extends Fragment {
         state = PLAYER_STATE.NA;
     }
 
-    public static void setPlayingMode() {
+    public static void setPlayingMode(int pos) {
         playButton.setImageResource(R.drawable.ic_pause);
         playButton.setEnabled(true);
         stopButton.setEnabled(true);
@@ -328,7 +328,7 @@ public class PlayerFragment extends Fragment {
         nextButton.setEnabled(true);
         state = PLAYER_STATE.PLAY;
 
-        ImageView playingIndicator = LibraryAdapter.getRowContainer(currentSongPosition).playingIndicator;
+        /*ImageView playingIndicator = LibraryAdapter.getRowContainer(pos).playingIndicator;
         playingIndicator.setVisibility(View.VISIBLE);
 
         if (previousSongPosition > 0 && previousSongPosition < songs.size()) {
@@ -336,7 +336,7 @@ public class PlayerFragment extends Fragment {
             prevPlayingIndicator.setVisibility(View.INVISIBLE);
         }
 
-        previousSongPosition = currentSongPosition;
+        previousSongPosition = currentSongPosition;*/
 
     }
 

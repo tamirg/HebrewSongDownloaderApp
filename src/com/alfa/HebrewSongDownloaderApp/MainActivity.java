@@ -37,8 +37,12 @@ public class MainActivity extends FragmentActivity implements
     private TabsPagerAdapter mAdapter;
     private String query;
 
-    // Tab titles
+    // Tab info
     private String[] tabs = {"Search", "Downloads", "Library"};
+
+    private enum TAB_STATE {SEARCH, DOWNLOADS, LIBRARY, NA;}
+
+    private TAB_STATE tabState = TAB_STATE.NA;
 
     private static SearchFragment searchFragment = null;
     private static DownloadsFragment downloadsFragment = null;
@@ -69,7 +73,7 @@ public class MainActivity extends FragmentActivity implements
         setupTabFragments();
         setupActionBar();
         setupTabs();
-        FragmentUtils.initFragmentManager(getSupportFragmentManager());
+        FragmentUtils.initFragmentManager(this);
     }
 
     private void setupTabFragments() {
@@ -122,6 +126,8 @@ public class MainActivity extends FragmentActivity implements
             public void onPageSelected(int position) {
                 // select tab on swipe
                 actionBar.setSelectedNavigationItem(position);
+                updateTabState(position);
+
             }
 
             @Override
@@ -132,6 +138,27 @@ public class MainActivity extends FragmentActivity implements
             public void onPageScrollStateChanged(int arg0) {
             }
         });
+    }
+
+    private void updateTabState(int position) {
+        switch (position) {
+            case 0: {
+                tabState = TAB_STATE.SEARCH;
+                break;
+            }
+            case 1: {
+                tabState = TAB_STATE.DOWNLOADS;
+                break;
+            }
+            case 2: {
+                tabState = TAB_STATE.LIBRARY;
+                break;
+            }
+            default: {
+                tabState = TAB_STATE.NA;
+                break;
+            }
+        }
     }
 
     /**
@@ -208,8 +235,12 @@ public class MainActivity extends FragmentActivity implements
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
+
+        int position = tab.getPosition();
         // select tab on click
-        viewPager.setCurrentItem(tab.getPosition());
+        viewPager.setCurrentItem(position);
+
+        updateTabState(position);
 
         // hide keyboard on tab select
         UIUtils.hideSoftKeyboard(this);
@@ -222,13 +253,7 @@ public class MainActivity extends FragmentActivity implements
 
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
-
-    }
-
-    @Override
-    public boolean onQueryTextSubmit(String submittedText) {
-        executeSongSearch(submittedText);
-        return false;
+        updateTabState(tab.getPosition());
     }
 
     private void executeSongSearch(String query) {
@@ -246,19 +271,38 @@ public class MainActivity extends FragmentActivity implements
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        query = newText;
-        String fixed = getString(R.string.loading_prefix);
-        String presentedText = fixed + " " + newText;
+        if (tabState.equals(TAB_STATE.SEARCH) || tabState.equals(TAB_STATE.DOWNLOADS)) {
 
-        if (newText.equals("")) {
-            presentedText = getString(R.string.empty_loading_text);
+            query = newText;
+            String fixed = getString(R.string.loading_prefix);
+            String presentedText = fixed + " " + newText;
+
+            if (newText.equals("")) {
+                presentedText = getString(R.string.empty_loading_text);
+            }
+
+            searchFragment.getLoadingText().setText(presentedText);
+        } else if (tabState.equals(TAB_STATE.LIBRARY)) {
+            FragmentUtils.filterLibrary(this, newText);
         }
-        searchFragment.getLoadingText().setText(presentedText);
 
         LogUtils.logData("search_debug", "on change, new text : " + newText);
         return false;
     }
 
+    @Override
+    public boolean onQueryTextSubmit(String submittedText) {
+        if (tabState.equals(TAB_STATE.SEARCH) || tabState.equals(TAB_STATE.DOWNLOADS)) {
+            executeSongSearch(submittedText);
+        } else if (tabState.equals(TAB_STATE.LIBRARY)) {
+            FragmentUtils.filterLibrary(this, submittedText);
+        }
+
+        // hide keyboard on tab select
+        UIUtils.hideSoftKeyboard(this);
+
+        return false;
+    }
 
     /**
      * ******************************************************************

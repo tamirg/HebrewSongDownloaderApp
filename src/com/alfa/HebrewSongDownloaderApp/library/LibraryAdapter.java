@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.alfa.HebrewSongDownloaderApp.R;
 import com.alfa.utils.logic.DataUtils;
+import com.alfa.utils.ui.FragmentUtils;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -63,9 +64,7 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
         } else
             rowContainer = (LibraryRowContainer) rowContainer.rowView.getTag();
 
-        if (libraryList.size() <= 0) {
-            rowContainer.songTitle.setText("no songs found in library");
-        } else {
+        if (libraryList.size() > 0) {
 
             // get model for the current list position
             libraryModel = (LibraryListModel) libraryList.get(position);
@@ -124,11 +123,15 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
     }
 
     private void setupButtons(final LibraryRowContainer rowContainer) {
+
+        // show delete button
+        rowContainer.delete.setVisibility(View.VISIBLE);
+
         rowContainer.delete.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 DataUtils.deleteFile(rowContainer.songTitle.getText().toString());
 
-                // TODO : reload library list after delete
+                FragmentUtils.loadLibraryFragment(v.getContext());
             }
         });
     }
