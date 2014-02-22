@@ -3,10 +3,11 @@ package com.alfa.utils.ui;
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import com.alfa.HebrewSongDownloaderApp.LibrarySongsFragment;
-import com.alfa.HebrewSongDownloaderApp.PlayerFragment;
 import com.alfa.HebrewSongDownloaderApp.R;
-import com.alfa.HebrewSongDownloaderApp.SongListFragment;
+import com.alfa.HebrewSongDownloaderApp.downloads.DownloadListFragment;
+import com.alfa.HebrewSongDownloaderApp.library.LibrarySongsFragment;
+import com.alfa.HebrewSongDownloaderApp.library.PlayerFragment;
+import com.alfa.HebrewSongDownloaderApp.search.SongListFragment;
 import com.alfa.utils.logic.DataUtils;
 import com.alfa.utils.logic.LogUtils;
 import entities.SongResult;
@@ -22,6 +23,18 @@ public class FragmentUtils {
 
     public static void initFragmentManager(FragmentManager initializedFragmentManager) {
         fm = initializedFragmentManager;
+    }
+
+    public static void loadDownloadsListFragment(List<String> songNames) {
+        if (fm != null) {
+
+            FragmentTransaction ft = fm.beginTransaction();
+            DownloadListFragment downloadListFragment = new DownloadListFragment(songNames);
+
+            ft.replace(R.id.download_list_container, downloadListFragment);
+
+            ft.commit();
+        }
     }
 
     public static void loadSongListFragment(List<SongResult> songResults) {

@@ -19,7 +19,8 @@ public class DataUtils {
 
             // get all files from directory
             File directory = new File(directoryPath);
-            int dotIndex = 0;
+            int dotIndex;
+
             // get file names
             if (directory.listFiles() != null) {
                 List<File> songFilesCollection = Arrays.asList(directory.listFiles());
@@ -53,6 +54,23 @@ public class DataUtils {
         }
 
         return fileNames;
+    }
+
+    // delete files from disk
+    public static void deleteFile(String fileName) {
+
+        try {
+            String filePath = SharedPref.songDirectory + fileName + SharedPref.songExtension;
+            File file = new File(filePath);
+            if (file.exists()) {
+                file.delete();
+            } else {
+                LogUtils.logError("delete_file", "file does not exist!");
+            }
+
+        } catch (Exception e) {
+            LogUtils.logError("delete_file", e.toString());
+        }
     }
 
     public static LinkedList<String> getSongNamesFromDirectory() {

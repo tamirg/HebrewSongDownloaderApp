@@ -22,6 +22,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.io.*;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -145,6 +146,14 @@ public class AsyncTaskManager {
 
             UIUtils.PrintToast(context, context.getString(R.string.song_download_execute), Toast.LENGTH_LONG);
             UIUtils.showProgressBar(songDownloadProgressBar, this.context);
+
+
+            // for tamir : example!
+            List<String> downloadedSongs = new ArrayList<String>();
+            downloadedSongs.add("song 1");
+            downloadedSongs.add("song 2");
+            downloadedSongs.add("song 3");
+            FragmentUtils.loadDownloadsListFragment(downloadedSongs);
 
         }
 

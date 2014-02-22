@@ -1,4 +1,4 @@
-package com.alfa.HebrewSongDownloaderApp;
+package com.alfa.HebrewSongDownloaderApp.library;
 
 
 import android.content.Context;
@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import com.alfa.HebrewSongDownloaderApp.R;
 import com.alfa.utils.logic.LogUtils;
 import com.alfa.utils.logic.SharedPref;
 import com.alfa.utils.ui.UIUtils;
@@ -31,12 +33,12 @@ public class PlayerFragment extends Fragment {
     private static ImageButton prevButton;
     private static Context context;
     private static List<Uri> songs;
+    private static int previousSongPosition = -1;
     private static int currentSongPosition;
     private static boolean playerInitialized = false;
 
-    private static enum PLAYER_STATE {PLAY, PAUSE, STOP, NA}
+    public static enum PLAYER_STATE {PLAY, PAUSE, STOP, NA}
 
-    ;
     private static PLAYER_STATE state;
 
     @Override
@@ -149,18 +151,19 @@ public class PlayerFragment extends Fragment {
         state = PLAYER_STATE.NA;
     }
 
-    public static void initMediaPlayer(Uri song) {
+    public static void initMediaPlayer(int songPosition) {
 
         LogUtils.logData("flow_debug", "PlayerFragment__initializing media player");
 
         prevPlayer = mPlayer;
-        mPlayer = MediaPlayer.create(context, song);
+        mPlayer = MediaPlayer.create(context, songs.get(songPosition));
         mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             public void onCompletion(MediaPlayer player) {
                 playNextSong();
             }
         });
         state = PLAYER_STATE.NA;
+
     }
 
     public static void reloadSongList(List<String> songNames) {
@@ -197,8 +200,9 @@ public class PlayerFragment extends Fragment {
         }
 
         currentSongPosition = position;
-        initMediaPlayer(songs.get(position));
+        initMediaPlayer(currentSongPosition);
         startSong();
+
     }
 
     public static void startSong() {
@@ -248,13 +252,19 @@ public class PlayerFragment extends Fragment {
         }
 
         // initialize current media player with current position song
-        initMediaPlayer(songs.get(currentSongPosition + 1));
+        initMediaPlayer(currentSongPosition + 1);
 
         // update position
         currentSongPosition++;
 
         // start current song
         startSong();
+
+        // set previous position
+        previousSongPosition = currentSongPosition - 1;
+
+        // handle playing UI
+        setPlayingMode();
 
         // circular functionality
         if (currentSongPosition + 1 >= songs.size()) {
@@ -270,13 +280,19 @@ public class PlayerFragment extends Fragment {
         }
 
         // initialize current media player with current position song
-        initMediaPlayer(songs.get(currentSongPosition - 1));
+        initMediaPlayer(currentSongPosition - 1);
 
         // update position
         currentSongPosition--;
 
         // start current song
         startSong();
+
+        // set previous position
+        previousSongPosition = currentSongPosition + 1;
+
+        // handle playing UI
+        setPlayingMode();
 
         // circular functionality
         if (currentSongPosition <= 0) {
@@ -311,6 +327,17 @@ public class PlayerFragment extends Fragment {
         prevButton.setEnabled(true);
         nextButton.setEnabled(true);
         state = PLAYER_STATE.PLAY;
+
+        ImageView playingIndicator = LibraryAdapter.getRowContainer(currentSongPosition).playingIndicator;
+        playingIndicator.setVisibility(View.VISIBLE);
+
+        if (previousSongPosition > 0 && previousSongPosition < songs.size()) {
+            ImageView prevPlayingIndicator = LibraryAdapter.getRowContainer(previousSongPosition).playingIndicator;
+            prevPlayingIndicator.setVisibility(View.INVISIBLE);
+        }
+
+        previousSongPosition = currentSongPosition;
+
     }
 
     public static void setPauseMode() {
@@ -329,6 +356,10 @@ public class PlayerFragment extends Fragment {
         prevButton.setEnabled(true);
         nextButton.setEnabled(true);
         state = PLAYER_STATE.STOP;
+
+        ImageView playingIndicator = LibraryAdapter.getRowContainer(currentSongPosition).playingIndicator;
+        playingIndicator.setVisibility(View.INVISIBLE);
+
     }
 
     /**

@@ -1,11 +1,9 @@
-package com.alfa.HebrewSongDownloaderApp;
+package com.alfa.HebrewSongDownloaderApp.search;
 
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
-import engine.FetchSongs;
 
 /**
  * Created by Tamir on 23/01/14.

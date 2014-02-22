@@ -1,4 +1,4 @@
-package com.alfa.HebrewSongDownloaderApp;
+package com.alfa.HebrewSongDownloaderApp.library;
 
 
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.alfa.HebrewSongDownloaderApp.R;
 import com.alfa.utils.logic.LogUtils;
 import com.alfa.utils.ui.FragmentUtils;
 

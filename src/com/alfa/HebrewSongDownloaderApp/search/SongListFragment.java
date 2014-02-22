@@ -1,4 +1,4 @@
-package com.alfa.HebrewSongDownloaderApp;
+package com.alfa.HebrewSongDownloaderApp.search;
 
 
 import android.database.Cursor;

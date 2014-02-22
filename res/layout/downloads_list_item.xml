@@ -1,0 +1,67 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:background="#ff629bff"
+		    android:weightSum="10"
+		    android:orientation="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			   android:layout_width="fill_parent"
+			   android:layout_height="fill_parent"
+			   android:background="#ff629bff"
+			   android:orientation="horizontal"
+			   android:layout_weight="2">
+
+	   <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				  android:layout_width="fill_parent"
+				  android:layout_height="fill_parent"
+				  android:background="#ff629bff"
+				  android:orientation="horizontal"
+				  android:layout_weight="6">
+		  <Button
+				android:id="@+id/downloadsCancelBtn"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="cancel"
+				android:focusable="false"/>
+
+	   </LinearLayout>
+
+	   <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				  android:layout_width="fill_parent"
+				  android:layout_height="fill_parent"
+				  android:background="#ff629bff"
+				  android:orientation="horizontal"
+				  android:layout_weight="2">
+
+		  <TextView
+				android:id="@+id/downloadsSongTitle"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:text="sample text"
+				android:gravity="right"/>
+
+	   </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			   android:layout_width="fill_parent"
+			   android:layout_height="fill_parent"
+			   android:background="#ff629bff"
+			   android:orientation="horizontal"
+			   android:layout_weight="8">
+
+	   <ProgressBar
+			 android:id="@+id/downloadsProgressBar"
+			 style="?android:attr/progressBarStyleHorizontal"
+			 android:layout_width="fill_parent"
+			 android:layout_height="wrap_content"
+			 android:progressDrawable="@drawable/custom_progress_bar"
+			 android:visibility="visible"/>
+
+    </LinearLayout>
+
+</LinearLayout>

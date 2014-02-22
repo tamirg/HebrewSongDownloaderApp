@@ -4,6 +4,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.view.View;
+import com.alfa.HebrewSongDownloaderApp.downloads.DownloadsFragment;
+import com.alfa.HebrewSongDownloaderApp.library.LibraryFragment;
+import com.alfa.HebrewSongDownloaderApp.search.SearchFragment;
 import com.alfa.utils.logic.LogUtils;
 import com.alfa.utils.logic.SharedPref;
 

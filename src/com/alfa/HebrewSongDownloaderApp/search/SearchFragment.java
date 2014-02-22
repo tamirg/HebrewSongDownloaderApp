@@ -1,4 +1,4 @@
-package com.alfa.HebrewSongDownloaderApp;
+package com.alfa.HebrewSongDownloaderApp.search;
 
 
 import android.content.Context;
@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import com.alfa.HebrewSongDownloaderApp.R;
 import com.alfa.utils.AsyncTaskManager;
 import com.alfa.utils.logic.LogUtils;
 

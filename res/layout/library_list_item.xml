@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:background="#ff81b2ff"
+		    android:weightSum="10"
+		    android:orientation="horizontal">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			   android:layout_width="fill_parent"
+			   android:layout_height="fill_parent"
+			   android:background="#ff629bff"
+			   android:orientation="horizontal"
+			   android:layout_weight="8">
+
+	   <Button
+			 android:layout_width="wrap_content"
+			 android:layout_height="wrap_content"
+			 android:text="delete"
+			 android:id="@+id/libraryDeleteBtn"
+			 android:focusable="false"/>
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			   android:layout_width="fill_parent"
+			   android:layout_height="fill_parent"
+			   android:background="#ff629bff"
+			   android:orientation="horizontal"
+			   android:layout_weight="2">
+
+	   <ImageView
+			 android:layout_height="wrap_content"
+			 android:layout_width="wrap_content"
+			 android:id="@+id/libraryPlayingIndicator"
+			 android:gravity="left"
+			 android:background="@drawable/ic_volume"
+			 android:visibility="invisible"/>
+
+	   <TextView
+			 android:id="@+id/librarySongTitle"
+			 android:layout_width="fill_parent"
+			 android:layout_height="fill_parent"
+			 android:textAppearance="?android:attr/textAppearanceMedium"
+			 android:text="sample text"
+			 android:gravity="right"/>
+
+    </LinearLayout>
+
+</LinearLayout>
