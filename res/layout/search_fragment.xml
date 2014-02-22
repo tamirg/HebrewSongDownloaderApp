@@ -21,10 +21,11 @@
 			 android:layout_weight="3"
 			 android:background="#ff629bff"
 			 android:orientation="vertical">
+
 		  <TextView
 				android:id="@+id/percentageProgress"
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
 				android:textAppearance="?android:attr/textAppearanceMedium"
 				android:textColor="#ffe74dff"
 				android:layout_gravity="bottom"
@@ -32,13 +33,13 @@
 
 		  <TextView
 				android:id="@+id/loadingText"
-				android:layout_width="fill_parent"
-				android:layout_height="fill_parent"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
 				android:textAppearance="?android:attr/textAppearanceMedium"
 				android:layout_gravity="right"
 				android:textStyle="italic"
 				android:visibility="visible"
-				android:ellipsize="none"/>
+				android:text="example text"/>
 
 	   </LinearLayout>
 

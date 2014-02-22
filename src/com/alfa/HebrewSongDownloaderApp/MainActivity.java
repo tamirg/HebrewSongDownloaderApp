@@ -237,7 +237,8 @@ public class MainActivity extends FragmentActivity implements
 
         String fixed = getString(R.string.loading_prefix);
         TextView loadingText = searchFragment.getLoadingText();
-        loadingText.setText(fixed + " " + query + "...");
+        String presentedText = fixed + " " + query;
+        loadingText.setText(presentedText + "...");
 
 
         this.searchFragment.executeSongSearch(this, query, actionBarProgressBar);
@@ -247,7 +248,13 @@ public class MainActivity extends FragmentActivity implements
     public boolean onQueryTextChange(String newText) {
         query = newText;
         String fixed = getString(R.string.loading_prefix);
-        searchFragment.getLoadingText().setText(fixed + " " + newText);
+        String presentedText = fixed + " " + newText;
+
+        if (newText.equals("")) {
+            presentedText = getString(R.string.empty_loading_text);
+        }
+        searchFragment.getLoadingText().setText(presentedText);
+
         LogUtils.logData("search_debug", "on change, new text : " + newText);
         return false;
     }

@@ -4,6 +4,7 @@
     <string name="search_hint">שיר, אלבום או אומן</string>
     <string name="loading_prefix">מחפש תוצאות עבור</string>
     <string name="loading_result_prefix">שירים שנמצאו עבור</string>
+    <string name="empty_loading_text">הזן שם שיר לחיפוש</string>
     <string name="song_download_success">השיר ירד בהצלחה</string>
     <string name="downloadFolder">/HebrewSongDownloads</string>
     <string name="song_download_execute">הורדת השיר החלה</string>
