@@ -28,7 +28,7 @@ public class LibraryFragment extends Fragment {
 
         LogUtils.logData("flow_debug", "LibraryFragment__setup");
         // load library fragment (player and library list)
-        FragmentUtils.loadLibraryFragment(getFragmentManager(), view.getContext());
+        FragmentUtils.loadLibraryFragment(view.getContext());
     }
 
     @Override

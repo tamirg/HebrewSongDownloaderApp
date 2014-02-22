@@ -8,11 +8,11 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.SearchView;
 import android.widget.TextView;
 import com.alfa.utils.logic.LogUtils;
+import com.alfa.utils.ui.FragmentUtils;
+import com.alfa.utils.ui.UIUtils;
 
 /**
  * Created by Micha on 2/18/14.
@@ -65,6 +65,7 @@ public class MainActivity extends FragmentActivity implements
         setupTabFragments();
         setupActionBar();
         setupTabs();
+        FragmentUtils.initFragmentManager(getSupportFragmentManager());
     }
 
     private void setupTabFragments() {
@@ -194,24 +195,6 @@ public class MainActivity extends FragmentActivity implements
         }
     }
 
-    /**
-     * Hides the soft keyboard
-     */
-    public void hideSoftKeyboard() {
-        if (getCurrentFocus() != null) {
-            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-            inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-        }
-    }
-
-    /**
-     * Shows the soft keyboard
-     */
-    public void showSoftKeyboard(View view) {
-        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-        view.requestFocus();
-        inputMethodManager.showSoftInput(view, 0);
-    }
 
     /**
      * ******************************************************************
@@ -223,6 +206,9 @@ public class MainActivity extends FragmentActivity implements
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
         // select tab on click
         viewPager.setCurrentItem(tab.getPosition());
+
+        // hide keyboard on tab select
+        UIUtils.hideSoftKeyboard(this);
     }
 
     @Override
@@ -243,18 +229,42 @@ public class MainActivity extends FragmentActivity implements
 
     private void executeSongSearch(String query) {
         LogUtils.logData("search_debug", "on submit, submitted : " + query);
-        hideSoftKeyboard();
+        UIUtils.hideSoftKeyboard(this);
+
+        String fixed = getString(R.string.loading_prefix);
         TextView loadingText = searchFragment.getLoadingText();
-        loadingText.setText(loadingText.getText() + "...");
+        loadingText.setText(fixed + " " + query + "...");
+
+
         this.searchFragment.executeSongSearch(this, query, actionBarProgressBar);
     }
 
     @Override
     public boolean onQueryTextChange(String newText) {
         query = newText;
-        String fixed = "מחפש תוצאות עבור ";
-        searchFragment.getLoadingText().setText(fixed + newText);
+        String fixed = getString(R.string.loading_prefix);
+        searchFragment.getLoadingText().setText(fixed + " " + newText);
         LogUtils.logData("search_debug", "on change, new text : " + newText);
         return false;
     }
+
+
+    /**
+     * ******************************************************************
+     * ****************** activity flow handling ************************
+     * ******************************************************************
+     */
+
+    @Override
+    protected void onResume() {
+        PlayerFragment.ResumePlayer();
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        PlayerFragment.PausePlayer();
+        super.onPause();
+    }
+
 }

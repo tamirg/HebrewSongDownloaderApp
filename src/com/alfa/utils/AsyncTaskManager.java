@@ -4,14 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Environment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.alfa.HebrewSongDownloaderApp.R;
-import com.alfa.HebrewSongDownloaderApp.SongListFragment;
 import com.alfa.utils.logic.LogUtils;
 import com.alfa.utils.logic.URLUtils;
 import com.alfa.utils.ui.FragmentUtils;
@@ -45,16 +42,15 @@ public class AsyncTaskManager {
      * @param query
      * @param loadingText
      * @param actionBarProgressBar
-     * @param fm
      */
     public static void getSongResult(Context context, String query, TextView loadingText,
-                                     MenuItem actionBarProgressBar, FragmentManager fm) {
+                                     MenuItem actionBarProgressBar) {
 
-        new SearchSongResults(context, query, loadingText, actionBarProgressBar, fm).execute();
+        new SearchSongResults(context, query, loadingText, actionBarProgressBar).execute();
     }
 
-    public static void downloadSong(Context context, String downloadUrl, String songName, FragmentManager fm) {
-        new DownloadSongResult(context, fm).execute(downloadUrl, songName);
+    public static void downloadSong(Context context, String downloadUrl, String songName) {
+        new DownloadSongResult(context).execute(downloadUrl, songName);
     }
 
     // fetch song result task
@@ -63,19 +59,17 @@ public class AsyncTaskManager {
         private String query;
         private MenuItem actionBarProgressBar;
         private TextView loadingText;
-        private FragmentManager fm;
         private String errorContent = "";
         private List<SongResult> songResults;
-
-        // TODO micha : think of better way of passing the song list to postExecute (pass to context?)
+        private Context context;
 
         public SearchSongResults(Context context, String query, TextView loadingText,
-                                 MenuItem actionBarProgressBar, FragmentManager fm) {
+                                 MenuItem actionBarProgressBar) {
             this.query = query;
             this.loadingText = loadingText;
             this.actionBarProgressBar = actionBarProgressBar;
-            this.fm = fm;
             this.songResults = new LinkedList<SongResult>();
+            this.context = context;
         }
 
         @Override
@@ -88,7 +82,7 @@ public class AsyncTaskManager {
             actionBarProgressBar.expandActionView();
 
             // load empty list fragment
-            LoadListFragment(null);
+            FragmentUtils.loadSongListFragment(null);
         }
 
         // fetch song results
@@ -102,7 +96,7 @@ public class AsyncTaskManager {
                 LogUtils.logData("fetch_songs", songResults.toString());
 
             } catch (Exception exc) {
-                errorContent = "אירעה שגיאה";
+                errorContent = context.getString(R.string.song_download_err);
             }
 
             return errorContent;
@@ -112,27 +106,14 @@ public class AsyncTaskManager {
         @Override
         protected void onPostExecute(String result) {
 
-            String fixedLoadingInfo = "שירים שנמצאו עבור ";
-            loadingText.setText(fixedLoadingInfo + this.query + " : ");
+
+            String fixedLoadingInfo = context.getString(R.string.loading_result_prefix);
+            loadingText.setText(fixedLoadingInfo + " " + this.query + " : ");
 
             actionBarProgressBar.collapseActionView();
             actionBarProgressBar.setActionView(null);
 
-            // TODO : should it be here?
-            LoadListFragment(this.songResults);
-        }
-
-        /**
-         * TODO : should be here?
-         */
-        private void LoadListFragment(List<SongResult> songResults) {
-
-            if (fm != null) {
-
-                FragmentTransaction ft = fm.beginTransaction();
-                ft.replace(R.id.list_container, new SongListFragment(songResults));
-                ft.commit();
-            }
+            FragmentUtils.loadSongListFragment(this.songResults);
         }
     }
 
@@ -147,11 +128,9 @@ public class AsyncTaskManager {
         private ProgressBar songDownloadProgressBar;
         private TextView percentageText;
         private TextView headlineViewText;
-        private FragmentManager fm;
 
-        public DownloadSongResult(Context appContext, FragmentManager fm) {
+        public DownloadSongResult(Context appContext) {
             this.context = appContext;
-            this.fm = fm;
             SONGS_DIRECTORY += "/HebrewSongDownloads";
 
             // setup view widgets
@@ -164,7 +143,7 @@ public class AsyncTaskManager {
         protected void onPreExecute() {
             super.onPreExecute();
 
-            UIUtils.PrintToast(context, "ההורדה החלה", Toast.LENGTH_LONG);
+            UIUtils.PrintToast(context, context.getString(R.string.song_download_execute), Toast.LENGTH_LONG);
             UIUtils.showProgressBar(songDownloadProgressBar, this.context);
 
         }
@@ -242,11 +221,13 @@ public class AsyncTaskManager {
                 UIUtils.showTextView(headlineViewText, this.context);
 
                 if (errorContent.equals("")) {
-                    UIUtils.PrintToast(context, "השיר ירד בהצלחה", Toast.LENGTH_LONG);
+                    UIUtils.PrintToast(context, context.getString(R.string.song_download_success), Toast.LENGTH_LONG);
 
-                    //LogUtils.logData("flow_debug", "DownloadSongResult__song was downloaded successfully");
-                    //LogUtils.logData("flow_debug", "DownloadSongResult__reloading library fragment..");
-                    FragmentUtils.loadLibraryFragment(fm, context);
+                    LogUtils.logData("flow_debug", "DownloadSongResult__downloaded song successfully!");
+                    LogUtils.logData("flow_debug", "DownloadSongResult__reloading library fragment..");
+
+                    FragmentUtils.loadLibraryFragment(context);
+
                 } else {
                     UIUtils.printError(context, errorContent);
                 }

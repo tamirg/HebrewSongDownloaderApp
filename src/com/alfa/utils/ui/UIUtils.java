@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 import com.alfa.utils.logic.SharedPref;
 
@@ -297,5 +298,32 @@ public class UIUtils {
 
         // execute thread
         t.start();
+    }
+
+
+    /**
+     * hides keyboard from activity
+     *
+     * @param context
+     */
+    public static void hideSoftKeyboard(Context context) {
+        Activity act = (Activity) context;
+        if (act.getCurrentFocus() != null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) act.getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(act.getCurrentFocus().getWindowToken(), 0);
+        }
+    }
+
+    /**
+     * show keyboard on activity
+     *
+     * @param context
+     * @param view
+     */
+    public static void showSoftKeyboard(Context context, View view) {
+        Activity act = (Activity) context;
+        InputMethodManager inputMethodManager = (InputMethodManager) act.getSystemService(Context.INPUT_METHOD_SERVICE);
+        view.requestFocus();
+        inputMethodManager.showSoftInput(view, 0);
     }
 }

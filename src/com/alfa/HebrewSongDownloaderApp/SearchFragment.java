@@ -86,7 +86,7 @@ public class SearchFragment extends Fragment {
 
 
             // get song result from search engine
-            AsyncTaskManager.getSongResult(c, query, loadingText, actionBarProgressBar, fm);
+            AsyncTaskManager.getSongResult(c, query, loadingText, actionBarProgressBar);
 
         } catch (Exception e) {
             LogUtils.logError("fetch_song_results", e.toString());

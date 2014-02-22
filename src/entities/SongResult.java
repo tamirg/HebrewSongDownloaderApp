@@ -44,7 +44,7 @@ public class SongResult {
     }
 
     public void downloadSongResult(View v, FragmentManager fm) {
-        AsyncTaskManager.downloadSong(v.getContext(), this.getDownloadURL(), this.getNameOfSong(), fm);
+        AsyncTaskManager.downloadSong(v.getContext(), this.getDownloadURL(), this.getNameOfSong());
 
     }
 

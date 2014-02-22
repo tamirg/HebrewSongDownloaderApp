@@ -7,6 +7,7 @@ import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import com.alfa.utils.logic.LogUtils;
@@ -32,6 +33,7 @@ public class LibrarySongsFragment extends ListFragment {
                 inflater.getContext(), android.R.layout.simple_list_item_1,
                 getSongs());
         setListAdapter(adapter);
+
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
@@ -65,6 +67,8 @@ public class LibrarySongsFragment extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
 
+        l.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
+
         if (prevSelected != null) {
             prevSelected.setSelected(false);
         }
@@ -72,6 +76,7 @@ public class LibrarySongsFragment extends ListFragment {
         v.setSelected(true);
         v.setBackgroundColor(getResources().getColor(android.R.color.tab_indicator_text));
         prevSelected = v;
+
         try {
             PlayerFragment.playSongAt(position);
         } catch (Exception e) {

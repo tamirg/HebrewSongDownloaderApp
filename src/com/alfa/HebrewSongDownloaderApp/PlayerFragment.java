@@ -34,11 +34,15 @@ public class PlayerFragment extends Fragment {
     private static int currentSongPosition;
     private static boolean playerInitialized = false;
 
+    private static enum PLAYER_STATE {PLAY, PAUSE, STOP, NA}
+
+    ;
+    private static PLAYER_STATE state;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         LogUtils.logData("flow_debug", "PlayerFragment__create");
-
         View view = inflater.inflate(R.layout.player_fragment, container, false);
         setupFragmentView(view);
         return view;
@@ -142,6 +146,7 @@ public class PlayerFragment extends Fragment {
         currentSongPosition = 0;
         context = playerContext;
         songs = new LinkedList<Uri>();
+        state = PLAYER_STATE.NA;
     }
 
     public static void initMediaPlayer(Uri song) {
@@ -150,12 +155,12 @@ public class PlayerFragment extends Fragment {
 
         prevPlayer = mPlayer;
         mPlayer = MediaPlayer.create(context, song);
-
         mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             public void onCompletion(MediaPlayer player) {
                 playNextSong();
             }
         });
+        state = PLAYER_STATE.NA;
     }
 
     public static void reloadSongList(List<String> songNames) {
@@ -204,13 +209,13 @@ public class PlayerFragment extends Fragment {
                 prevPlayer.stop();
             }
 
-            // unexpected, should not happen
+            // replay song after stop
             if (mPlayer == null) {
                 playSongAt(currentSongPosition);
                 return;
             }
 
-            // start current song
+            // start current song or continue already played one
             mPlayer.start();
 
             setPlayingMode();
@@ -296,6 +301,7 @@ public class PlayerFragment extends Fragment {
         stopButton.setEnabled(false);
         prevButton.setEnabled(false);
         nextButton.setEnabled(false);
+        state = PLAYER_STATE.NA;
     }
 
     public static void setPlayingMode() {
@@ -304,6 +310,7 @@ public class PlayerFragment extends Fragment {
         stopButton.setEnabled(true);
         prevButton.setEnabled(true);
         nextButton.setEnabled(true);
+        state = PLAYER_STATE.PLAY;
     }
 
     public static void setPauseMode() {
@@ -312,6 +319,7 @@ public class PlayerFragment extends Fragment {
         stopButton.setEnabled(true);
         prevButton.setEnabled(true);
         nextButton.setEnabled(true);
+        state = PLAYER_STATE.PAUSE;
     }
 
     public static void setStopMode() {
@@ -320,7 +328,35 @@ public class PlayerFragment extends Fragment {
         stopButton.setEnabled(false);
         prevButton.setEnabled(true);
         nextButton.setEnabled(true);
+        state = PLAYER_STATE.STOP;
     }
 
+    /**
+     * ******************************************************************
+     * ************** Player revive functionality ***********************
+     * ******************************************************************
+     */
+
+    public static void PausePlayer() {
+
+        if (state == null) {
+            return;
+        }
+
+        if (state.equals(PLAYER_STATE.PLAY)) {
+            pauseSong();
+        }
+    }
+
+    public static void ResumePlayer() {
+
+        if (state == null) {
+            return;
+        }
+
+        if (state.equals(PLAYER_STATE.PAUSE)) {
+            startSong();
+        }
+    }
 
 }
