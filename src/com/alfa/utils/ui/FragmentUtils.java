@@ -99,7 +99,13 @@ public class FragmentUtils {
     public static void filterLibrary(Context context, String filter) {
 
         List<String> filteredSongs = new ArrayList<String>();
-        List<String> backupLibrarySongs = new ArrayList<String>(librarySongs);
+        List<String> backupLibrarySongs;
+
+        if (librarySongs == null) {
+            librarySongs = DataUtils.getSongNamesFromDirectory();
+        }
+
+        backupLibrarySongs = new ArrayList<String>(librarySongs);
 
         if (filter.length() > 0) {
             for (String songName : backupLibrarySongs) {
@@ -118,32 +124,10 @@ public class FragmentUtils {
 
         LogUtils.logData("flow_debug", "FragmentUtils__loading library fragment..");
 
-        fm = parentActivity.getSupportFragmentManager();
-
-        if (fm != null) {
-
-            FragmentTransaction ft = fm.beginTransaction();
-
-            librarySongs = DataUtils.getSongNamesFromDirectory();
-
-            LibrarySongsFragment libSongFragment = new LibrarySongsFragment(librarySongs);
-            PlayerFragment player = libSongFragment.createPlayer(context);
-
-            // load player
-            LogUtils.logData("flow_debug", "FragmentUtils__replacing player fragment..");
-            ft.replace(R.id.player_container, player);
-            ft.addToBackStack(null);
-
-            // load file list
-            LogUtils.logData("flow_debug", "FragmentUtils__replacing library song fragment..");
-            ft.replace(R.id.library_files_container, libSongFragment);
-            ft.addToBackStack(null);
-            ft.commitAllowingStateLoss();
-        }
+        librarySongs = DataUtils.getSongNamesFromDirectory();
+        loadLibraryFragment(context, librarySongs);
     }
 
-
-    // TODO : remove or merge with previous function
     public static void loadLibraryFragment(Context context, List<String> filteredList) {
 
         LogUtils.logData("flow_debug", "FragmentUtils__loading library fragment..");

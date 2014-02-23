@@ -29,7 +29,6 @@ public class DownloadsAdapter extends BaseAdapter implements View.OnClickListene
         this.downloadsList = downloadsList;
         this.localResource = localResource;
         DownloadsAdapter.inflater = inflater;
-
     }
 
     // implement inner list functions
@@ -61,15 +60,16 @@ public class DownloadsAdapter extends BaseAdapter implements View.OnClickListene
         } else
             rowContainer = (DownloadsRowContainer) rowContainer.rowView.getTag();
 
-        if (downloadsList.size() <= 0) {
-            rowContainer.songTitle.setText("no downloaded songs");
-        } else {
+        if (downloadsList.size() > 0) {
 
             // get model for the current list position
             downloadsModel = (DownloadsModel) downloadsList.get(position);
 
             // handle downloads model
             rowContainer.songTitle.setText(downloadsModel.getSongTitle());
+            rowContainer.cancel.setVisibility(View.VISIBLE);
+            rowContainer.downloadProgressBar.setVisibility(View.VISIBLE);
+
 
             // set click listener for current row
             rowContainer.rowView.setOnClickListener(new OnItemClickListener(position, rowContainer));
@@ -123,6 +123,7 @@ public class DownloadsAdapter extends BaseAdapter implements View.OnClickListene
     }
 
     private void setupButtons(final DownloadsRowContainer rowContainer) {
+
         rowContainer.cancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO : tamir, handel song download cancel

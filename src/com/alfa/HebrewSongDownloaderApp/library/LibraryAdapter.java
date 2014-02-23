@@ -71,7 +71,8 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
 
             // handle model libraryList
             rowContainer.songTitle.setText(libraryModel.getSongTitle());
-
+            rowContainer.delete.setVisibility(View.VISIBLE);
+            
             // set click listener for current row
             rowContainer.rowView.setOnClickListener(new OnItemClickListener(position, rowContainer));
 
@@ -125,7 +126,6 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
     private void setupButtons(final LibraryRowContainer rowContainer) {
 
         // show delete button
-        rowContainer.delete.setVisibility(View.VISIBLE);
 
         rowContainer.delete.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

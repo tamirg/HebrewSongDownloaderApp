@@ -23,7 +23,8 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="cancel"
-				android:focusable="false"/>
+				android:focusable="false"
+				android:visibility="invisible"/>
 
 	   </LinearLayout>
 
@@ -39,7 +40,6 @@
 				android:layout_width="fill_parent"
 				android:layout_height="fill_parent"
 				android:textAppearance="?android:attr/textAppearanceMedium"
-				android:text="sample text"
 				android:gravity="right"/>
 
 	   </LinearLayout>
@@ -60,7 +60,7 @@
 			 android:layout_width="fill_parent"
 			 android:layout_height="wrap_content"
 			 android:progressDrawable="@drawable/custom_progress_bar"
-			 android:visibility="visible"/>
+			 android:visibility="invisible"/>
 
     </LinearLayout>
 
