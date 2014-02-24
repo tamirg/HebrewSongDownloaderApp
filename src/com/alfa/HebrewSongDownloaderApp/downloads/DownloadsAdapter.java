@@ -17,16 +17,16 @@ import java.util.List;
 public class DownloadsAdapter extends BaseAdapter implements View.OnClickListener {
 
     private DownloadListFragment downloadListFragment;
-    private List downloadsList;
+    public List<DownloadsModel> downloadsModels;
+
     private static LayoutInflater inflater;
     private static List<DownloadsRowContainer> rowContainers = null;
     public Resources localResource;
-    DownloadsModel downloadsModel;
 
-    public DownloadsAdapter(DownloadListFragment downloadListFragment, LayoutInflater inflater, List downloadsList, Resources localResource) {
+    public DownloadsAdapter(DownloadListFragment downloadListFragment, LayoutInflater inflater, Resources localResource) {
 
         this.downloadListFragment = downloadListFragment;
-        this.downloadsList = downloadsList;
+        this.downloadsModels = DownloadListFragment.getDownloadsListModels();
         this.localResource = localResource;
         DownloadsAdapter.inflater = inflater;
     }
@@ -34,9 +34,9 @@ public class DownloadsAdapter extends BaseAdapter implements View.OnClickListene
     // implement inner list functions
     public int getCount() {
 
-        if (downloadsList.size() <= 0)
-            return 1;
-        return downloadsList.size();
+        //if (downloadsModels.size() <= 0)
+        //   return 1;
+        return downloadsModels.size();
     }
 
     public Object getItem(int position) {
@@ -60,16 +60,15 @@ public class DownloadsAdapter extends BaseAdapter implements View.OnClickListene
         } else
             rowContainer = (DownloadsRowContainer) rowContainer.rowView.getTag();
 
-        if (downloadsList.size() > 0) {
+        if (downloadsModels.size() > 0) {
 
             // get model for the current list position
-            downloadsModel = (DownloadsModel) downloadsList.get(position);
+            DownloadsModel downloadsModel = downloadsModels.get(position);
 
             // handle downloads model
             rowContainer.songTitle.setText(downloadsModel.getSongTitle());
             rowContainer.cancel.setVisibility(View.VISIBLE);
             rowContainer.downloadProgressBar.setVisibility(View.VISIBLE);
-
 
             // set click listener for current row
             rowContainer.rowView.setOnClickListener(new OnItemClickListener(position, rowContainer));

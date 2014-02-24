@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.alfa.utils.logic.LogUtils;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -17,13 +18,17 @@ import java.util.List;
 public class DownloadListFragment extends ListFragment {
 
     private List<String> songNames;
+    private static DownloadsAdapter downloadsAdapter;
+    private static List<DownloadsModel> downloadsModels = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         LogUtils.logData("flow_debug", "DownloadListFragment__create");
 
-        DownloadsAdapter downloadsAdapter = new DownloadsAdapter(this, inflater, getListModel(), getResources());
+        setListModels();
+
+        downloadsAdapter = new DownloadsAdapter(this, inflater, getResources());
         setListAdapter(downloadsAdapter);
         return super.onCreateView(inflater, container, savedInstanceState);
     }
@@ -39,14 +44,14 @@ public class DownloadListFragment extends ListFragment {
         this.songNames = songNames;
     }
 
-    // on item click used by libraryAdapter
+    // on item click used by downloadsAdapter
     public void onItemClick(int position, DownloadsAdapter.DownloadsRowContainer rowContainer) {
         // TODO : need to do something?
     }
 
-    public List<DownloadsModel> getListModel() {
+    public void setListModels() {
 
-        List<DownloadsModel> downloadsModel = new ArrayList<DownloadsModel>();
+        downloadsModels = new LinkedList<DownloadsModel>();
 
         DownloadsModel libModel;
 
@@ -59,10 +64,16 @@ public class DownloadListFragment extends ListFragment {
             libModel.setSongTitle(songName);
 
             // add current model to model list
-            downloadsModel.add(libModel);
+            downloadsModels.add(libModel);
         }
+    }
 
-        return downloadsModel;
+    public static List<DownloadsModel> getDownloadsListModels() {
+        return downloadsModels;
+    }
+
+    public static void updateListChange() {
+        downloadsAdapter.notifyDataSetChanged();
     }
 
 

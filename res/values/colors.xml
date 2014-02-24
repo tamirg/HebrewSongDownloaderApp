@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFF</color>
+    <color name="list_default">#629BFF</color>
+    <color name="list_selected">#ff4e6aba</color>
+</resources>

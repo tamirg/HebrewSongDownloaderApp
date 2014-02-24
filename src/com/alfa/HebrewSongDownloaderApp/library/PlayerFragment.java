@@ -156,6 +156,14 @@ public class PlayerFragment extends Fragment {
         LogUtils.logData("flow_debug", "PlayerFragment__initializing media player");
 
         prevPlayer = mPlayer;
+
+        if (previousSongPosition >= 0) {
+            removeIndicator(previousSongPosition);
+        }
+
+        setIndicator(songPosition);
+        previousSongPosition = songPosition;
+
         mPlayer = MediaPlayer.create(context, songs.get(songPosition));
         mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             public void onCompletion(MediaPlayer player) {
@@ -263,9 +271,6 @@ public class PlayerFragment extends Fragment {
         // start current song
         startSong();
 
-        // set previous position
-        previousSongPosition = currentSongPosition - 1;
-
         // circular functionality
         if (currentSongPosition + 1 >= songs.size()) {
             currentSongPosition = -1;
@@ -290,9 +295,6 @@ public class PlayerFragment extends Fragment {
 
         // start current song
         startSong();
-
-        // set previous position
-        previousSongPosition = currentSongPosition + 1;
 
         // circular functionality
         if (currentSongPosition <= 0) {
@@ -360,6 +362,38 @@ public class PlayerFragment extends Fragment {
         ImageView playingIndicator = LibraryAdapter.getRowContainer(currentSongPosition).playingIndicator;
         playingIndicator.setVisibility(View.INVISIBLE);
 
+    }
+
+    public static void setIndicator(int position) {
+
+        try {
+            LogUtils.logData("indicator", "setting indicator on " + position);
+          /*  //List<LibraryAdapter.LibraryRowContainer> containers = LibraryAdapter.getRowContainers();
+            //ImageView prevPlayingIndicator = containers.get(position).playingIndicator;
+            ImageView indicator = LibraryAdapter.getRowContainer(position).playingIndicator;
+            indicator.setVisibility(View.VISIBLE); */
+
+            LibrarySongsFragment.setPlaying(position, true);
+
+        } catch (Exception e) {
+            LogUtils.logError("indicator", e.toString());
+        }
+
+    }
+
+    public static void removeIndicator(int position) {
+        try {
+            LogUtils.logData("indicator", "removing indicator from " + position);
+           /* //<LibraryAdapter.LibraryRowContainer> containers = LibraryAdapter.getRowContainers();
+            //ImageView prevPlayingIndicator = containers.get(position).playingIndicator;
+            ImageView indicator = LibraryAdapter.getRowContainer(position).playingIndicator;
+            indicator.setVisibility(View.INVISIBLE); */
+
+            LibrarySongsFragment.setPlaying(position, false);
+
+        } catch (Exception e) {
+            LogUtils.logError("indicator", e.toString());
+        }
     }
 
     /**

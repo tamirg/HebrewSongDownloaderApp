@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.alfa.utils.logic.LogUtils;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -18,14 +18,19 @@ import java.util.List;
 public class LibrarySongsFragment extends ListFragment {
 
     private List<String> songNames;
+    private static LibraryAdapter libraryAdapter;
+    private static List<LibraryListModel> libraryListModels;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         LogUtils.logData("flow_debug", "LibrarySongsFragment__create");
 
-        LibraryAdapter libraryAdapter = new LibraryAdapter(this, inflater, getListModel(), getResources());
+        setListModels();
+
+        libraryAdapter = new LibraryAdapter(this, inflater, getResources());
         setListAdapter(libraryAdapter);
+
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
@@ -54,9 +59,9 @@ public class LibrarySongsFragment extends ListFragment {
         }
     }
 
-    public List<LibraryListModel> getListModel() {
+    public void setListModels() {
 
-        List<LibraryListModel> libraryListModel = new ArrayList<LibraryListModel>();
+        libraryListModels = new LinkedList<LibraryListModel>();
 
         LibraryListModel libModel;
 
@@ -68,10 +73,26 @@ public class LibrarySongsFragment extends ListFragment {
             // set list row song title to the current value
             libModel.setSongTitle(songName);
 
+            // set playing mode to be false
+            libModel.setPlaying(false);
+
             // add current model to model list
-            libraryListModel.add(libModel);
+            libraryListModels.add(libModel);
         }
 
-        return libraryListModel;
     }
+
+    public static void setPlaying(int position, boolean isPlaying) {
+        libraryListModels.get(position).setPlaying(isPlaying);
+        updateListChange();
+    }
+
+    public static List<LibraryListModel> getLibraryListModels() {
+        return libraryListModels;
+    }
+
+    public static void updateListChange() {
+        libraryAdapter.notifyDataSetChanged();
+    }
+
 }

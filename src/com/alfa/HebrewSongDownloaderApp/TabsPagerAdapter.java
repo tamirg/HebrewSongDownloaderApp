@@ -7,7 +7,6 @@ import android.view.View;
 import com.alfa.HebrewSongDownloaderApp.downloads.DownloadsFragment;
 import com.alfa.HebrewSongDownloaderApp.library.LibraryFragment;
 import com.alfa.HebrewSongDownloaderApp.search.SearchFragment;
-import com.alfa.utils.logic.LogUtils;
 import com.alfa.utils.logic.SharedPref;
 
 
@@ -60,7 +59,7 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
         if (SharedPref.destroyTabFragmentOnAction) {
             super.destroyItem(container, position, object);
         } else {
-            LogUtils.logData("flow_debug", "TabsPagerAdapter__did not destroy fragment [" + position + "] (" + object.toString() + ")");
+            // LogUtils.logData("flow_debug", "TabsPagerAdapter__did not destroy fragment [" + position + "] (" + object.toString() + ")");
         }
     }
 }

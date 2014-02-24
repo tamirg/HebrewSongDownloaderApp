@@ -10,36 +10,36 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.alfa.HebrewSongDownloaderApp.R;
 import com.alfa.utils.logic.DataUtils;
+import com.alfa.utils.logic.LogUtils;
 import com.alfa.utils.ui.FragmentUtils;
 
-import java.util.LinkedList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 // custom adapter to the library list view
 public class LibraryAdapter extends BaseAdapter implements View.OnClickListener {
 
     private LibrarySongsFragment libSongFragment;
-    private List libraryList;
-    private static LayoutInflater inflater;
-    private static List<LibraryRowContainer> rowContainers = null;
-    public Resources localResource;
-    LibraryListModel libraryModel;
+    private LayoutInflater inflater;
+    private static Map<Integer, LibraryRowContainer> rowContainers = null;
+    private Resources localResource;
+    private List<LibraryListModel> libraryListModels;
 
-    public LibraryAdapter(LibrarySongsFragment libSongFragment, LayoutInflater inflater, List libraryList, Resources localResource) {
+    public LibraryAdapter(LibrarySongsFragment libSongFragment, LayoutInflater inflater, Resources localResource) {
 
         this.libSongFragment = libSongFragment;
-        this.libraryList = libraryList;
         this.localResource = localResource;
-        LibraryAdapter.inflater = inflater;
-
+        this.libraryListModels = LibrarySongsFragment.getLibraryListModels();
+        this.inflater = inflater;
     }
 
     // implement inner list functions
     public int getCount() {
 
-        if (libraryList.size() <= 0)
-            return 1;
-        return libraryList.size();
+        //if (libraryList.size() <= 0)
+        //  return 1;
+        return libraryListModels.size();
     }
 
     public Object getItem(int position) {
@@ -50,41 +50,54 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
         return position;
     }
 
-    // get view for each list row
+    // get view for each list row asynchronously when view is visible to the user
     public View getView(int position, View convertView, ViewGroup parent) {
-
         LibraryRowContainer rowContainer = new LibraryRowContainer();
         rowContainer.rowView = convertView;
         rowContainer.playerState = PlayerFragment.PLAYER_STATE.NA;
 
         if (convertView == null) {
-
             setupCurrentView(rowContainer);
-
-        } else
+        } else {
             rowContainer = (LibraryRowContainer) rowContainer.rowView.getTag();
+        }
 
-        if (libraryList.size() > 0) {
+        setupCurrentView(rowContainer);
+
+        if (libraryListModels.size() > 0) {
 
             // get model for the current list position
-            libraryModel = (LibraryListModel) libraryList.get(position);
+            LibraryListModel libraryModel = libraryListModels.get(position);
 
             // handle model libraryList
             rowContainer.songTitle.setText(libraryModel.getSongTitle());
             rowContainer.delete.setVisibility(View.VISIBLE);
-            
+
+            if (libraryModel.isPlaying()) {
+                LogUtils.logData("get_view", "setting  " + position + " visible");
+                rowContainer.playingIndicator.setVisibility(View.VISIBLE);
+            } else {
+                LogUtils.logData("get_view", "setting  " + position + " invisible");
+                rowContainer.playingIndicator.setVisibility(View.INVISIBLE);
+            }
+
+            // just for debug
+            rowContainer.listPosition = position;
+
             // set click listener for current row
             rowContainer.rowView.setOnClickListener(new OnItemClickListener(position, rowContainer));
 
             if (rowContainers == null) {
-                rowContainers = new LinkedList<LibraryRowContainer>();
+                rowContainers = new HashMap<Integer, LibraryRowContainer>();
+            } else if (rowContainers.get(position) == null) {
+                rowContainers.put(position, rowContainer);
             }
 
-            rowContainers.add(rowContainer);
         }
 
         return rowContainer.rowView;
     }
+
 
     private void setupCurrentView(LibraryRowContainer rowContainer) {
 
@@ -101,8 +114,9 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-
+        //v.setBackgroundColor(0x4F76C7);
     }
+
 
     // set click functionality
     private class OnItemClickListener implements View.OnClickListener {
@@ -130,7 +144,6 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
         rowContainer.delete.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 DataUtils.deleteFile(rowContainer.songTitle.getText().toString());
-
                 FragmentUtils.loadLibraryFragment(v.getContext());
             }
         });
@@ -144,11 +157,14 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
         public ImageView playingIndicator;
         public Button delete;
         public PlayerFragment.PLAYER_STATE playerState;
+        public int listPosition;
 
     }
 
     public static LibraryRowContainer getRowContainer(int position) {
         return rowContainers.get(position);
     }
+
+
 }
 
