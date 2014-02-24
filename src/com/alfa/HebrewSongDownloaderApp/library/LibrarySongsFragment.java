@@ -7,7 +7,9 @@ import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 import com.alfa.utils.logic.LogUtils;
+import com.alfa.utils.ui.UIUtils;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -17,9 +19,21 @@ import java.util.List;
  */
 public class LibrarySongsFragment extends ListFragment {
 
+    /**
+     * ******************************************************************
+     * ******************* Library data members  ************************
+     * ******************************************************************
+     */
+
     private List<String> songNames;
     private static LibraryAdapter libraryAdapter;
     private static List<LibraryListModel> libraryListModels;
+
+    /**
+     * ******************************************************************
+     * ******************* Library view functions  **********************
+     * ******************************************************************
+     */
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,7 +63,7 @@ public class LibrarySongsFragment extends ListFragment {
         this.songNames = songNames;
     }
 
-    // on item click used by libraryAdapter
+    // on item click event
     public void onItemClick(int position, LibraryAdapter.LibraryRowContainer rowContainer) {
         try {
             PlayerFragment.playSongAt(position);
@@ -58,6 +72,31 @@ public class LibrarySongsFragment extends ListFragment {
             //UIUtils.printError(v.getContext(), "play song from list item:" + e.toString());
         }
     }
+
+    // on long item click event
+    public void onItemLongClick(int position, LibraryAdapter.LibraryRowContainer rowContainer) {
+        try {
+            // just for test
+            UIUtils.PrintToast(rowContainer.rowView.getContext(), "long click test", Toast.LENGTH_SHORT);
+
+            // TODO : micha (rename feature)
+
+            // 1) make song title text view invisible
+            // 2) make edit text visible
+            // 3) set edit text value to be the song title value
+            // 4) update list on modification
+
+
+        } catch (Exception e) {
+            //UIUtils.printError(v.getContext(), "play song from list item:" + e.toString());
+        }
+    }
+
+    /**
+     * ******************************************************************
+     * ******************* Library Model functions  *********************
+     * ******************************************************************
+     */
 
     public void setListModels() {
 
@@ -82,17 +121,37 @@ public class LibrarySongsFragment extends ListFragment {
 
     }
 
-    public static void setPlaying(int position, boolean isPlaying) {
-        libraryListModels.get(position).setPlaying(isPlaying);
-        updateListChange();
-    }
-
     public static List<LibraryListModel> getLibraryListModels() {
         return libraryListModels;
     }
 
-    public static void updateListChange() {
+
+    /**
+     * ******************************************************************
+     * ******************* Library adapter functions  *******************
+     * ******************************************************************
+     */
+
+    // update list modifications when changing one of the list views
+    public static void updateListModifications() {
         libraryAdapter.notifyDataSetChanged();
     }
+
+    /**
+     * ******************************************************************
+     * ******************** Library API functions  **********************
+     * ******************************************************************
+     */
+
+    public static void setPlaying(int position, boolean isPlaying) {
+
+        if (position < 0 || position >= libraryListModels.size()) {
+            return;
+        }
+
+        libraryListModels.get(position).setPlaying(isPlaying);
+        updateListModifications();
+    }
+
 
 }

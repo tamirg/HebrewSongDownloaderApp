@@ -17,6 +17,12 @@ import java.util.List;
  */
 public class DownloadListFragment extends ListFragment {
 
+    /**
+     * ******************************************************************
+     * ******************* Downloads data members  **********************
+     * ******************************************************************
+     */
+
     private List<String> songNames;
     private static DownloadsAdapter downloadsAdapter;
     private static List<DownloadsModel> downloadsModels = null;
@@ -49,6 +55,12 @@ public class DownloadListFragment extends ListFragment {
         // TODO : need to do something?
     }
 
+    /**
+     * ******************************************************************
+     * ****************** Downloads model functions  ********************
+     * ******************************************************************
+     */
+
     public void setListModels() {
 
         downloadsModels = new LinkedList<DownloadsModel>();
@@ -63,17 +75,56 @@ public class DownloadListFragment extends ListFragment {
             // set list row song title to the current value
             libModel.setSongTitle(songName);
 
+            // initialize progress
+            libModel.setProgressPercentage(0);
+
             // add current model to model list
             downloadsModels.add(libModel);
         }
     }
 
     public static List<DownloadsModel> getDownloadsListModels() {
+
         return downloadsModels;
     }
 
-    public static void updateListChange() {
+    /**
+     * ******************************************************************
+     * ****************** Downloads adapter functions  ******************
+     * ******************************************************************
+     */
+
+    // update list modifications when changing one of the list views
+    public static void updateListModifications() {
         downloadsAdapter.notifyDataSetChanged();
+    }
+
+    /**
+     * ******************************************************************
+     * ****************** Downloads API functions  **********************
+     * ******************************************************************
+     */
+
+    public static void publishProgressAt(int position, String... progress) {
+
+        // TODO for tamir
+        // put in here what ever you need, just need to be added to the model
+        // if it is more convenient for you, you can send here the song name or url or whatever
+
+        if (position < 0 || position >= downloadsModels.size()) {
+            return;
+        }
+
+        try {
+            int progressPercentage = Integer.parseInt(progress[0]);
+            downloadsModels.get(position).setProgressPercentage(progressPercentage);
+
+            LogUtils.logData("progress_publish", " publishing " + progressPercentage + " to position " + position);
+            updateListModifications();
+        } catch (Exception e) {
+            LogUtils.logError("progress_publish", e.getStackTrace().toString());
+
+        }
     }
 
 

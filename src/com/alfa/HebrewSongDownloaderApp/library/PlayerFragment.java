@@ -329,17 +329,6 @@ public class PlayerFragment extends Fragment {
         prevButton.setEnabled(true);
         nextButton.setEnabled(true);
         state = PLAYER_STATE.PLAY;
-
-        /*ImageView playingIndicator = LibraryAdapter.getRowContainer(pos).playingIndicator;
-        playingIndicator.setVisibility(View.VISIBLE);
-
-        if (previousSongPosition > 0 && previousSongPosition < songs.size()) {
-            ImageView prevPlayingIndicator = LibraryAdapter.getRowContainer(previousSongPosition).playingIndicator;
-            prevPlayingIndicator.setVisibility(View.INVISIBLE);
-        }
-
-        previousSongPosition = currentSongPosition;*/
-
     }
 
     public static void setPauseMode() {
@@ -367,14 +356,7 @@ public class PlayerFragment extends Fragment {
     public static void setIndicator(int position) {
 
         try {
-            LogUtils.logData("indicator", "setting indicator on " + position);
-          /*  //List<LibraryAdapter.LibraryRowContainer> containers = LibraryAdapter.getRowContainers();
-            //ImageView prevPlayingIndicator = containers.get(position).playingIndicator;
-            ImageView indicator = LibraryAdapter.getRowContainer(position).playingIndicator;
-            indicator.setVisibility(View.VISIBLE); */
-
             LibrarySongsFragment.setPlaying(position, true);
-
         } catch (Exception e) {
             LogUtils.logError("indicator", e.toString());
         }
@@ -383,14 +365,7 @@ public class PlayerFragment extends Fragment {
 
     public static void removeIndicator(int position) {
         try {
-            LogUtils.logData("indicator", "removing indicator from " + position);
-           /* //<LibraryAdapter.LibraryRowContainer> containers = LibraryAdapter.getRowContainers();
-            //ImageView prevPlayingIndicator = containers.get(position).playingIndicator;
-            ImageView indicator = LibraryAdapter.getRowContainer(position).playingIndicator;
-            indicator.setVisibility(View.INVISIBLE); */
-
             LibrarySongsFragment.setPlaying(position, false);
-
         } catch (Exception e) {
             LogUtils.logError("indicator", e.toString());
         }

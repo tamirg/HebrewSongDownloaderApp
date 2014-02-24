@@ -1,4 +1,4 @@
-package com.alfa.utils;
+package com.alfa.utils.async;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,6 +9,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.alfa.HebrewSongDownloaderApp.R;
+import com.alfa.HebrewSongDownloaderApp.downloads.DownloadListFragment;
 import com.alfa.utils.logic.LogUtils;
 import com.alfa.utils.logic.URLUtils;
 import com.alfa.utils.ui.FragmentUtils;
@@ -25,6 +26,7 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Micha on 2/7/14.
@@ -94,7 +96,6 @@ public class AsyncTaskManager {
             try {
 
                 songResults = fetchSongsInstance.getSongResults(this.query);
-                LogUtils.logData("fetch_songs", songResults.toString());
 
             } catch (Exception exc) {
                 errorContent = context.getString(R.string.song_download_err);
@@ -148,13 +149,18 @@ public class AsyncTaskManager {
             UIUtils.showProgressBar(songDownloadProgressBar, this.context);
 
 
-            // for tamir : example!
+            // TODO : tamir, remove after implementing this. this is an example!
+            ////////////////////////////////////////////////////////////////////
             // you should replace it with read downloaded songs
+
             List<String> downloadedSongs = new ArrayList<String>();
             downloadedSongs.add("song 1");
             downloadedSongs.add("song 2");
             downloadedSongs.add("song 3");
             FragmentUtils.loadDownloadsListFragment(downloadedSongs);
+
+            ////////////////////////////////////////////////////////////////////
+            // TODO : tamir, remove after implementing this. this is an example!
 
         }
 
@@ -163,6 +169,21 @@ public class AsyncTaskManager {
          */
         @Override
         protected String doInBackground(String... params) {
+
+            // TODO : tamir, remove after implementing this. this is an example!
+            ////////////////////////////////////////////////////////////////////
+            // you should replace it with read downloaded songs
+
+            Random random = new Random();
+            int rand = random.nextInt(20);
+            DownloadListFragment.publishProgressAt(0, rand + "");
+            DownloadListFragment.publishProgressAt(1, rand * 2 + "");
+            DownloadListFragment.publishProgressAt(2, rand * 3 + "");
+
+            ////////////////////////////////////////////////////////////////////
+            // TODO : tamir, remove after implementing this. this is an example!
+
+
             FetchSongs fetchSongsInstance = FetchSongs.getInstance();
             String songFinalDownloadURL = params[0];
             String songFileName = params[1];

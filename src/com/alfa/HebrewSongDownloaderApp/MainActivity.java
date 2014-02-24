@@ -96,6 +96,7 @@ public class MainActivity extends FragmentActivity implements
         this.actionBar = getActionBar();
         actionBar.setHomeButtonEnabled(false);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
     }
 
     // setup tab functionality
@@ -258,15 +259,16 @@ public class MainActivity extends FragmentActivity implements
 
     private void executeSongSearch(String query) {
         LogUtils.logData("search_debug", "on submit, submitted : " + query);
-        UIUtils.hideSoftKeyboard(this);
 
-        String fixed = getString(R.string.loading_prefix);
-        TextView loadingText = searchFragment.getLoadingText();
-        String presentedText = fixed + " " + query;
-        loadingText.setText(presentedText + "...");
+        if (query != null && query.length() > 0) {
+            UIUtils.hideSoftKeyboard(this);
+            TextView loadingText = searchFragment.getLoadingText();
+            String fixed = getString(R.string.loading_prefix);
+            String presentedText = fixed + " " + query;
+            loadingText.setText(presentedText + "...");
 
-
-        this.searchFragment.executeSongSearch(this, query, actionBarProgressBar);
+            this.searchFragment.executeSongSearch(this, query, actionBarProgressBar);
+        }
     }
 
     @Override
@@ -293,7 +295,9 @@ public class MainActivity extends FragmentActivity implements
     @Override
     public boolean onQueryTextSubmit(String submittedText) {
         if (tabState.equals(TAB_STATE.SEARCH) || tabState.equals(TAB_STATE.DOWNLOADS)) {
-            executeSongSearch(submittedText);
+            if (submittedText != null && submittedText.length() > 0) {
+                executeSongSearch(submittedText);
+            }
         } else if (tabState.equals(TAB_STATE.LIBRARY)) {
             FragmentUtils.filterLibrary(this, submittedText);
         }

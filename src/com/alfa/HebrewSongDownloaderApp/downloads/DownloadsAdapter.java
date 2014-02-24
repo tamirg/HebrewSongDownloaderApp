@@ -10,8 +10,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.alfa.HebrewSongDownloaderApp.R;
 
-import java.util.LinkedList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 // custom adapter to the downloads list view
 public class DownloadsAdapter extends BaseAdapter implements View.OnClickListener {
@@ -20,7 +21,7 @@ public class DownloadsAdapter extends BaseAdapter implements View.OnClickListene
     public List<DownloadsModel> downloadsModels;
 
     private static LayoutInflater inflater;
-    private static List<DownloadsRowContainer> rowContainers = null;
+    private static Map<Integer, DownloadsRowContainer> rowContainers = null;
     public Resources localResource;
 
     public DownloadsAdapter(DownloadListFragment downloadListFragment, LayoutInflater inflater, Resources localResource) {
@@ -57,9 +58,11 @@ public class DownloadsAdapter extends BaseAdapter implements View.OnClickListene
 
             setupCurrentView(rowContainer);
 
-        } else
+        } else {
             rowContainer = (DownloadsRowContainer) rowContainer.rowView.getTag();
+        }
 
+        // load view according to the respective model
         if (downloadsModels.size() > 0) {
 
             // get model for the current list position
@@ -70,14 +73,20 @@ public class DownloadsAdapter extends BaseAdapter implements View.OnClickListene
             rowContainer.cancel.setVisibility(View.VISIBLE);
             rowContainer.downloadProgressBar.setVisibility(View.VISIBLE);
 
+            // TODO : tamir
+            // this is the section where you load the view so you need to updated progress bar here
+            rowContainer.downloadProgressBar.setProgress(downloadsModel.getProgressPercentage());
+
+
             // set click listener for current row
             rowContainer.rowView.setOnClickListener(new OnItemClickListener(position, rowContainer));
 
             if (rowContainers == null) {
-                rowContainers = new LinkedList<DownloadsRowContainer>();
+                rowContainers = new HashMap<Integer, DownloadsRowContainer>();
+            } else if (rowContainers.get(position) == null) {
+                rowContainers.put(position, rowContainer);
             }
 
-            rowContainers.add(rowContainer);
         }
 
         return rowContainer.rowView;
@@ -125,7 +134,7 @@ public class DownloadsAdapter extends BaseAdapter implements View.OnClickListene
 
         rowContainer.cancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // TODO : tamir, handel song download cancel
+                // TODO : tamir, handle song download cancel
             }
         });
     }

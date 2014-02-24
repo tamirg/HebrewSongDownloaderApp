@@ -87,6 +87,10 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
             // set click listener for current row
             rowContainer.rowView.setOnClickListener(new OnItemClickListener(position, rowContainer));
 
+            // set long click listener for current row
+            rowContainer.rowView.setOnLongClickListener(new OnLongClickListener(position, rowContainer));
+
+
             if (rowContainers == null) {
                 rowContainers = new HashMap<Integer, LibraryRowContainer>();
             } else if (rowContainers.get(position) == null) {
@@ -134,6 +138,24 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
             // set on item click with current position
 
             libSongFragment.onItemClick(position, rowContainer);
+        }
+    }
+
+    // set click functionality
+    private class OnLongClickListener implements View.OnLongClickListener {
+
+        private int position;
+        private LibraryRowContainer rowContainer;
+
+        OnLongClickListener(int position, LibraryRowContainer rowContainer) {
+            this.position = position;
+            this.rowContainer = rowContainer;
+        }
+
+        @Override
+        public boolean onLongClick(View v) {
+            libSongFragment.onItemLongClick(position, rowContainer);
+            return false;
         }
     }
 
