@@ -13,6 +13,7 @@ import com.alfa.utils.logic.DataUtils;
 import com.alfa.utils.logic.LogUtils;
 import com.alfa.utils.logic.SharedPref;
 import com.alfa.utils.ui.FragmentUtils;
+import com.alfa.utils.ui.UIUtils;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -48,7 +49,11 @@ public class LibrarySongsFragment extends ListFragment {
         libraryAdapter = new LibraryAdapter(this, inflater, getResources());
         setListAdapter(libraryAdapter);
 
-        return super.onCreateView(inflater, container, savedInstanceState);
+        View view = super.onCreateView(inflater, container, savedInstanceState);
+        
+        UIUtils.hideSoftKeyboard(view.getContext());
+
+        return view;
     }
 
     public PlayerFragment createPlayer(Context context) {

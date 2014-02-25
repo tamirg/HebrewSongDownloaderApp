@@ -5,7 +5,6 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
 import android.widget.*;
 import com.alfa.HebrewSongDownloaderApp.R;
 import com.alfa.utils.logic.DataUtils;
@@ -119,15 +118,17 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
 
         rowContainer.editState = LibraryRowContainer.EDIT_STATE.NA;
 
-        rowContainer.renameText.setImeActionLabel("rename", KeyEvent.KEYCODE_ENTER);
-        rowContainer.renameText.setImeActionLabel("cancel", KeyEvent.KEYCODE_BACK);
-        rowContainer.renameText.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        setupRenameText(position, rowContainer);
 
+        setupButtons(rowContainer);
 
+        // set container with LayoutInflater
+        rowContainer.rowView.setTag(rowContainer);
+    }
+
+    private void setupRenameText(final int position, LibraryRowContainer rowContainer) {
         rowContainer.renameText.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-
-                LogUtils.logData("editor_action", "setupCurrentView__setOnKeyListenertener__" + keyCode + "");
                 return libSongFragment.onRenameKeyChange(position, v, keyCode, event);
             }
         });
@@ -139,14 +140,8 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
 
                 // TODO : think if it is needed
                 //libSongFragment.onRenameFocusChange(position,v,hasFocus);
-
             }
         });
-
-        setupButtons(rowContainer);
-
-        // set container with LayoutInflater
-        rowContainer.rowView.setTag(rowContainer);
     }
 
     @Override
