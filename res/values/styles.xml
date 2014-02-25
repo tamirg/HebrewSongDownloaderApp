@@ -13,7 +13,6 @@
 	   <item name="android:actionModeSplitBackground">@drawable/cab_background_bottom_dawnloader</item>
 	   <item name="android:actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Dawnloader</item>
 
-
     </style>
 
     <style name="ActionBar.Solid.Dawnloader" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">

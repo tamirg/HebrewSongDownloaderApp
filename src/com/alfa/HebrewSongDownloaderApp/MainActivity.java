@@ -196,7 +196,7 @@ public class MainActivity extends FragmentActivity implements
 
         // add search view dynamically
         MenuItem item = menu.add("Search");
-        item.setIcon(android.R.drawable.ic_menu_search);
+        item.setIcon(R.drawable.ic_search);
         item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
         item.setTitle("search");
         SearchView sv = new SearchView(this);

@@ -73,6 +73,26 @@ public class DataUtils {
         }
     }
 
+
+    // delete files from disk
+    public static void renameFile(String fileName, String newName) {
+
+        try {
+            String filePath = SharedPref.songDirectory + "/" + fileName + SharedPref.songExtension;
+            String newPath = SharedPref.songDirectory + "/" + newName + SharedPref.songExtension;
+            File file = new File(filePath);
+            File renamedFile = new File(newPath);
+            if (file.exists()) {
+                file.renameTo(renamedFile);
+            } else {
+                LogUtils.logError("delete_file", "file does not exist!");
+            }
+
+        } catch (Exception e) {
+            LogUtils.logError("delete_file", e.toString());
+        }
+    }
+
     public static LinkedList<String> getSongNamesFromDirectory() {
         LinkedList<String> songNames = new LinkedList<String>();
 

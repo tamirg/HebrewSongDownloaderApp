@@ -109,7 +109,7 @@ public class FragmentUtils {
 
         if (filter.length() > 0) {
             for (String songName : backupLibrarySongs) {
-                if (songName.contains(filter)) {
+                if (songName.toLowerCase().contains(filter.toLowerCase())) {
                     filteredSongs.add(songName);
                 }
             }

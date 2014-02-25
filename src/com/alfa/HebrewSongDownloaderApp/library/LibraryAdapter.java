@@ -1,13 +1,12 @@
 package com.alfa.HebrewSongDownloaderApp.library;
 
 import android.content.res.Resources;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.inputmethod.EditorInfo;
+import android.widget.*;
 import com.alfa.HebrewSongDownloaderApp.R;
 import com.alfa.utils.logic.DataUtils;
 import com.alfa.utils.logic.LogUtils;
@@ -57,12 +56,12 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
         rowContainer.playerState = PlayerFragment.PLAYER_STATE.NA;
 
         if (convertView == null) {
-            setupCurrentView(rowContainer);
+            setupCurrentView(position, rowContainer);
         } else {
             rowContainer = (LibraryRowContainer) rowContainer.rowView.getTag();
         }
 
-        setupCurrentView(rowContainer);
+        setupCurrentView(position, rowContainer);
 
         if (libraryListModels.size() > 0) {
 
@@ -72,6 +71,13 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
             // handle model libraryList
             rowContainer.songTitle.setText(libraryModel.getSongTitle());
             rowContainer.delete.setVisibility(View.VISIBLE);
+
+            if (libraryModel.isRenameMode()) {
+                rowContainer.renameText.setVisibility(View.VISIBLE);
+                rowContainer.renameText.setSelectAllOnFocus(true);
+            } else {
+                //rowContainer.renameText.setVisibility(View.INVISIBLE);
+            }
 
             if (libraryModel.isPlaying()) {
                 LogUtils.logData("get_view", "setting  " + position + " visible");
@@ -103,12 +109,39 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
     }
 
 
-    private void setupCurrentView(LibraryRowContainer rowContainer) {
+    private void setupCurrentView(final int position, LibraryRowContainer rowContainer) {
 
         rowContainer.rowView = inflater.inflate(R.layout.library_list_item, null);
         rowContainer.songTitle = (TextView) rowContainer.rowView.findViewById(R.id.librarySongTitle);
         rowContainer.playingIndicator = (ImageView) rowContainer.rowView.findViewById(R.id.libraryPlayingIndicator);
         rowContainer.delete = (Button) rowContainer.rowView.findViewById(R.id.libraryDeleteBtn);
+        rowContainer.renameText = (EditText) rowContainer.rowView.findViewById(R.id.renameText);
+
+        rowContainer.editState = LibraryRowContainer.EDIT_STATE.NA;
+
+        rowContainer.renameText.setImeActionLabel("rename", KeyEvent.KEYCODE_ENTER);
+        rowContainer.renameText.setImeActionLabel("cancel", KeyEvent.KEYCODE_BACK);
+        rowContainer.renameText.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
+
+        rowContainer.renameText.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                LogUtils.logData("editor_action", "setupCurrentView__setOnKeyListenertener__" + keyCode + "");
+                return libSongFragment.onRenameKeyChange(position, v, keyCode, event);
+            }
+        });
+
+        rowContainer.renameText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+
+                // TODO : think if it is needed
+                //libSongFragment.onRenameFocusChange(position,v,hasFocus);
+
+            }
+        });
 
         setupButtons(rowContainer);
 
@@ -136,7 +169,6 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
         public void onClick(View v) {
 
             // set on item click with current position
-
             libSongFragment.onItemClick(position, rowContainer);
         }
     }
@@ -176,10 +208,15 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
 
         public View rowView;
         public TextView songTitle;
+        public EditText renameText;
         public ImageView playingIndicator;
         public Button delete;
         public PlayerFragment.PLAYER_STATE playerState;
         public int listPosition;
+
+        public enum EDIT_STATE {REGULAR, EDITING, NA;}
+
+        public EDIT_STATE editState;
 
     }
 

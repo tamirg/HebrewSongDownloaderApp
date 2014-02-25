@@ -75,8 +75,8 @@ public class DownloadsAdapter extends BaseAdapter implements View.OnClickListene
 
             // TODO : tamir
             // this is the section where you load the view so you need to updated progress bar here
-            rowContainer.downloadProgressBar.setProgress(downloadsModel.getProgressPercentage());
-
+            //rowContainer.downloadProgressBar.setProgress(downloadsModel.getProgressPercentage());
+            rowContainer.downloadProgressBar.setProgress(50);
 
             // set click listener for current row
             rowContainer.rowView.setOnClickListener(new OnItemClickListener(position, rowContainer));

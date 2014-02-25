@@ -18,8 +18,8 @@
 
     <!-- settings -->
     <item android:id="@+id/settings"
-		android:icon="@drawable/ic_action_direction"
-		android:title="help"
+		android:icon="@drawable/ic_settings"
+		android:title="settings"
 		android:showAsAction="never"/>
 
 </menu>

@@ -4,12 +4,15 @@ package com.alfa.HebrewSongDownloaderApp.library;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.EditText;
+import com.alfa.utils.logic.DataUtils;
 import com.alfa.utils.logic.LogUtils;
-import com.alfa.utils.ui.UIUtils;
+import com.alfa.utils.logic.SharedPref;
+import com.alfa.utils.ui.FragmentUtils;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -66,7 +69,9 @@ public class LibrarySongsFragment extends ListFragment {
     // on item click event
     public void onItemClick(int position, LibraryAdapter.LibraryRowContainer rowContainer) {
         try {
-            PlayerFragment.playSongAt(position);
+            if (!rowContainer.editState.equals(LibraryAdapter.LibraryRowContainer.EDIT_STATE.EDITING)) {
+                PlayerFragment.playSongAt(position);
+            }
 
         } catch (Exception e) {
             //UIUtils.printError(v.getContext(), "play song from list item:" + e.toString());
@@ -77,7 +82,16 @@ public class LibrarySongsFragment extends ListFragment {
     public void onItemLongClick(int position, LibraryAdapter.LibraryRowContainer rowContainer) {
         try {
             // just for test
-            UIUtils.PrintToast(rowContainer.rowView.getContext(), "long click test", Toast.LENGTH_SHORT);
+            //UIUtils.PrintToast(rowContainer.rowView.getContext(), "long click test", Toast.LENGTH_SHORT);
+
+            rowContainer.songTitle.setVisibility(View.INVISIBLE);
+            rowContainer.renameText.setVisibility(View.VISIBLE);
+            rowContainer.renameText.setText(rowContainer.songTitle.getText());
+            rowContainer.renameText.setSelectAllOnFocus(true);
+
+
+            rowContainer.editState = LibraryAdapter.LibraryRowContainer.EDIT_STATE.EDITING;
+
 
             // TODO : micha (rename feature)
 
@@ -90,6 +104,11 @@ public class LibrarySongsFragment extends ListFragment {
         } catch (Exception e) {
             //UIUtils.printError(v.getContext(), "play song from list item:" + e.toString());
         }
+    }
+
+    public void onRenameSubmit(int position, LibraryAdapter.LibraryRowContainer rowContainer, String oldValue, String newValue) {
+
+
     }
 
     /**
@@ -114,6 +133,7 @@ public class LibrarySongsFragment extends ListFragment {
 
             // set playing mode to be false
             libModel.setPlaying(false);
+            libModel.setRenameMode(false);
 
             // add current model to model list
             libraryListModels.add(libModel);
@@ -154,4 +174,28 @@ public class LibrarySongsFragment extends ListFragment {
     }
 
 
+    public boolean onRenameKeyChange(int position, View v, int keyCode, KeyEvent event) {
+
+        if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                (keyCode == KeyEvent.KEYCODE_ENTER)) {
+
+            String renamedSong = ((EditText) v).getText().toString();
+            String songTitle = libraryListModels.get(position).getSongTitle();
+            DataUtils.renameFile(songTitle, renamedSong);
+            FragmentUtils.loadLibraryFragment(v.getContext(), DataUtils.listFiles(SharedPref.songDirectory));
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public void onRenameFocusChange(int position, View v, boolean hasFocus) {
+
+        if (hasFocus) {
+
+            libraryListModels.get(position).setRenameMode(hasFocus);
+            updateListModifications();
+        }
+    }
 }
