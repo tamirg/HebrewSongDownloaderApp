@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import com.alfa.HebrewSongDownloaderApp.R;
 import com.alfa.utils.logic.DataUtils;
 import com.alfa.utils.logic.LogUtils;
 import com.alfa.utils.logic.SharedPref;
@@ -50,7 +51,7 @@ public class LibrarySongsFragment extends ListFragment {
         setListAdapter(libraryAdapter);
 
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        
+
         UIUtils.hideSoftKeyboard(view.getContext());
 
         return view;
@@ -74,6 +75,10 @@ public class LibrarySongsFragment extends ListFragment {
     // on item click event
     public void onItemClick(int position, LibraryAdapter.LibraryRowContainer rowContainer) {
         try {
+
+            // cancel edit mode
+            LibraryAdapter.setSongInEdit(false);
+
             if (!rowContainer.editState.equals(LibraryAdapter.LibraryRowContainer.EDIT_STATE.EDITING)) {
                 PlayerFragment.playSongAt(position);
             }
@@ -85,34 +90,44 @@ public class LibrarySongsFragment extends ListFragment {
 
     // on long item click event
     public void onItemLongClick(int position, LibraryAdapter.LibraryRowContainer rowContainer) {
+        switchToEditMode(rowContainer);
+    }
+
+    public void onEditClick(LibraryAdapter.LibraryRowContainer rowContainer) {
+        switchToEditMode(rowContainer);
+    }
+
+
+    private void switchToEditMode(LibraryAdapter.LibraryRowContainer rowContainer) {
         try {
-            // just for test
-            //UIUtils.PrintToast(rowContainer.rowView.getContext(), "long click test", Toast.LENGTH_SHORT);
 
-            rowContainer.songTitle.setVisibility(View.INVISIBLE);
-            rowContainer.renameText.setVisibility(View.VISIBLE);
-            rowContainer.renameText.setText(rowContainer.songTitle.getText());
-            rowContainer.renameText.setSelectAllOnFocus(true);
+            // in case item is already in edit mode
+            if (rowContainer.editState == LibraryAdapter.LibraryRowContainer.EDIT_STATE.EDITING) {
 
+                rowContainer.renameText.setVisibility(View.INVISIBLE);
+                rowContainer.songTitle.setVisibility(View.VISIBLE);
+                rowContainer.editState = LibraryAdapter.LibraryRowContainer.EDIT_STATE.REGULAR;
+                rowContainer.rowView.setBackgroundColor(rowContainer.rowView.getContext().getResources().getColor(R.color.list_default));
+                LibraryAdapter.setSongInEdit(false);
 
-            rowContainer.editState = LibraryAdapter.LibraryRowContainer.EDIT_STATE.EDITING;
-
-
-            // TODO : micha (rename feature)
-
-            // 1) make song title text view invisible
-            // 2) make edit text visible
-            // 3) set edit text value to be the song title value
-            // 4) update list on modification
-
+                // in case no items (including this one) are in edit mode
+            } else if (!LibraryAdapter.hasSongInEdit()) {
+                rowContainer.songTitle.setVisibility(View.INVISIBLE);
+                rowContainer.renameText.setVisibility(View.VISIBLE);
+                rowContainer.renameText.setText(rowContainer.songTitle.getText());
+                rowContainer.renameText.setSelectAllOnFocus(true);
+                rowContainer.editState = LibraryAdapter.LibraryRowContainer.EDIT_STATE.EDITING;
+                rowContainer.rowView.setBackgroundColor(rowContainer.rowView.getContext().getResources().getColor(R.color.white));
+                LibraryAdapter.setSongInEdit(true);
+            }
 
         } catch (Exception e) {
-            //UIUtils.printError(v.getContext(), "play song from list item:" + e.toString());
+            UIUtils.printError(rowContainer.rowView.getContext(), "play song from list item:" + e.toString());
         }
     }
 
-    public void onRenameSubmit(int position, LibraryAdapter.LibraryRowContainer rowContainer, String oldValue, String newValue) {
 
+    public void onRenameSubmit(int position, LibraryAdapter.LibraryRowContainer rowContainer, String oldValue, String newValue) {
 
     }
 
@@ -181,6 +196,7 @@ public class LibrarySongsFragment extends ListFragment {
 
     public boolean onRenameKeyChange(int position, View v, int keyCode, KeyEvent event) {
 
+
         if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
                 (keyCode == KeyEvent.KEYCODE_ENTER)) {
 
@@ -188,6 +204,8 @@ public class LibrarySongsFragment extends ListFragment {
             String songTitle = libraryListModels.get(position).getSongTitle();
             DataUtils.renameFile(songTitle, renamedSong);
             FragmentUtils.loadLibraryFragment(v.getContext(), DataUtils.listFiles(SharedPref.songDirectory));
+            LibraryAdapter.setSongInEdit(false);
+            LogUtils.logData("onRenameKeyChange", "submit!");
 
             return true;
         }

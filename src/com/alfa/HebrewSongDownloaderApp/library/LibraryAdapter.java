@@ -1,10 +1,7 @@
 package com.alfa.HebrewSongDownloaderApp.library;
 
 import android.content.res.Resources;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.*;
 import com.alfa.HebrewSongDownloaderApp.R;
 import com.alfa.utils.logic.DataUtils;
@@ -23,14 +20,17 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
     private static Map<Integer, LibraryRowContainer> rowContainers = null;
     private Resources localResource;
     private List<LibraryListModel> libraryListModels;
+    private static boolean hasSongInEdit;
 
     public LibraryAdapter(LibrarySongsFragment libSongFragment, LayoutInflater inflater, Resources localResource) {
 
         this.libSongFragment = libSongFragment;
         this.localResource = localResource;
+        this.hasSongInEdit = false;
         this.libraryListModels = LibrarySongsFragment.getLibraryListModels();
         this.inflater = inflater;
     }
+
 
     // implement inner list functions
     public int getCount() {
@@ -81,6 +81,7 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
             if (libraryModel.isPlaying()) {
                 LogUtils.logData("get_view", "setting  " + position + " visible");
                 rowContainer.playingIndicator.setVisibility(View.VISIBLE);
+                rowContainer.rowView.setBackgroundColor(rowContainer.rowView.getContext().getResources().getColor(R.color.list_selected));
             } else {
                 LogUtils.logData("get_view", "setting  " + position + " invisible");
                 rowContainer.playingIndicator.setVisibility(View.INVISIBLE);
@@ -113,7 +114,8 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
         rowContainer.rowView = inflater.inflate(R.layout.library_list_item, null);
         rowContainer.songTitle = (TextView) rowContainer.rowView.findViewById(R.id.librarySongTitle);
         rowContainer.playingIndicator = (ImageView) rowContainer.rowView.findViewById(R.id.libraryPlayingIndicator);
-        rowContainer.delete = (Button) rowContainer.rowView.findViewById(R.id.libraryDeleteBtn);
+        rowContainer.delete = (ImageButton) rowContainer.rowView.findViewById(R.id.libraryDeleteBtn);
+        rowContainer.edit = (ImageButton) rowContainer.rowView.findViewById(R.id.libraryEditBtn);
         rowContainer.renameText = (EditText) rowContainer.rowView.findViewById(R.id.renameText);
 
         rowContainer.editState = LibraryRowContainer.EDIT_STATE.NA;
@@ -190,10 +192,50 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
 
         // show delete button
 
+        setTouchMode(rowContainer.delete, R.drawable.ic_delete, R.drawable.ic_delete_pressed);
+        setTouchMode(rowContainer.edit, R.drawable.ic_edit, R.drawable.ic_edit_pressed);
+
         rowContainer.delete.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 DataUtils.deleteFile(rowContainer.songTitle.getText().toString());
                 FragmentUtils.loadLibraryFragment(v.getContext());
+            }
+        });
+
+        rowContainer.edit.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                libSongFragment.onEditClick(rowContainer);
+            }
+        });
+    }
+
+
+    private void setTouchMode(final ImageButton imgBtn, final int normal, final int onPressed) {
+        imgBtn.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                switch (event.getAction() & MotionEvent.ACTION_MASK) {
+                    case MotionEvent.ACTION_UP: {
+                        imgBtn.setImageResource(normal);
+                        LogUtils.logData("setOnTouchListener", "up => normal edit " + event);
+                        break;
+                    }
+
+                    case MotionEvent.ACTION_CANCEL: {
+                        imgBtn.setImageResource(normal);
+                        LogUtils.logData("setOnTouchListener", "cancelled => normal edit " + event);
+                        break;
+                    }
+
+                    default: {
+                        imgBtn.setImageResource(onPressed);
+                        LogUtils.logData("setOnTouchListener", "default => pressed edit " + event);
+                        break;
+                    }
+                }
+
+                return false;
             }
         });
     }
@@ -205,7 +247,8 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
         public TextView songTitle;
         public EditText renameText;
         public ImageView playingIndicator;
-        public Button delete;
+        public ImageButton delete;
+        public ImageButton edit;
         public PlayerFragment.PLAYER_STATE playerState;
         public int listPosition;
 
@@ -217,6 +260,14 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
 
     public static LibraryRowContainer getRowContainer(int position) {
         return rowContainers.get(position);
+    }
+
+    public static boolean hasSongInEdit() {
+        return hasSongInEdit;
+    }
+
+    public static void setSongInEdit(boolean hasSongInEdit) {
+        LibraryAdapter.hasSongInEdit = hasSongInEdit;
     }
 
 

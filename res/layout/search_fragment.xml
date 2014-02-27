@@ -4,6 +4,7 @@
 		    android:orientation="vertical"
 		    android:layout_width="match_parent"
 		    android:layout_height="match_parent"
+		    android:background="@color/main_color"
 		    android:weightSum="7">
 
     <!-- loading pane -->
@@ -12,14 +13,12 @@
 		  android:layout_height="match_parent"
 		  android:layout_width="match_parent"
 		  android:layout_weight="6"
-		  android:background="@color/main_color"
 		  android:orientation="vertical">
 
 	   <RelativeLayout
 			 android:layout_height="match_parent"
 			 android:layout_width="match_parent"
 			 android:layout_weight="3"
-			 android:background="@color/main_color"
 			 android:orientation="vertical">
 
 		  <TextView
@@ -48,7 +47,6 @@
 			 android:layout_height="match_parent"
 			 android:layout_width="match_parent"
 			 android:layout_weight="3"
-			 android:background="@color/main_color"
 			 android:orientation="vertical">
 		  <ProgressBar
 				android:id="@+id/progressBar"
@@ -63,10 +61,9 @@
 
 
     <!-- song list pane -->
-    <LinearLayout
+    <RelativeLayout
 		  android:layout_height="match_parent"
 		  android:layout_width="match_parent"
-		  android:background="@color/main_color"
 		  android:layout_weight="1">
 
 	   <FrameLayout
@@ -74,7 +71,7 @@
 			 android:layout_width="fill_parent"
 			 android:layout_height="fill_parent"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>
 

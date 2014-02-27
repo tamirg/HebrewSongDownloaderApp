@@ -144,12 +144,12 @@ public class FragmentUtils {
             // load player
             LogUtils.logData("flow_debug", "FragmentUtils__replacing player fragment..");
             ft.replace(R.id.player_container, player);
-            ft.addToBackStack(null);
+            //ft.addToBackStack(null);
 
             // load file list
             LogUtils.logData("flow_debug", "FragmentUtils__replacing library song fragment..");
             ft.replace(R.id.library_files_container, libSongFragment);
-            ft.addToBackStack(null);
+            //ft.addToBackStack(null);
             ft.commitAllowingStateLoss();
         }
     }

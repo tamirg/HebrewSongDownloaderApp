@@ -203,6 +203,8 @@ public class MainActivity extends FragmentActivity implements
         sv.setOnQueryTextListener(this);
         item.setActionView(sv);
 
+        sv.setIconified(false);
+
         actionBarProgressBar = menu.findItem(R.id.action_refresh);
 
         initMenu(menu);

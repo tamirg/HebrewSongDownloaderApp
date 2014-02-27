@@ -3,15 +3,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		    android:orientation="horizontal"
 		    android:layout_width="match_parent"
-		    android:layout_height="match_parent" android:gravity="center_horizontal">
+		    android:layout_height="match_parent"
+		    android:background="@color/main_color"
+		    android:gravity="center_horizontal">
 
     <ImageButton
 		  android:id="@+id/stopBtn"
 		  android:layout_width="wrap_content"
 		  android:layout_height="wrap_content"
 		  android:src="@drawable/ic_stop"
+		  android:background="@null"
 		  android:visibility="visible"
-		  style="@android:style/MediaButton.Rew"
 		  android:singleLine="false"
 		  android:layout_gravity="center_horizontal"/>
 
@@ -20,8 +22,8 @@
 		  android:layout_width="wrap_content"
 		  android:layout_height="wrap_content"
 		  android:src="@drawable/ic_bw"
+		  android:background="@null"
 		  android:visibility="visible"
-		  style="@android:style/MediaButton.Rew"
 		  android:singleLine="false"
 		  android:layout_gravity="center_horizontal"/>
 
@@ -31,9 +33,9 @@
 		  android:layout_height="wrap_content"
 		  android:src="@drawable/ic_play"
 		  android:visibility="visible"
-		  style="@android:style/MediaButton.Play"
 		  android:singleLine="false"
 		  android:layout_gravity="center_horizontal"
+		  android:background="@null"
 		  android:layout_alignParentLeft="false"
 		  android:layout_marginLeft="0dp"
 		  android:layout_alignParentTop="false"
@@ -47,8 +49,8 @@
 		  android:layout_width="wrap_content"
 		  android:layout_height="wrap_content"
 		  android:src="@drawable/ic_ff"
+		  android:background="@null"
 		  android:visibility="visible"
-		  style="@android:style/MediaButton.Rew"
 		  android:singleLine="false"
 		  android:layout_gravity="center_horizontal"
 		  android:layout_marginLeft="10dp"/>
