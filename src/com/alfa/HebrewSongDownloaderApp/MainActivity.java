@@ -304,9 +304,6 @@ public class MainActivity extends FragmentActivity implements
             FragmentUtils.filterLibrary(this, submittedText);
         }
 
-        // hide keyboard on tab select
-        //UIUtils.hideSoftKeyboard(this);
-
         return false;
     }
 
