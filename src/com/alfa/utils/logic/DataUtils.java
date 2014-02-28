@@ -9,10 +9,13 @@ import java.util.*;
 public class DataUtils {
 
     /**
+     * lists all files with fileExtension in a directory
+     *
      * @param directoryPath
+     * @param fileExtension
      * @return all file names in directory
      */
-    public static List<String> listFiles(String directoryPath) {
+    public static List<String> listFiles(String directoryPath, String fileExtension) {
         List<String> fileNames = new LinkedList<String>();
 
         try {
@@ -37,14 +40,24 @@ public class DataUtils {
                     }
                 });
 
+                String fileExtention;
+                String fileName;
                 // Removing the .mp3 extension from all downloaded files
                 for (File currentSongFile : songFilesCollection) {
 
+                    fileName = currentSongFile.getName();
                     dotIndex = currentSongFile.getName().lastIndexOf(".");
                     if (dotIndex > 0) {
-                        fileNames.add(currentSongFile.getName().substring(0, dotIndex));
+
+                        fileExtention = fileName.substring(dotIndex, fileName.length());
+                        if (fileExtention.equals(fileExtension)) {
+                            fileNames.add(fileName.substring(0, dotIndex));
+                        }
                     } else {
-                        fileNames.add(currentSongFile.getName());
+                        if (!currentSongFile.isDirectory()) {
+                            // check if a valid mp3 file
+                            fileNames.add(fileName);
+                        }
                     }
 
                 }
@@ -65,7 +78,15 @@ public class DataUtils {
             if (file.exists()) {
                 file.delete();
             } else {
-                LogUtils.logError("delete_file", "file does not exist!");
+
+                // try to delete file if it is a directory
+                filePath = SharedPref.songDirectory + "/" + fileName;
+                file = new File(filePath);
+                if (file.exists() && file.isDirectory()) {
+                    file.delete();
+                } else {
+                    LogUtils.logError("delete_file", "file <" + filePath + "> does not exist!");
+                }
             }
 
         } catch (Exception e) {
@@ -96,8 +117,7 @@ public class DataUtils {
     public static LinkedList<String> getSongNamesFromDirectory() {
         LinkedList<String> songNames = new LinkedList<String>();
 
-
-        songNames = (LinkedList<String>) DataUtils.listFiles(SharedPref.songDirectory);
+        songNames = (LinkedList<String>) DataUtils.listFiles(SharedPref.songDirectory, SharedPref.songExtension);
 
         if (songNames.size() == 0) {
             songNames.add("no songs in library");

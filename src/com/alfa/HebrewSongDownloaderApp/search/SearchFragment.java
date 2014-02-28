@@ -79,7 +79,6 @@ public class SearchFragment extends Fragment {
     }
 
     public void executeSongSearch(Context c, String query, MenuItem actionBarProgressBar) {
-        // Perform action on click
 
         try {
 

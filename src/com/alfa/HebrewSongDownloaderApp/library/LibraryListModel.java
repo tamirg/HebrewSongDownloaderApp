@@ -4,7 +4,7 @@ public class LibraryListModel {
 
     private String songTitle;
     private boolean playing;
-    private boolean renameMode;
+    private boolean editMode;
 
     public void setSongTitle(String songTitle) {
         this.songTitle = songTitle;
@@ -23,11 +23,12 @@ public class LibraryListModel {
         this.playing = playing;
     }
 
-    public boolean isRenameMode() {
-        return renameMode;
+    public boolean isInEditMode() {
+        return editMode;
     }
 
-    public void setRenameMode(boolean renameMode) {
-        this.renameMode = renameMode;
+    public void setEditMode(boolean editMode) {
+        this.editMode = editMode;
     }
+
 }

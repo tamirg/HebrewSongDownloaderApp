@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.alfa.HebrewSongDownloaderApp.R;
 import com.alfa.HebrewSongDownloaderApp.downloads.DownloadListFragment;
+import com.alfa.HebrewSongDownloaderApp.library.LibrarySongsFragment;
 import com.alfa.utils.logic.LogUtils;
 import com.alfa.utils.logic.URLUtils;
 import com.alfa.utils.ui.FragmentUtils;
@@ -62,7 +63,7 @@ public class AsyncTaskManager {
         private String query;
         private MenuItem actionBarProgressBar;
         private TextView loadingText;
-        private String errorContent = "";
+        private String errorContent;
         private List<SongResult> songResults;
         private Context context;
 
@@ -72,6 +73,7 @@ public class AsyncTaskManager {
             this.loadingText = loadingText;
             this.actionBarProgressBar = actionBarProgressBar;
             this.songResults = new LinkedList<SongResult>();
+            this.errorContent = "";
             this.context = context;
         }
 
@@ -80,7 +82,6 @@ public class AsyncTaskManager {
             super.onPreExecute();
 
             // show loading information
-
             actionBarProgressBar.setActionView(R.layout.action_progressbar);
             actionBarProgressBar.expandActionView();
 
@@ -95,10 +96,14 @@ public class AsyncTaskManager {
 
             try {
 
-                songResults = fetchSongsInstance.getSongResults(this.query);
+                LogUtils.logData("flow_debug", "SearchSongResults__looking for songs for : " + this.query + "...");
 
-            } catch (Exception exc) {
+                this.songResults = fetchSongsInstance.getSongResults(this.query);
+
+                LogUtils.logData("flow_debug", "SearchSongResults__found songs : " + songResults.toString());
+            } catch (Exception e) {
                 errorContent = context.getString(R.string.song_download_err);
+                LogUtils.logError("flow_debug", "SearchSongResults__error : " + e.toString());
             }
 
             return errorContent;
@@ -251,12 +256,15 @@ public class AsyncTaskManager {
                 UIUtils.hideTextView(percentageText, this.context);
                 UIUtils.showTextView(headlineViewText, this.context);
 
+                // on download success
                 if (errorContent.equals("")) {
                     UIUtils.PrintToast(context, context.getString(R.string.song_download_success), Toast.LENGTH_LONG);
 
                     LogUtils.logData("flow_debug", "DownloadSongResult__downloaded song successfully!");
                     LogUtils.logData("flow_debug", "DownloadSongResult__reloading library fragment..");
 
+                    // update library song fragment that a new song is added
+                    LibrarySongsFragment.setOperEvent(LibrarySongsFragment.OPER_EVENT.ADD);
                     FragmentUtils.loadLibraryFragment(context);
 
                 } else {

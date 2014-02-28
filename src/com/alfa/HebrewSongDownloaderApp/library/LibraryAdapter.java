@@ -4,9 +4,7 @@ import android.content.res.Resources;
 import android.view.*;
 import android.widget.*;
 import com.alfa.HebrewSongDownloaderApp.R;
-import com.alfa.utils.logic.DataUtils;
 import com.alfa.utils.logic.LogUtils;
-import com.alfa.utils.ui.FragmentUtils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,8 +17,10 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
     private LayoutInflater inflater;
     private static Map<Integer, LibraryRowContainer> rowContainers = null;
     private Resources localResource;
+    private static ListView parentListView = null;
     private List<LibraryListModel> libraryListModels;
     private static boolean hasSongInEdit;
+    private static int[] baseColor = {78, 106, 186};
 
     public LibraryAdapter(LibrarySongsFragment libSongFragment, LayoutInflater inflater, Resources localResource) {
 
@@ -62,6 +62,10 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
 
         setupCurrentView(position, rowContainer);
 
+        // set parent list view to current parent (once)
+        setParentListView(parent);
+        libSongFragment.ScrollToPositionFocus();
+
         if (libraryListModels.size() > 0) {
 
             // get model for the current list position
@@ -71,31 +75,21 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
             rowContainer.songTitle.setText(libraryModel.getSongTitle());
             rowContainer.delete.setVisibility(View.VISIBLE);
 
-            if (libraryModel.isRenameMode()) {
-                rowContainer.renameText.setVisibility(View.VISIBLE);
-                rowContainer.renameText.setSelectAllOnFocus(true);
-            } else {
-                //rowContainer.renameText.setVisibility(View.INVISIBLE);
-            }
+            handleEditMode(libraryModel, rowContainer);
 
-            if (libraryModel.isPlaying()) {
-                LogUtils.logData("get_view", "setting  " + position + " visible");
-                rowContainer.playingIndicator.setVisibility(View.VISIBLE);
-                rowContainer.rowView.setBackgroundColor(rowContainer.rowView.getContext().getResources().getColor(R.color.list_selected));
-            } else {
-                LogUtils.logData("get_view", "setting  " + position + " invisible");
-                rowContainer.playingIndicator.setVisibility(View.INVISIBLE);
-            }
+            HandlePlayingMode(libraryModel, rowContainer, position);
 
             // just for debug
             rowContainer.listPosition = position;
+
+            // set touch listener for current rows
+            rowContainer.rowView.setOnTouchListener(new OnTouchListener(position, rowContainer));
 
             // set click listener for current row
             rowContainer.rowView.setOnClickListener(new OnItemClickListener(position, rowContainer));
 
             // set long click listener for current row
-            rowContainer.rowView.setOnLongClickListener(new OnLongClickListener(position, rowContainer));
-
+            rowContainer.rowView.setOnLongClickListener(new OnLongClickListener(position));
 
             if (rowContainers == null) {
                 rowContainers = new HashMap<Integer, LibraryRowContainer>();
@@ -106,6 +100,50 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
         }
 
         return rowContainer.rowView;
+    }
+
+    private void HandlePlayingMode(LibraryListModel libraryModel, LibraryRowContainer rowContainer, int position) {
+        if (libraryModel.isPlaying()) {
+            LogUtils.logData("get_view", "setting  " + position + " visible");
+            rowContainer.playingIndicator.setVisibility(View.VISIBLE);
+
+            rowContainer.rowView.setBackgroundColor(rowContainer.rowView.getContext().getResources().getColor(R.color.list_selected));
+        } else {
+            LogUtils.logData("get_view", "setting  " + position + " invisible");
+            rowContainer.playingIndicator.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private void handleEditMode(LibraryListModel libModel, LibraryRowContainer rowContainer) {
+
+        if (libModel.isInEditMode()) {
+            switchToEditModeUI(rowContainer);
+        } else {
+            switchToNotEditModeUI(rowContainer);
+        }
+    }
+
+    private void switchToEditModeUI(LibraryRowContainer rowContainer) {
+        rowContainer.songTitle.setVisibility(View.INVISIBLE);
+        rowContainer.renameText.setVisibility(View.VISIBLE);
+        rowContainer.renameText.setText(rowContainer.songTitle.getText());
+        rowContainer.renameText.setSelectAllOnFocus(true);
+        rowContainer.editState = LibraryRowContainer.EDIT_STATE.EDITING;
+        rowContainer.rowView.setBackgroundColor(rowContainer.rowView.getContext().getResources().getColor(R.color.white));
+    }
+
+    private void switchToNotEditModeUI(LibraryRowContainer rowContainer) {
+
+        rowContainer.renameText.setVisibility(View.INVISIBLE);
+        rowContainer.songTitle.setVisibility(View.VISIBLE);
+        rowContainer.editState = LibraryAdapter.LibraryRowContainer.EDIT_STATE.REGULAR;
+        rowContainer.rowView.setBackgroundColor(rowContainer.rowView.getContext().getResources().getColor(R.color.list_default));
+        //UIUtils.hideSoftKeyboard(rowContainer.rowView.getContext());
+    }
+
+    private void setParentListView(ViewGroup parent) {
+
+        parentListView = (ListView) parent;
     }
 
 
@@ -122,7 +160,7 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
 
         setupRenameText(position, rowContainer);
 
-        setupButtons(rowContainer);
+        setupButtons(position, rowContainer);
 
         // set container with LayoutInflater
         rowContainer.rowView.setTag(rowContainer);
@@ -148,11 +186,16 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        //v.setBackgroundColor(0x4F76C7);
+
     }
 
+    /**
+     * ******************************************************************
+     * *************** Library list view listeners  *********************
+     * ******************************************************************
+     */
 
-    // set click functionality
+
     private class OnItemClickListener implements View.OnClickListener {
         private int position;
         private LibraryRowContainer rowContainer;
@@ -174,21 +217,37 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
     private class OnLongClickListener implements View.OnLongClickListener {
 
         private int position;
+
+        OnLongClickListener(int position) {
+            this.position = position;
+        }
+
+        @Override
+        public boolean onLongClick(View v) {
+            libSongFragment.onItemLongClick(position);
+            return false;
+        }
+    }
+
+    private class OnTouchListener implements View.OnTouchListener {
+
+        private int position;
         private LibraryRowContainer rowContainer;
 
-        OnLongClickListener(int position, LibraryRowContainer rowContainer) {
+        OnTouchListener(int position, LibraryRowContainer rowContainer) {
             this.position = position;
             this.rowContainer = rowContainer;
         }
 
         @Override
-        public boolean onLongClick(View v) {
-            libSongFragment.onItemLongClick(position, rowContainer);
+        public boolean onTouch(View v, MotionEvent event) {
+            // TODO : decide if necessary
             return false;
         }
     }
 
-    private void setupButtons(final LibraryRowContainer rowContainer) {
+
+    private void setupButtons(final int position, final LibraryRowContainer rowContainer) {
 
         // show delete button
 
@@ -197,14 +256,13 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
 
         rowContainer.delete.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                DataUtils.deleteFile(rowContainer.songTitle.getText().toString());
-                FragmentUtils.loadLibraryFragment(v.getContext());
+                libSongFragment.deleteSong(position, v, rowContainer);
             }
         });
 
         rowContainer.edit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                libSongFragment.onEditClick(rowContainer);
+                libSongFragment.onEditClick(position);
             }
         });
     }
@@ -218,19 +276,16 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
                 switch (event.getAction() & MotionEvent.ACTION_MASK) {
                     case MotionEvent.ACTION_UP: {
                         imgBtn.setImageResource(normal);
-                        LogUtils.logData("setOnTouchListener", "up => normal edit " + event);
                         break;
                     }
 
                     case MotionEvent.ACTION_CANCEL: {
                         imgBtn.setImageResource(normal);
-                        LogUtils.logData("setOnTouchListener", "cancelled => normal edit " + event);
                         break;
                     }
 
                     default: {
                         imgBtn.setImageResource(onPressed);
-                        LogUtils.logData("setOnTouchListener", "default => pressed edit " + event);
                         break;
                     }
                 }
@@ -239,6 +294,7 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
             }
         });
     }
+
 
     // container class for holding the library row layout libraryList
     public static class LibraryRowContainer {
@@ -266,8 +322,12 @@ public class LibraryAdapter extends BaseAdapter implements View.OnClickListener 
         return hasSongInEdit;
     }
 
-    public static void setSongInEdit(boolean hasSongInEdit) {
+    public static void setHasSongInEdit(boolean hasSongInEdit) {
         LibraryAdapter.hasSongInEdit = hasSongInEdit;
+    }
+
+    public static ListView getParentListView() {
+        return parentListView;
     }
 
 

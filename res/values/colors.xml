@@ -3,6 +3,7 @@
     <color name="white">#FFFFFF</color>
     <color name="list_default">#629BFF</color>
     <color name="list_selected">#ff4e6aba</color>
+    <color name="list_pressed">#ff6285e9</color>
     <color name="main_color">#ff629bff</color>
 
 </resources>

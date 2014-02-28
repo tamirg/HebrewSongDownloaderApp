@@ -34,9 +34,6 @@ public class DownloadsAdapter extends BaseAdapter implements View.OnClickListene
 
     // implement inner list functions
     public int getCount() {
-
-        //if (downloadsModels.size() <= 0)
-        //   return 1;
         return downloadsModels.size();
     }
 
@@ -74,7 +71,7 @@ public class DownloadsAdapter extends BaseAdapter implements View.OnClickListene
             rowContainer.downloadProgressBar.setVisibility(View.VISIBLE);
 
             // TODO : tamir
-            // this is the section where you load the view so you need to updated progress bar here
+            // this is the section where you load the view so you need to update progress bar here
             //rowContainer.downloadProgressBar.setProgress(downloadsModel.getProgressPercentage());
             rowContainer.downloadProgressBar.setProgress(50);
 
@@ -125,7 +122,6 @@ public class DownloadsAdapter extends BaseAdapter implements View.OnClickListene
         public void onClick(View v) {
 
             // set on item click with current position
-
             downloadListFragment.onItemClick(position, rowContainer);
         }
     }

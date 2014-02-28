@@ -326,4 +326,22 @@ public class UIUtils {
         view.requestFocus();
         inputMethodManager.showSoftInput(view, 0);
     }
+
+    public static void listScroll(final ListView listView, final int position, final boolean smooth) {
+        listView.clearFocus();
+        listView.post(new Runnable() {
+            @Override
+            public void run() {
+                listView.requestFocusFromTouch();
+
+                if (smooth) {
+                    listView.smoothScrollToPosition(position);
+                } else {
+                    listView.setSelection(position);
+
+                }
+                listView.requestFocus();
+            }
+        });
+    }
 }

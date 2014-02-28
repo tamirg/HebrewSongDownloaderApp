@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import com.alfa.HebrewSongDownloaderApp.R;
+import android.widget.ListView;
 import com.alfa.utils.logic.DataUtils;
 import com.alfa.utils.logic.LogUtils;
 import com.alfa.utils.logic.SharedPref;
@@ -33,6 +33,12 @@ public class LibrarySongsFragment extends ListFragment {
     private List<String> songNames;
     private static LibraryAdapter libraryAdapter;
     private static List<LibraryListModel> libraryListModels;
+    private static int positionFocus;
+
+    private static OPER_EVENT operEvent = OPER_EVENT.NA;
+
+    public static enum OPER_EVENT {ADD, DELETE, NA;}
+
 
     /**
      * ******************************************************************
@@ -52,7 +58,7 @@ public class LibrarySongsFragment extends ListFragment {
 
         View view = super.onCreateView(inflater, container, savedInstanceState);
 
-        UIUtils.hideSoftKeyboard(view.getContext());
+        //UIUtils.hideSoftKeyboard(view.getContext());
 
         return view;
     }
@@ -76,9 +82,6 @@ public class LibrarySongsFragment extends ListFragment {
     public void onItemClick(int position, LibraryAdapter.LibraryRowContainer rowContainer) {
         try {
 
-            // cancel edit mode
-            LibraryAdapter.setSongInEdit(false);
-
             if (!rowContainer.editState.equals(LibraryAdapter.LibraryRowContainer.EDIT_STATE.EDITING)) {
                 PlayerFragment.playSongAt(position);
             }
@@ -89,46 +92,44 @@ public class LibrarySongsFragment extends ListFragment {
     }
 
     // on long item click event
-    public void onItemLongClick(int position, LibraryAdapter.LibraryRowContainer rowContainer) {
-        switchToEditMode(rowContainer);
+    public void onItemLongClick(int position) {
+
+        handleEditMode(position, null);
     }
 
-    public void onEditClick(LibraryAdapter.LibraryRowContainer rowContainer) {
-        switchToEditMode(rowContainer);
+    public void onEditClick(int position) {
+        handleEditMode(position, null);
     }
 
 
-    private void switchToEditMode(LibraryAdapter.LibraryRowContainer rowContainer) {
-        try {
+    public void handleEditMode(int position, Boolean forceEditMode) {
 
-            // in case item is already in edit mode
-            if (rowContainer.editState == LibraryAdapter.LibraryRowContainer.EDIT_STATE.EDITING) {
+        LibraryListModel libModel = libraryListModels.get(position);
 
-                rowContainer.renameText.setVisibility(View.INVISIBLE);
-                rowContainer.songTitle.setVisibility(View.VISIBLE);
-                rowContainer.editState = LibraryAdapter.LibraryRowContainer.EDIT_STATE.REGULAR;
-                rowContainer.rowView.setBackgroundColor(rowContainer.rowView.getContext().getResources().getColor(R.color.list_default));
-                LibraryAdapter.setSongInEdit(false);
+        if (forceEditMode == null) {
+            // toggle edit mode
+            if (libModel.isInEditMode()) {
+                switchEditMode(libModel, false);
 
-                // in case no items (including this one) are in edit mode
-            } else if (!LibraryAdapter.hasSongInEdit()) {
-                rowContainer.songTitle.setVisibility(View.INVISIBLE);
-                rowContainer.renameText.setVisibility(View.VISIBLE);
-                rowContainer.renameText.setText(rowContainer.songTitle.getText());
-                rowContainer.renameText.setSelectAllOnFocus(true);
-                rowContainer.editState = LibraryAdapter.LibraryRowContainer.EDIT_STATE.EDITING;
-                rowContainer.rowView.setBackgroundColor(rowContainer.rowView.getContext().getResources().getColor(R.color.white));
-                LibraryAdapter.setSongInEdit(true);
+            } else if (!LibraryAdapter.hasSongInEdit() && !libModel.isPlaying()) {
+                // check that no other song is in edit before enabling edit mode
+                switchEditMode(libModel, true);
             }
 
-        } catch (Exception e) {
-            UIUtils.printError(rowContainer.rowView.getContext(), "play song from list item:" + e.toString());
+        } else {
+            switchEditMode(libModel, forceEditMode);
         }
     }
 
 
-    public void onRenameSubmit(int position, LibraryAdapter.LibraryRowContainer rowContainer, String oldValue, String newValue) {
+    public void switchEditMode(LibraryListModel libModel, boolean editMode) {
 
+        // set global adapter song in edit flag
+        LibraryAdapter.setHasSongInEdit(editMode);
+
+        // update model and list
+        libModel.setEditMode(editMode);
+        updateListModifications();
     }
 
     /**
@@ -139,9 +140,12 @@ public class LibrarySongsFragment extends ListFragment {
 
     public void setListModels() {
 
-        libraryListModels = new LinkedList<LibraryListModel>();
+        LogUtils.logData("flow_debug", "setListModels__setting list models");
 
+        // init model list
+        libraryListModels = new LinkedList<LibraryListModel>();
         LibraryListModel libModel;
+        int currentModelPosition = 0;
 
         for (String songName : songNames) {
 
@@ -151,17 +155,42 @@ public class LibrarySongsFragment extends ListFragment {
             // set list row song title to the current value
             libModel.setSongTitle(songName);
 
-            // set playing mode to be false
-            libModel.setPlaying(false);
-            libModel.setRenameMode(false);
+            if (PlayerFragment.isNotInited()) {
+
+                // set playing mode to be false
+                libModel.setPlaying(false);
+
+            } else {
+
+                int currSongPos = PlayerFragment.getCurrentSongPosition();
+
+                // preserve playing mode to item after refresh
+                if (currentModelPosition == currSongPos) {
+                    libModel.setPlaying(true);
+
+                    if (PlayerFragment.isInPlayingMode()) {
+                        setPositionFocus(currSongPos);
+                    }
+                }
+            }
+
+            // set edit mode false
+            libModel.setEditMode(false);
+
+            // increment model position
+            currentModelPosition++;
 
             // add current model to model list
             libraryListModels.add(libModel);
         }
-
     }
 
     public static List<LibraryListModel> getLibraryListModels() {
+
+        if (libraryListModels == null) {
+            libraryListModels = new LinkedList<LibraryListModel>();
+        }
+
         return libraryListModels;
     }
 
@@ -193,6 +222,19 @@ public class LibrarySongsFragment extends ListFragment {
         updateListModifications();
     }
 
+    public void deleteSong(int position, View v, LibraryAdapter.LibraryRowContainer rowContainer) {
+
+        LogUtils.logData("flow_debug", "LibrarySongFragment__deleteSong deleting" + rowContainer.songTitle.getText().toString() + " ... ");
+
+        setOperEvent(OPER_EVENT.DELETE);
+        DataUtils.deleteFile(rowContainer.songTitle.getText().toString());
+
+        // set position to return to after reload
+        setPositionFocus(position);
+
+        // reload fragment
+        FragmentUtils.loadLibraryFragment(v.getContext());
+    }
 
     public boolean onRenameKeyChange(int position, View v, int keyCode, KeyEvent event) {
 
@@ -200,12 +242,7 @@ public class LibrarySongsFragment extends ListFragment {
         if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
                 (keyCode == KeyEvent.KEYCODE_ENTER)) {
 
-            String renamedSong = ((EditText) v).getText().toString();
-            String songTitle = libraryListModels.get(position).getSongTitle();
-            DataUtils.renameFile(songTitle, renamedSong);
-            FragmentUtils.loadLibraryFragment(v.getContext(), DataUtils.listFiles(SharedPref.songDirectory));
-            LibraryAdapter.setSongInEdit(false);
-            LogUtils.logData("onRenameKeyChange", "submit!");
+            submitSongEdit(v, position);
 
             return true;
         }
@@ -213,12 +250,96 @@ public class LibrarySongsFragment extends ListFragment {
         return false;
     }
 
+    private void submitSongEdit(View v, int position) {
+
+        // rename song
+        String newSongTitle = ((EditText) v).getText().toString();
+        String songTitle = libraryListModels.get(position).getSongTitle();
+        DataUtils.renameFile(songTitle, newSongTitle);
+        LogUtils.logData("flow_debug", "onRenameKeyChange__renamed song to " + newSongTitle);
+
+
+        // set position to return to after reload
+        setPositionFocus(position);
+
+        // reload fragment
+        FragmentUtils.loadLibraryFragment(v.getContext(), DataUtils.listFiles(SharedPref.songDirectory, SharedPref.songExtension));
+        handleEditMode(position, false);
+
+        LogUtils.logData("flow_debug", "onRenameKeyChange__submited!");
+
+    }
+
     public void onRenameFocusChange(int position, View v, boolean hasFocus) {
 
         if (hasFocus) {
 
-            libraryListModels.get(position).setRenameMode(hasFocus);
+            libraryListModels.get(position).setEditMode(hasFocus);
             updateListModifications();
         }
     }
+
+    private static OPER_EVENT getOperEvent() {
+        return operEvent;
+    }
+
+
+    /**
+     * ******************************************************************
+     * ************* Library event operation functions  *****************
+     * ******************************************************************
+     */
+
+    private void ScrollTo(final int position) {
+
+        final ListView listView = LibraryAdapter.getParentListView();
+
+        if (listView != null && position > 0) {
+            LogUtils.logData("flow_debug", "LibrarySongFragment__scrolling to " + position);
+
+            UIUtils.listScroll(listView, position, true);
+        }
+    }
+
+    public void ScrollToPositionFocus() {
+        ScrollTo(getPositionFocus());
+    }
+
+    public static void setOperEvent(OPER_EVENT operEvent) {
+        LibrarySongsFragment.operEvent = operEvent;
+    }
+
+    public static boolean isDeletedOperation() {
+        return operEvent.equals(OPER_EVENT.DELETE);
+    }
+
+    public static boolean isAddedOperation() {
+        return operEvent.equals(OPER_EVENT.ADD);
+    }
+
+    public static void initOperationState() {
+        setOperEvent(OPER_EVENT.NA);
+    }
+
+    public static int getPositionFocus() {
+
+        int returnedPositionFocus = -1;
+
+        if (positionFocus > 0) {
+            returnedPositionFocus = positionFocus;
+        }
+
+        initPositionFocus();
+
+        return returnedPositionFocus;
+    }
+
+    public static void setPositionFocus(int positionFocus) {
+        LibrarySongsFragment.positionFocus = positionFocus;
+    }
+
+    private static void initPositionFocus() {
+        positionFocus = -1;
+    }
+
 }

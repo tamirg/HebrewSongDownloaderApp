@@ -151,6 +151,7 @@ public class FragmentUtils {
             ft.replace(R.id.library_files_container, libSongFragment);
             //ft.addToBackStack(null);
             ft.commitAllowingStateLoss();
+
         }
     }
 }

@@ -37,9 +37,9 @@ public class PlayerFragment extends Fragment {
     private static int currentSongPosition;
     private static boolean playerInitialized = false;
 
-    public static enum PLAYER_STATE {PLAY, PAUSE, STOP, NA}
+    public static enum PLAYER_STATE {PLAY, PAUSE, FORCED_PAUSE, STOP, NA}
 
-    private static PLAYER_STATE state;
+    private static PLAYER_STATE playerState;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -101,7 +101,7 @@ public class PlayerFragment extends Fragment {
         if (mPlayer == null) {
             setInitialMode();
         } else if (inPlayingMode()) {
-            setPlayingMode(currentSongPosition);
+            setPlayingMode();
         }
 
     }
@@ -148,7 +148,7 @@ public class PlayerFragment extends Fragment {
         currentSongPosition = 0;
         context = playerContext;
         songs = new LinkedList<Uri>();
-        state = PLAYER_STATE.NA;
+        playerState = PLAYER_STATE.NA;
     }
 
     public static void initMediaPlayer(int songPosition) {
@@ -170,7 +170,7 @@ public class PlayerFragment extends Fragment {
                 playNextSong();
             }
         });
-        state = PLAYER_STATE.NA;
+        playerState = PLAYER_STATE.NA;
 
     }
 
@@ -186,8 +186,22 @@ public class PlayerFragment extends Fragment {
 
             // increment position in case of a song playing so that the automatic next song will work
             if (inPlayingMode()) {
-                LogUtils.logData("flow_debug", "PlayerFragment__incrementing song position to " + currentSongPosition + 1);
-                currentSongPosition++;
+
+                if (LibrarySongsFragment.isAddedOperation()) {
+
+                    // in case of a new song downloaded and added to list
+                    LogUtils.logData("flow_debug", "PlayerFragment__incrementing song position to " + (currentSongPosition + 1));
+                    currentSongPosition++;
+                } else if (LibrarySongsFragment.isDeletedOperation()) {
+
+                    // in case of an existing song was deleted from library
+
+                    /* TODO : uncomment when figuring out if it's necessary
+                    currentSongPosition--; */
+                }
+
+                // initialize operation playerState
+                LibrarySongsFragment.initOperationState();
             }
 
         } catch (Exception e) {
@@ -230,7 +244,7 @@ public class PlayerFragment extends Fragment {
             // start current song or continue already played one
             mPlayer.start();
 
-            setPlayingMode(currentSongPosition);
+            setPlayingMode();
 
         } catch (Exception e) {
             UIUtils.printError(context, "play_song" + e.toString());
@@ -263,7 +277,7 @@ public class PlayerFragment extends Fragment {
         initMediaPlayer(currentSongPosition + 1);
 
         // handle playing UI
-        setPlayingMode(currentSongPosition + 1);
+        setPlayingMode();
 
         // update position
         currentSongPosition++;
@@ -288,7 +302,7 @@ public class PlayerFragment extends Fragment {
         initMediaPlayer(currentSongPosition - 1);
 
         // handle playing UI
-        setPlayingMode(currentSongPosition - 1);
+        setPlayingMode();
 
         // update position
         currentSongPosition--;
@@ -319,16 +333,16 @@ public class PlayerFragment extends Fragment {
         stopButton.setEnabled(false);
         prevButton.setEnabled(false);
         nextButton.setEnabled(false);
-        state = PLAYER_STATE.NA;
+        playerState = PLAYER_STATE.NA;
     }
 
-    public static void setPlayingMode(int pos) {
+    public static void setPlayingMode() {
         playButton.setImageResource(R.drawable.ic_pause);
         playButton.setEnabled(true);
         stopButton.setEnabled(true);
         prevButton.setEnabled(true);
         nextButton.setEnabled(true);
-        state = PLAYER_STATE.PLAY;
+        playerState = PLAYER_STATE.PLAY;
     }
 
     public static void setPauseMode() {
@@ -337,7 +351,7 @@ public class PlayerFragment extends Fragment {
         stopButton.setEnabled(true);
         prevButton.setEnabled(true);
         nextButton.setEnabled(true);
-        state = PLAYER_STATE.PAUSE;
+        playerState = PLAYER_STATE.PAUSE;
     }
 
     public static void setStopMode() {
@@ -346,7 +360,7 @@ public class PlayerFragment extends Fragment {
         stopButton.setEnabled(false);
         prevButton.setEnabled(true);
         nextButton.setEnabled(true);
-        state = PLAYER_STATE.STOP;
+        playerState = PLAYER_STATE.STOP;
 
         ImageView playingIndicator = LibraryAdapter.getRowContainer(currentSongPosition).playingIndicator;
         playingIndicator.setVisibility(View.INVISIBLE);
@@ -379,24 +393,54 @@ public class PlayerFragment extends Fragment {
 
     public static void PausePlayer() {
 
-        if (state == null) {
+        if (playerState == null) {
             return;
         }
 
-        if (state.equals(PLAYER_STATE.PLAY)) {
-            pauseSong();
+        if (isInPlayingMode()) {
+            // TODO : think how to do it better
+            // pauseSong();
         }
     }
 
     public static void ResumePlayer() {
 
-        if (state == null) {
+        if (playerState == null) {
             return;
         }
 
-        if (state.equals(PLAYER_STATE.PAUSE)) {
-            startSong();
+        if (isInPauseMode()) {
+            // TODO : think how to do it better
+            //startSong();
         }
     }
+
+
+    /**
+     * ******************************************************************
+     * ************** Player API functions ***********************
+     * ******************************************************************
+     */
+
+    public static boolean isInPlayingMode() {
+        return playerState.equals(PLAYER_STATE.PLAY);
+    }
+
+    public static boolean isInPauseMode() {
+        return playerState.equals(PLAYER_STATE.PAUSE);
+    }
+
+    public static boolean isInStopMode() {
+        return playerState.equals(PLAYER_STATE.STOP);
+    }
+
+    public static boolean isNotInited() {
+        return playerState.equals(PLAYER_STATE.NA);
+    }
+
+    public static int getCurrentSongPosition() {
+        return currentSongPosition;
+    }
+
 
 }
