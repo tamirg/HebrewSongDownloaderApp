@@ -290,7 +290,7 @@ public class MainActivity extends FragmentActivity implements
             FragmentUtils.filterLibrary(this, newText);
         }
 
-        LogUtils.logData("search_debug", "on change, new text : " + newText);
+        LogUtils.logData("search_debug", "on change, new text: " + newText);
         return false;
     }
 
