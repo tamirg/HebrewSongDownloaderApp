@@ -37,16 +37,16 @@ public class SearchSingleResultThread implements Runnable {
         try {
             String songDownloadURL = singleDownloadButton.child(0).attr("abs:href");
 
-            Document songDownloadParsedHTML = Jsoup.connect(songDownloadURL).get();
+            Document songDownloadParsedHTML = ConnectionUtils.songDownloadParsedHTML(songDownloadURL);
             Elements elementsWithClassIframe =
                     songDownloadParsedHTML.getElementsByClass("iframecontent").select("iframe");
             String iframeURL = elementsWithClassIframe.attr("abs:src");
 
-            Document iframeSongDownloadDocument = Jsoup.connect(iframeURL).get();
+            Document iframeSongDownloadDocument = ConnectionUtils.connectToURL(iframeURL);
             String songDownloadIframe = iframeSongDownloadDocument.getElementsByTag("iframe").attr("abs:src");
 
             // Gets the iframe for the download, can be more than one website
-            Document iframeParsedHTML = Jsoup.connect(songDownloadIframe).userAgent("Mozilla").get();
+            Document iframeParsedHTML = Jsoup.connect(songDownloadIframe).get();
 
             SongResult newSongResult = this.fetchSongsEngine.fetchSingleSongResult(songDownloadIframe, iframeParsedHTML);
             if (!newSongResult.getDownloadURL().equals("") &&

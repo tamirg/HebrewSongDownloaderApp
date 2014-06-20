@@ -5,7 +5,6 @@ import Exceptions.UnRecognizedSongEngineException;
 import android.util.Log;
 import com.alfa.utils.logic.SharedPref;
 import entities.SongResult;
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -40,12 +39,12 @@ public class FetchSongs {
     public List<SongResult> getSongResults(String nameOfSong) throws Exception {
         final List<SongResult> songResults = new LinkedList<SongResult>();
         nameOfSong = URLEncoder.encode(nameOfSong, QUERY_ENCODING);
-        Document pageDoc = Jsoup.connect(UNIDOWN_URL_QUERY + nameOfSong).get();
+        Document pageDoc = ConnectionUtils.connectToURL(UNIDOWN_URL_QUERY + nameOfSong);
+
         Elements downloadButtonElements = pageDoc.getElementsByClass("download_button");
         if (downloadButtonElements.isEmpty()) {
             throw new NoSongFoundException();
         } else {
-
             ExecutorService threadPool = Executors.newFixedThreadPool(downloadButtonElements.size());
             for (Element singleDownloadButton : downloadButtonElements) {
                 Runnable r = new SearchSingleResultThread(singleDownloadButton, songResults);
