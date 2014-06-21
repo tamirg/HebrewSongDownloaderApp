@@ -3,11 +3,12 @@ package engine;
 import Exceptions.NoSongFoundException;
 import Exceptions.UnRecognizedSongEngineException;
 import android.util.Log;
-import com.alfa.utils.logic.SharedPref;
 import entities.SongResult;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import utils.logic.ConnectionUtils;
+import utils.logic.SharedPref;
 
 import java.net.URLEncoder;
 import java.util.LinkedList;

@@ -3,7 +3,7 @@ package entities;
 
 import android.support.v4.app.FragmentManager;
 import android.view.View;
-import com.alfa.utils.async.AsyncTaskManager;
+import utils.async.AsyncTaskManager;
 
 /**
  * Created by Tamir on 11/02/14.
