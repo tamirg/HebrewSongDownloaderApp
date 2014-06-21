@@ -25,77 +25,71 @@ import java.io.File;
  */
 public class SearchFragment extends Fragment {
 
-    private String SONGS_DIRECTORY = Environment.getExternalStorageDirectory().toString();
+	private String SONGS_DIRECTORY = Environment.getExternalStorageDirectory().toString();
+	private ProgressBar progressBar;
+	private FragmentManager fm;
+	private ImageButton songSearchButton;
+	private TextView loadingText;
+	private TextView percentageProgress;
 
-    private ProgressBar progressBar;
-    private FragmentManager fm;
-    private ImageButton songSearchButton;
-    private TextView loadingText;
-    private TextView percentageProgress;
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+		LogUtils.logData("flow_debug", "SearchFragment__create");
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		View view = inflater.inflate(R.layout.search_fragment, container, false);
+		setupFragmentView(view);
+		return view;
+	}
 
-        LogUtils.logData("flow_debug", "SearchFragment__create");
+	private void setupFragmentView(final View view) {
 
-        View view = inflater.inflate(R.layout.search_fragment, container, false);
-        setupFragmentView(view);
-        return view;
-    }
+		LogUtils.logData("flow_debug", "SearchFragment__setup");
 
-    private void setupFragmentView(final View view) {
+		// setup view widgets
+		progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
+		loadingText = (TextView) view.findViewById(R.id.loadingText);
+		percentageProgress = (TextView) view.findViewById(R.id.percentageProgress);
 
-        LogUtils.logData("flow_debug", "SearchFragment__setup");
+		// setup progress bar
+		progressBar.setVisibility(View.INVISIBLE);
 
-        // setup view widgets
-        progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
-        loadingText = (TextView) view.findViewById(R.id.loadingText);
-        percentageProgress = (TextView) view.findViewById(R.id.percentageProgress);
+		// setup fragment manager
+		fm = getFragmentManager();
 
-        // setup progress bar
-        progressBar.setVisibility(View.INVISIBLE);
+		// setup widget initial state
+		loadingText.setVisibility(View.VISIBLE);
+		loadingText.setText("הזן שם שיר לחיפוש");
+		percentageProgress.setVisibility(View.INVISIBLE);
 
-        // setup fragment manager
-        fm = getFragmentManager();
+		// setup song directory folder
+		SONGS_DIRECTORY += getString(R.string.downloadFolder);
+		File folder = new File(SONGS_DIRECTORY);
 
-        // setup widget initial state
-        loadingText.setVisibility(View.VISIBLE);
-        loadingText.setText("הזן שם שיר לחיפוש");
-        percentageProgress.setVisibility(View.INVISIBLE);
+		boolean success = true;
+		if (!folder.exists()) {
+			success = folder.mkdir();
+		}
+	}
 
-        // setup song directory folder
-        SONGS_DIRECTORY += getString(R.string.downloadFolder);
-        File folder = new File(SONGS_DIRECTORY);
+	public TextView getLoadingText() {
+		return loadingText;
+	}
 
-        boolean success = true;
-        if (!folder.exists()) {
-            success = folder.mkdir();
-        }
-    }
+	public void executeSongSearch(Context c, String query, MenuItem actionBarProgressBar) {
+		try {
+			LogUtils.logData("flow_debug", "SearchFragment__invoking song search for " + query);
 
-    public TextView getLoadingText() {
-        return loadingText;
-    }
+			// get song result from search engine
+			AsyncTaskManager.getSongResult(c, query, loadingText, actionBarProgressBar);
 
-    public void executeSongSearch(Context c, String query, MenuItem actionBarProgressBar) {
+		} catch (Exception e) {
+			LogUtils.logError("fetch_song_results", e.toString());
+		}
+	}
 
-        try {
-
-            LogUtils.logData("flow_debug", "SearchFragment__invoking song search for " + query);
-
-
-            // get song result from search engine
-            AsyncTaskManager.getSongResult(c, query, loadingText, actionBarProgressBar);
-
-        } catch (Exception e) {
-            LogUtils.logError("fetch_song_results", e.toString());
-        }
-    }
-
-    @Override
-    public String toString() {
-        return "SearchFragment";
-    }
-
+	@Override
+	public String toString() {
+		return "SearchFragment";
+	}
 }

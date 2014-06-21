@@ -21,137 +21,134 @@ import java.util.List;
  */
 public class FragmentUtils {
 
-    public static FragmentManager fm;
-    private static List<String> downloads;
-    private static List<String> librarySongs = null;
-    private static FragmentActivity parentActivity;
+	public static FragmentManager fm;
+	private static List<String> downloads;
+	private static List<String> librarySongs = null;
+	private static FragmentActivity parentActivity;
 
-    public static void initFragmentManager(FragmentActivity parentActivity) {
-        FragmentUtils.parentActivity = parentActivity;
-    }
+	public static void initFragmentManager(FragmentActivity parentActivity) {
+		FragmentUtils.parentActivity = parentActivity;
+	}
 
-    public static void loadDownloadsListFragment(List<String> downloads) {
+	public static void loadDownloadsListFragment(List<String> downloads) {
 
-        fm = parentActivity.getSupportFragmentManager();
+		fm = parentActivity.getSupportFragmentManager();
 
+		if (fm != null) {
 
-        if (fm != null) {
+			FragmentUtils.downloads = downloads;
 
-            FragmentUtils.downloads = downloads;
+			FragmentTransaction ft = fm.beginTransaction();
+			DownloadListFragment downloadListFragment = new DownloadListFragment(downloads);
 
-            FragmentTransaction ft = fm.beginTransaction();
-            DownloadListFragment downloadListFragment = new DownloadListFragment(downloads);
+			ft.replace(R.id.download_list_container, downloadListFragment);
 
-            ft.replace(R.id.download_list_container, downloadListFragment);
+			ft.commit();
+		}
+	}
 
-            ft.commit();
-        }
-    }
+	public static void removeDownloadAndReload(String songToBeRemoved) {
 
-    public static void removeDownloadAndReload(String songToBeRemoved) {
-
-        fm = parentActivity.getSupportFragmentManager();
-
-
-        if (fm != null) {
-
-            downloads.remove(songToBeRemoved);
-
-            FragmentTransaction ft = fm.beginTransaction();
-            DownloadListFragment downloadListFragment = new DownloadListFragment(downloads);
-
-            ft.replace(R.id.download_list_container, downloadListFragment);
-
-            ft.commit();
-        }
-    }
-
-    public static void removeLibrarySongAndReload(String songToBeRemoved) {
-
-        fm = parentActivity.getSupportFragmentManager();
+		fm = parentActivity.getSupportFragmentManager();
 
 
-        if (fm != null) {
+		if (fm != null) {
 
-            librarySongs.remove(songToBeRemoved);
+			downloads.remove(songToBeRemoved);
 
-            FragmentTransaction ft = fm.beginTransaction();
-            DownloadListFragment downloadListFragment = new DownloadListFragment(downloads);
+			FragmentTransaction ft = fm.beginTransaction();
+			DownloadListFragment downloadListFragment = new DownloadListFragment(downloads);
 
-            ft.replace(R.id.download_list_container, downloadListFragment);
+			ft.replace(R.id.download_list_container, downloadListFragment);
 
-            ft.commit();
-        }
-    }
+			ft.commit();
+		}
+	}
+
+	public static void removeLibrarySongAndReload(String songToBeRemoved) {
+
+		fm = parentActivity.getSupportFragmentManager();
 
 
-    public static void loadSongListFragment(List<SongResult> songResults) {
+		if (fm != null) {
 
-        fm = parentActivity.getSupportFragmentManager();
+			librarySongs.remove(songToBeRemoved);
 
-        if (fm != null) {
-            FragmentTransaction ft = fm.beginTransaction();
-            ft.replace(R.id.list_container, new SongListFragment(songResults));
-            ft.commit();
-        }
-    }
+			FragmentTransaction ft = fm.beginTransaction();
+			DownloadListFragment downloadListFragment = new DownloadListFragment(downloads);
 
-    public static void filterLibrary(Context context, String filter) {
+			ft.replace(R.id.download_list_container, downloadListFragment);
 
-        List<String> filteredSongs = new ArrayList<String>();
-        List<String> backupLibrarySongs;
+			ft.commit();
+		}
+	}
 
-        if (librarySongs == null) {
-            librarySongs = DataUtils.getSongNamesFromDirectory();
-        }
 
-        backupLibrarySongs = new ArrayList<String>(librarySongs);
+	public static void loadSongListFragment(List<SongResult> songResults) {
 
-        if (filter.length() > 0) {
-            for (String songName : backupLibrarySongs) {
-                if (songName.toLowerCase().contains(filter.toLowerCase())) {
-                    filteredSongs.add(songName);
-                }
-            }
-        } else {
-            filteredSongs = backupLibrarySongs;
-        }
+		fm = parentActivity.getSupportFragmentManager();
 
-        loadLibraryFragment(context, filteredSongs);
-    }
+		if (fm != null) {
+			FragmentTransaction ft = fm.beginTransaction();
+			ft.replace(R.id.list_container, new SongListFragment(songResults));
+			ft.commit();
+		}
+	}
 
-    public static void loadLibraryFragment(Context context) {
+	public static void filterLibrary(Context context, String filter) {
 
-        LogUtils.logData("flow_debug", "FragmentUtils__loading library fragment..");
+		List<String> filteredSongs = new ArrayList<String>();
+		List<String> backupLibrarySongs;
 
-        librarySongs = DataUtils.getSongNamesFromDirectory();
-        loadLibraryFragment(context, librarySongs);
-    }
+		if (librarySongs == null) {
+			librarySongs = DataUtils.getSongNamesFromDirectory();
+		}
 
-    public static void loadLibraryFragment(Context context, List<String> filteredList) {
+		backupLibrarySongs = new ArrayList<String>(librarySongs);
 
-        LogUtils.logData("flow_debug", "FragmentUtils__loading library fragment..");
+		if (filter.length() > 0) {
+			for (String songName : backupLibrarySongs) {
+				if (songName.toLowerCase().contains(filter.toLowerCase())) {
+					filteredSongs.add(songName);
+				}
+			}
+		} else {
+			filteredSongs = backupLibrarySongs;
+		}
 
-        fm = parentActivity.getSupportFragmentManager();
+		loadLibraryFragment(context, filteredSongs);
+	}
 
-        if (fm != null) {
+	public static void loadLibraryFragment(Context context) {
 
-            FragmentTransaction ft = fm.beginTransaction();
+		LogUtils.logData("flow_debug", "FragmentUtils__loading library fragment..");
 
-            LibrarySongsFragment libSongFragment = new LibrarySongsFragment(filteredList);
-            PlayerFragment player = libSongFragment.createPlayer(context);
+		librarySongs = DataUtils.getSongNamesFromDirectory();
+		loadLibraryFragment(context, librarySongs);
+	}
 
-            // load player
-            LogUtils.logData("flow_debug", "FragmentUtils__replacing player fragment..");
-            ft.replace(R.id.player_container, player);
-            //ft.addToBackStack(null);
+	public static void loadLibraryFragment(Context context, List<String> filteredList) {
 
-            // load file list
-            LogUtils.logData("flow_debug", "FragmentUtils__replacing library song fragment..");
-            ft.replace(R.id.library_files_container, libSongFragment);
-            //ft.addToBackStack(null);
-            ft.commitAllowingStateLoss();
+		LogUtils.logData("flow_debug", "FragmentUtils__loading library fragment..");
 
-        }
-    }
+		fm = parentActivity.getSupportFragmentManager();
+
+		if (fm != null) {
+			FragmentTransaction ft = fm.beginTransaction();
+
+			LibrarySongsFragment libSongFragment = new LibrarySongsFragment(filteredList);
+			PlayerFragment player = libSongFragment.createPlayer(context);
+
+			// load player
+			LogUtils.logData("flow_debug", "FragmentUtils__replacing player fragment..");
+			ft.replace(R.id.player_container, player);
+			//ft.addToBackStack(null);
+
+			// load file list
+			LogUtils.logData("flow_debug", "FragmentUtils__replacing library song fragment..");
+			ft.replace(R.id.library_files_container, libSongFragment);
+			//ft.addToBackStack(null);
+			ft.commitAllowingStateLoss();
+		}
+	}
 }

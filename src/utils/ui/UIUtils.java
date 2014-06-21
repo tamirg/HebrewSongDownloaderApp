@@ -7,7 +7,7 @@ import android.content.DialogInterface;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
-import utils.logic.SharedPref;
+import utils.conf.SharedPref;
 
 /**
  * Created by Micha on 2/7/14.
@@ -294,7 +294,6 @@ public class UIUtils {
                 });
             }
         };
-
 
         // execute thread
         t.start();

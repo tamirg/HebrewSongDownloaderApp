@@ -7,59 +7,59 @@ import android.view.View;
 import ui.downloads.DownloadsFragment;
 import ui.library.LibraryFragment;
 import ui.search.SearchFragment;
-import utils.logic.SharedPref;
+import utils.conf.SharedPref;
 
 
 public class TabsPagerAdapter extends FragmentPagerAdapter {
 
-    private static SearchFragment searchFragmentInstance;
-    private static DownloadsFragment downloadsFragmentInstance;
-    private static LibraryFragment libraryFragmentInstance;
+	private static SearchFragment searchFragmentInstance;
+	private static DownloadsFragment downloadsFragmentInstance;
+	private static LibraryFragment libraryFragmentInstance;
 
-    public TabsPagerAdapter(FragmentManager fm,
-                            SearchFragment searchFragment,
-                            DownloadsFragment downloadsFragment,
-                            LibraryFragment libraryFragment) {
-        super(fm);
-        searchFragmentInstance = searchFragment;
-        downloadsFragmentInstance = downloadsFragment;
-        libraryFragmentInstance = libraryFragment;
+	public TabsPagerAdapter(FragmentManager fm,
+	                        SearchFragment searchFragment,
+	                        DownloadsFragment downloadsFragment,
+	                        LibraryFragment libraryFragment) {
+		super(fm);
+		searchFragmentInstance = searchFragment;
+		downloadsFragmentInstance = downloadsFragment;
+		libraryFragmentInstance = libraryFragment;
 
-    }
+	}
 
-    @Override
-    public Fragment getItem(int index) {
+	@Override
+	public Fragment getItem(int index) {
 
-        switch (index) {
-            case 0: {
-                return searchFragmentInstance;
-            }
-            case 1: {
-                return downloadsFragmentInstance;
-            }
-            case 2: {
-                return libraryFragmentInstance;
-            }
-        }
+		switch (index) {
+			case 0: {
+				return searchFragmentInstance;
+			}
+			case 1: {
+				return downloadsFragmentInstance;
+			}
+			case 2: {
+				return libraryFragmentInstance;
+			}
+		}
 
-        return null;
-    }
+		return null;
+	}
 
-    @Override
-    public int getCount() {
-        // get item count
-        return SharedPref.tabCount;
-    }
+	@Override
+	public int getCount() {
+		// get item count
+		return SharedPref.tabCount;
+	}
 
 
-    // this important functions prevents from a tab fragment to be destroyed and thus give prevents the tab from being unnecessarily refreshed
-    @Override
-    public void destroyItem(View container, int position, Object object) {
+	// this important functions prevents from a tab fragment to be destroyed and thus give prevents the tab from being unnecessarily refreshed
+	@Override
+	public void destroyItem(View container, int position, Object object) {
 
-        if (SharedPref.destroyTabFragmentOnAction) {
-            super.destroyItem(container, position, object);
-        } else {
-            // LogUtils.logData("flow_debug", "TabsPagerAdapter__did not destroy fragment [" + position + "] (" + object.toString() + ")");
-        }
-    }
+		if (SharedPref.destroyTabFragmentOnAction) {
+			super.destroyItem(container, position, object);
+		} else {
+			// LogUtils.logData("flow_debug", "TabsPagerAdapter__did not destroy fragment [" + position + "] (" + object.toString() + ")");
+		}
+	}
 }

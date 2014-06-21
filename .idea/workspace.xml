@@ -13,20 +13,55 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="ERROR" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="data:" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="WARN" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a3d188e-0acd-4df5-844f-22d39649ba13" name="Default" comment="cleanup and bugfixes:&#10;1) rearanged utils in packages&#10;2) cleaned player fragment and main activitiy">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/alfa/utils/AsyncTaskManager.java" afterPath="$PROJECT_DIR$/src/com/alfa/utils/AsyncTaskManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/alfa/utils/ui/FragmentUtils.java" afterPath="$PROJECT_DIR$/src/com/alfa/utils/ui/FragmentUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/LibraryFragment.java" afterPath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/LibraryFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/LibrarySongsFragment.java" afterPath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/LibrarySongsFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/MainActivity.java" afterPath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/PlayerFragment.java" afterPath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/PlayerFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SearchFragment.java" afterPath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SearchFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/alfa/utils/logic/SharedPref.java" afterPath="$PROJECT_DIR$/src/com/alfa/utils/logic/SharedPref.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SongListFragment.java" afterPath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SongListFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/TabsPagerAdapter.java" afterPath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/TabsPagerAdapter.java" />
+    <list default="true" id="2a3d188e-0acd-4df5-844f-22d39649ba13" name="Default" comment="loading fake lists from async task">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/MainActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_1_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_android_android_4_0_1_2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_android_support_v4_r7.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_api_client_google_api_client_1_17_0_rc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_apis_google_api_services_youtube_v3_rev94_1_17_0_rc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_findbugs_jsr305_1_3_9.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_http_client_google_http_client_1_17_0_rc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_http_client_google_http_client_jackson2_1_17_0_rc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_oauth_client_google_oauth_client_1_17_0_rc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_1_1.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_0_1.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_0_1.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_json_json_20080701.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jsoup_jsoup_1_7_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_khronos_opengl_api_gl1_1_android_2_1_r1.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xerces_xmlParserAPIs_2_6_2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xpp3_xpp3_1_1_4c.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/Micha.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/utils/logic/YouTubeSearch.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/android_support_v13.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MOVED" beforePath="C:\devl\work\HebrewSongDownloaderApp\src\utils\logic\SharedPref.java" afterPath="$PROJECT_DIR$/src/utils/conf/SharedPref.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/AlternativeEngine.java" afterPath="$PROJECT_DIR$/src/engine/AlternativeEngine.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/com/alfa/HebrewSongDownloaderApp/BuildConfig.java" afterPath="$PROJECT_DIR$/gen/com/alfa/HebrewSongDownloaderApp/BuildConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/logic/DataUtils.java" afterPath="$PROJECT_DIR$/src/utils/logic/DataUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/FetchSongs.java" afterPath="$PROJECT_DIR$/src/engine/FetchSongs.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/ui/FragmentUtils.java" afterPath="$PROJECT_DIR$/src/utils/ui/FragmentUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HebrewSongDownloaderApp.iml" afterPath="$PROJECT_DIR$/HebrewSongDownloaderApp.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/library/LibraryAdapter.java" afterPath="$PROJECT_DIR$/src/ui/library/LibraryAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/library/LibraryListModel.java" afterPath="$PROJECT_DIR$/src/ui/library/LibraryListModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/library/LibrarySongsFragment.java" afterPath="$PROJECT_DIR$/src/ui/library/LibrarySongsFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/logic/LogUtils.java" afterPath="$PROJECT_DIR$/src/utils/logic/LogUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/MainActivity.java" afterPath="$PROJECT_DIR$/src/ui/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/library/PlayerFragment.java" afterPath="$PROJECT_DIR$/src/ui/library/PlayerFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/search/SearchFragment.java" afterPath="$PROJECT_DIR$/src/ui/search/SearchFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/search/SongListFragment.java" afterPath="$PROJECT_DIR$/src/ui/search/SongListFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/TabsPagerAdapter.java" afterPath="$PROJECT_DIR$/src/ui/TabsPagerAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/ui/UIUtils.java" afterPath="$PROJECT_DIR$/src/utils/ui/UIUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="4e1d4315-0995-4ac8-970f-1847ac98cff3" name="others" comment="" />
@@ -92,102 +127,94 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="FragmentUtils.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/alfa/utils/ui/FragmentUtils.java">
+      <file leaf-file-name="pom.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="23" selection-start="649" selection-end="649" vertical-scroll-proportion="0.22222222" vertical-offset="324" max-vertical-offset="900">
+            <state line="6" column="34" selection-start="325" selection-end="325" vertical-scroll-proportion="0.21906693" vertical-offset="0" max-vertical-offset="1962">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ant.properties" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ant.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="414">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="R.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gen/com/alfa/HebrewSongDownloaderApp/R.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="1" selection-start="188" selection-end="188" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="216">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="39" selection-start="391" selection-end="393" vertical-scroll-proportion="-4.6666665" vertical-offset="0" max-vertical-offset="828">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="YouTubeSearch.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/logic/YouTubeSearch.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="112" column="24" selection-start="4227" selection-end="4227" vertical-scroll-proportion="-8.509091" vertical-offset="1242" max-vertical-offset="2736">
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#0#6059#0" expanded="true" />
+                <element signature="e#2610#2624#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LibrarySongsFragment.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/LibrarySongsFragment.java">
+      <file leaf-file-name="UIUtils.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/ui/UIUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="13" selection-start="581" selection-end="581" vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="1242">
+            <state line="285" column="0" selection-start="8113" selection-end="8113" vertical-scroll-proportion="0.0" vertical-offset="4268" max-vertical-offset="5004">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LibraryFragment.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/LibraryFragment.java">
+      <file leaf-file-name="R.txt" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/target/R.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="37" selection-start="913" selection-end="913" vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="594">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2286">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchFragment.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SearchFragment.java">
+      <file leaf-file-name="R.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/target/generated-sources/r/com/alfa/HebrewSongDownloaderApp/R.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="13" selection-start="650" selection-end="650" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1692">
-              <folding>
-                <element signature="e#2319#2353#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TabsPagerAdapter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/TabsPagerAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="51" selection-start="1209" selection-end="1209" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="954">
-              <folding>
-                <element signature="e#1304#1305#0" expanded="true" />
-                <element signature="e#1372#1373#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/MainActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="201" column="43" selection-start="6234" selection-end="6234" vertical-scroll-proportion="-6.12" vertical-offset="3465" max-vertical-offset="3978">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#4235#4236#0" expanded="true" />
-                <element signature="e#4262#4263#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ActionBar.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/sources/android-17/android/app/ActionBar.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="730" column="34" selection-start="27182" selection-end="27182" vertical-scroll-proportion="0.0" vertical-offset="12546" max-vertical-offset="17082">
+            <state line="31" column="32" selection-start="1310" selection-end="1310" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2826">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Fragment.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/android-support-v13.jar!/android/support/v4/app/Fragment.class">
+      <file leaf-file-name="SearchResult.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/com/google/apis/google-api-services-youtube/v3-rev94-1.17.0-rc/google-api-services-youtube-v3-rev94-1.17.0-rc-sources.jar!/com/google/api/services/youtube/model/SearchResult.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="114" column="29" selection-start="4249" selection-end="4249" vertical-scroll-proportion="-6.76" vertical-offset="1865" max-vertical-offset="3906">
+            <state line="35" column="19" selection-start="1528" selection-end="1528" vertical-scroll-proportion="0.0" vertical-offset="125" max-vertical-offset="2178">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ViewPager.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/android-support-v13.jar!/android/support/v4/view/ViewPager.class">
+      <file leaf-file-name="URLUtils.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/logic/URLUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="13" selection-start="166" selection-end="166" vertical-scroll-proportion="-3.6" vertical-offset="0" max-vertical-offset="2664">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PlayerFragment.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/PlayerFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="135" column="6" selection-start="4054" selection-end="4133" vertical-scroll-proportion="-14.84" vertical-offset="1537" max-vertical-offset="4536">
+            <state line="8" column="13" selection-start="119" selection-end="119" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="432">
               <folding />
             </state>
           </provider>
@@ -211,9 +238,9 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/res/xml/searchable.xml" />
         <option value="C:/HebSongs_WorkSpace/HebrewSongDownloader/src/engine/FetchSongs.java" />
         <option value="$PROJECT_DIR$/src/Exceptions/NoSongFoundException.java" />
+        <option value="$PROJECT_DIR$/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SearchableActivity.java" />
         <option value="$PROJECT_DIR$/src/com/alfa/utils/asyncUtils/AsyncUtils.java" />
         <option value="$PROJECT_DIR$/src/com/alfa/utils/utils/AsyncUtils.java" />
@@ -238,27 +265,67 @@
         <option value="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/TutFragment.java" />
         <option value="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/TabedMainActivity.java" />
         <option value="$PROJECT_DIR$/res/layout/tabed_menu.xml" />
-        <option value="$PROJECT_DIR$/src/entities/SongResult.java" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/src/com/alfa/utils/FragmentUtils.java" />
-        <option value="$PROJECT_DIR$/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/res/layout/search_fragment.xml" />
-        <option value="$PROJECT_DIR$/src/com/alfa/utils/SharedPref.java" />
-        <option value="$PROJECT_DIR$/src/com/alfa/utils/logic/DataUtils.java" />
-        <option value="$PROJECT_DIR$/src/engine/FetchSongs.java" />
-        <option value="$PROJECT_DIR$/src/com/alfa/utils/logic/SharedPref.java" />
+        <option value="$PROJECT_DIR$/src/entities/SongResult.java" />
         <option value="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SongListFragment.java" />
-        <option value="$PROJECT_DIR$/src/com/alfa/utils/AsyncTaskManager.java" />
+        <option value="$PROJECT_DIR$/src/exceptions/NoSongFoundException.java" />
+        <option value="$PROJECT_DIR$/src/exceptions/UnRecognizedSongEngineException.java" />
+        <option value="$PROJECT_DIR$/src/engine/FetchSongs.java" />
         <option value="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SearchFragment.java" />
-        <option value="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/PlayerFragment.java" />
-        <option value="$PROJECT_DIR$/res/layout/activity_main.xml" />
-        <option value="$PROJECT_DIR$/src/com/alfa/utils/ui/FragmentUtils.java" />
-        <option value="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/LibrarySongsFragment.java" />
+        <option value="$PROJECT_DIR$/src/Exceptions/UnRecognizedSongEngineException.java" />
         <option value="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/MainActivity.java" />
-        <option value="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/TabsPagerAdapter.java" />
-        <option value="$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/LibraryFragment.java" />
+        <option value="$PROJECT_DIR$/src/ui/library/PlayerFragment.java" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/ui/TabsPagerAdapter.java" />
+        <option value="$PROJECT_DIR$/src/ui/search/SongListFragment.java" />
+        <option value="$PROJECT_DIR$/src/ui/search/SearchFragment.java" />
+        <option value="$PROJECT_DIR$/src/ui/library/LibraryAdapter.java" />
+        <option value="$PROJECT_DIR$/src/utils/ui/FragmentUtils.java" />
+        <option value="$PROJECT_DIR$/src/utils/ui/UIUtils.java" />
+        <option value="$PROJECT_DIR$/src/ui/library/LibraryListModel.java" />
+        <option value="$PROJECT_DIR$/src/utils/logic/Search.java" />
+        <option value="$PROJECT_DIR$/src/utils/conf/SharedConfiguration.java" />
+        <option value="$PROJECT_DIR$/src/utils/conf/SharedPref.java" />
+        <option value="$PROJECT_DIR$/src/utils/logic/YouTubeSearch.java" />
+        <option value="$PROJECT_DIR$/src/ui/MainActivity.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="hebrew-song-downloader" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="hebrew-song-downloader" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Lifecycle" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$LifecycleNode" />
+        </PATH_ELEMENT>
+      </PATH>
+    </treeState>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
@@ -495,7 +562,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
-    <option name="STATE" value="0" />
+    <option name="STATE" value="2" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
@@ -510,7 +577,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -542,46 +609,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HebrewSongDownloaderApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HebrewSongDownloaderApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="alfa" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HebrewSongDownloaderApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HebrewSongDownloaderApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="alfa" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="utils" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
@@ -602,10 +629,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="alfa" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -631,7 +654,185 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="alfa" />
+              <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="conf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HebrewSongDownloaderApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HebrewSongDownloaderApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="async" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HebrewSongDownloaderApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HebrewSongDownloaderApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HebrewSongDownloaderApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HebrewSongDownloaderApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="search" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HebrewSongDownloaderApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HebrewSongDownloaderApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="library" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HebrewSongDownloaderApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HebrewSongDownloaderApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="downloads" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HebrewSongDownloaderApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HebrewSongDownloaderApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Exceptions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HebrewSongDownloaderApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HebrewSongDownloaderApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="entities" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HebrewSongDownloaderApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HebrewSongDownloaderApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HebrewSongDownloaderApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HebrewSongDownloaderApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -650,24 +851,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HebrewSongDownloaderApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HebrewSongDownloaderApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -699,31 +882,17 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
+              <option name="myItemId" value="gen" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="jsoup-1.7.3.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
               <option name="myItemId" value="HebrewSongDownloaderApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HebrewSongDownloaderApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -735,54 +904,41 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="FullScreen" value="false" />
-    <property name="options.lastSelected" value="preferences.keymap" />
-    <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="options.searchVisible" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/jsoup-1.7.3.jar!/" />
+    <property name="restartRequiresConfirmation" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../YouTube Java Project" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="restartRequiresConfirmation" value="true" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="269" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="298" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="299" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="969" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="292" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="290" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="292" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="961" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
-    <property name="OverrideImplement.combined" value="true" />
-    <property name="OverrideImplement.overriding.sorted" value="false" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="JBEmu" />
-    <property name="SearchEverywhereHistory" value="" />
+    <property name="options.lastSelected" value="org.clarent.ivyidea.intellij.ui.IvyIdeaProjectSettingsComponent" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="dynamic.classpath" value="false" />
+  </component>
+  <component name="PsiViewer.ProjectComponent">
+    <option name="HIGHLIGHT" value="false" />
+    <option name="FILTER_WHITESPACE" value="false" />
+    <option name="SHOW_PROPERTIES" value="true" />
+    <option name="SPLIT_DIVIDER_POSITION" value="300" />
+    <option name="AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="AUTOSCROLL_FROM_SOURCE" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.alfa.HebrewSongDownloaderApp" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\devl\work\HebrewSongDownloaderApp" />
       <recent name="C:\Users\Micha\IdeaProjects\HebrewSongDownloaderApp\res\layout" />
       <recent name="C:\Users\Micha\IdeaProjects\HebrewSongDownloaderApp\lib" />
       <recent name="C:\Users\Micha\IdeaProjects\HebrewSongDownloaderApp\src\lib" />
       <recent name="C:\HebrewSongDownloaderApp\src\engine" />
-      <recent name="C:\HebrewSongDownloaderApp\src\com\alfa\HebrewSongDownloaderApp" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.alfa.HebrewSongDownloaderApp" />
     </key>
   </component>
-  <component name="RunManager" selected="Android Application.SongListActivity">
+  <component name="RunManager" selected="Maven.HebrewSongDownloaderApp">
     <configuration default="false" name="SearchableActivity" type="AndroidRunConfigurationType" factoryName="Android Application" temporary="true">
       <module name="HebrewSongDownloaderApp" />
       <option name="ACTIVITY_CLASS" value="com.alfa.HebrewSongDownloaderApp.SearchableActivity" />
@@ -806,7 +962,7 @@
     </configuration>
     <configuration default="false" name="SongListActivity" type="AndroidRunConfigurationType" factoryName="Android Application" temporary="true">
       <module name="HebrewSongDownloaderApp" />
-      <option name="ACTIVITY_CLASS" value="com.alfa.HebrewSongDownloaderApp.MainActivity" />
+      <option name="ACTIVITY_CLASS" value="com.alfa.HebrewSongDownloaderApp.TabedMainActivity" />
       <option name="MODE" value="specific_activity" />
       <option name="DEPLOY" value="true" />
       <option name="ARTIFACT_NAME" value="" />
@@ -825,20 +981,32 @@
       <ConfigurationWrapper RunnerId="AndroidDebugRunner" />
       <method />
     </configuration>
-    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails" singleton="true">
-      <module name="" />
-      <setting name="vmparams" value="" />
-      <setting name="cmdLine" value="run-app" />
-      <setting name="depsClasspath" value="false" />
-      <setting name="passParentEnv" value="true" />
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <setting name="launchBrowser" value="false" />
-      <method />
-    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin" singleton="true">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
+    <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list />
+            </option>
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
       <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -849,40 +1017,27 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Specs2RunConfiguration" factoryName="Specs2">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <extension name="scalaCoverage" />
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="$PROJECT_DIR$" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
+      <method />
+    </configuration>
     <configuration default="true" type="GoogleAppEngineDevServer" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
       <server-settings />
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
-      <method />
-    </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
       <method />
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -896,6 +1051,10 @@
       <option name="VM_PARAMETERS" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
+      <browser start="false" url="" with-js-debugger="false" />
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -917,41 +1076,6 @@
       </option>
       <envs />
       <patterns />
-      <method />
-    </configuration>
-    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
-      <option name="BCName" value="" />
-      <option name="IOSSimulatorSdkPath" value="" />
-      <option name="adlOptions" value="" />
-      <option name="airProgramParameters" value="" />
-      <option name="appDescriptorForEmulator" value="Android" />
-      <option name="debugTransport" value="USB" />
-      <option name="debuggerSdkRaw" value="BC SDK" />
-      <option name="emulator" value="NexusOne" />
-      <option name="emulatorAdlOptions" value="" />
-      <option name="fastPackaging" value="true" />
-      <option name="fullScreenHeight" value="0" />
-      <option name="fullScreenWidth" value="0" />
-      <option name="launchUrl" value="false" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browserFamily" value="FIREFOX" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="FlashPlayerDebugger.exe" />
-        </LauncherParameters>
-      </option>
-      <option name="mobileRunTarget" value="Emulator" />
-      <option name="moduleName" value="" />
-      <option name="overriddenMainClass" value="" />
-      <option name="overriddenOutputFileName" value="" />
-      <option name="overrideMainClass" value="false" />
-      <option name="runTrusted" value="true" />
-      <option name="screenDpi" value="0" />
-      <option name="screenHeight" value="0" />
-      <option name="screenWidth" value="0" />
-      <option name="url" value="http://" />
-      <option name="usbDebugPort" value="7936" />
       <method />
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
@@ -977,39 +1101,6 @@
     <configuration default="true" type="google-app-engine-deploy" factoryName="Google App Engine Deployment">
       <method />
     </configuration>
-    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" output_log_level="null" package_name="" scope="Class">
-      <option name="BCName" value="" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browserFamily" value="FIREFOX" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="FlashPlayerDebugger.exe" />
-        </LauncherParameters>
-      </option>
-      <option name="moduleName" value="" />
-      <option name="trusted" value="true" />
-      <method />
-    </configuration>
-    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="myFilePath" />
-      <option name="GLUE" />
-      <option name="myNameFilter" />
-      <option name="myGeneratedName" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
@@ -1023,6 +1114,21 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="ScalaTestRunConfiguration" factoryName="ScalaTest">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <extension name="scalaCoverage" />
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="$PROJECT_DIR$" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
       <method />
     </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -1052,7 +1158,26 @@
       <option name="ARTIFACT_NAME" value="" />
       <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
       <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="KitKatEmu" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="false" name="HebrewSongDownloader Debug" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="HebrewSongDownloaderApp" />
+      <option name="ACTIVITY_CLASS" value="ui.MainActivity" />
+      <option name="MODE" value="specific_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="USB_DEVICE" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
       <option name="USE_COMMAND_LINE" value="true" />
       <option name="COMMAND_LINE" value="" />
       <option name="WIPE_USER_DATA" value="false" />
@@ -1065,10 +1190,41 @@
       <ConfigurationWrapper RunnerId="AndroidDebugRunner" />
       <method />
     </configuration>
-    <list size="3">
+    <configuration default="false" name="HebrewSongDownloaderApp" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="install" />
+                <option value="android:deploy" />
+                <option value="android:run" />
+              </list>
+            </option>
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Android Application.HebrewSongDownloaderApp" />
-      <item index="1" class="java.lang.String" itemvalue="Android Application.SearchableActivity" />
-      <item index="2" class="java.lang.String" itemvalue="Android Application.SongListActivity" />
+      <item index="1" class="java.lang.String" itemvalue="Android Application.HebrewSongDownloader Debug" />
+      <item index="2" class="java.lang.String" itemvalue="Android Application.SearchableActivity" />
+      <item index="3" class="java.lang.String" itemvalue="Android Application.SongListActivity" />
+      <item index="4" class="java.lang.String" itemvalue="Maven.HebrewSongDownloaderApp" />
     </list>
     <recent_temporary>
       <list size="2">
@@ -1134,12 +1290,8 @@
       <workItem from="1392180614354" duration="14264000" />
       <workItem from="1392326301537" duration="34684000" />
       <workItem from="1392366240726" duration="9207000" />
-      <workItem from="1392378567398" duration="26000" />
-      <workItem from="1392378762151" duration="69000" />
-      <workItem from="1392380264015" duration="78000" />
-      <workItem from="1392381217701" duration="74000" />
-      <workItem from="1392381802628" duration="88000" />
-      <workItem from="1392970077730" duration="11260000" />
+      <workItem from="1392379754337" duration="32000" />
+      <workItem from="1392379840520" duration="260000" />
     </task>
     <task id="LOCAL-00001" summary="new project commit">
       <created>1391779743123</created>
@@ -1181,19 +1333,11 @@
       <created>1392375218469</created>
       <updated>1392375218469</updated>
     </task>
-    <task id="LOCAL-00011" summary="Exception package fix">
-      <created>1392378793363</created>
-      <updated>1392378793363</updated>
-    </task>
-    <task id="LOCAL-00012" summary="cleanup and bugfixes:&#10;1) rearanged utils in packages&#10;2) cleaned player fragment and main activitiy">
-      <created>1392975409700</created>
-      <updated>1392975409700</updated>
-    </task>
-    <option name="localTasksCounter" value="13" />
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="148704000" />
+    <option name="totallyTimeSpent" value="137401000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1217,37 +1361,41 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15814696" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="-378" y="177" width="1732" height="976" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33333334" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3381535" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14238042" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32983795" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19914803" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3303671" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33444077" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32814237" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2057842" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20487265" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27030033" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3259177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.40711904" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3381535" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14238042" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="IvyIDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31782946" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.358804" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32983795" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="SBT Execute" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.10063898" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15282215" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3311185" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="PsiViewer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1682641" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="-378" y="177" width="1732" height="976" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Repositories" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32983795" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32814237" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1311,9 +1459,7 @@
     <MESSAGE value="added dynamic song list fragment&#10;(still fake results)" />
     <MESSAGE value="redesigned tabhost to be relative and host the fragment template" />
     <MESSAGE value="loading fake lists from async task" />
-    <MESSAGE value="Exception package fix" />
-    <MESSAGE value="cleanup and bugfixes:&#10;1) rearanged utils in packages&#10;2) cleaned player fragment and main activitiy" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleanup and bugfixes:&#10;1) rearanged utils in packages&#10;2) cleaned player fragment and main activitiy" />
+    <option name="LAST_COMMIT_MESSAGE" value="loading fake lists from async task" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1329,97 +1475,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/gen/com/alfa/HebrewSongDownloaderApp/BuildConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="19" selection-start="193" selection-end="193" vertical-scroll-proportion="0.12573965" vertical-offset="0" max-vertical-offset="676" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gen/com/alfa/HebrewSongDownloaderApp/R.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="1" selection-start="188" selection-end="188" vertical-scroll-proportion="0.15088758" vertical-offset="0" max-vertical-offset="676" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gen/com/alfa/HebrewSongDownloaderApp/Manifest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="19" selection-start="190" selection-end="190" vertical-scroll-proportion="0.12573965" vertical-offset="0" max-vertical-offset="676" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/drawable-ldpi/ic_launcher.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/Exceptions.NoSongFoundException">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>Exceptions.NoSongFoundException</OriginalElement>
-          <nodes>
-            <node x="" y="">Exceptions.NoSongFoundException</node>
-            <node x="" y="">java.lang.Exception</node>
-            <node x="" y="">java.lang.Throwable</node>
-            <node x="" y="">java.io.Serializable</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="73.0" y="129.0" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Programming Center/Android Developement/SporTeam/SporTeam/src/com/appengine/utils/AeLoadingCenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="0" selection-start="1155" selection-end="1155" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="15858" />
-      </provider>
-    </entry>
-    <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/android/drm/DrmManagerClient.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="13" selection-start="450" selection-end="450" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1584" />
-      </provider>
-    </entry>
-    <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/android/widget/ListView.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="13" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="2412" />
-      </provider>
-    </entry>
-    <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/android/widget/ProgressBar.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="13" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1584" />
-      </provider>
-    </entry>
-    <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/java/lang/Boolean.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="54" selection-start="193" selection-end="193" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="738" />
-      </provider>
-    </entry>
-    <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/java/io/Serializable.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="17" selection-start="154" selection-end="154" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="216" />
-      </provider>
-    </entry>
-    <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/java/util/Map.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="17" selection-start="156" selection-end="156" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918" />
-      </provider>
-    </entry>
-    <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/android/view/Window.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="29" selection-start="3824" selection-end="3824" vertical-scroll-proportion="0.0" vertical-offset="1638" max-vertical-offset="4356" />
-      </provider>
-    </entry>
-    <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/android/app/SearchManager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="154" selection-end="154" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1620" />
-      </provider>
-    </entry>
-    <entry file="file://D:/Programming Center/Android Developement/SporTeam/SporTeam/src/com/sporteamws/NetworkManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="22" selection-start="428" selection-end="428" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1368" />
-      </provider>
-    </entry>
     <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/android/view/LayoutInflater.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="54" column="0" selection-start="2845" selection-end="2845" vertical-scroll-proportion="0.0" vertical-offset="488" max-vertical-offset="1062" />
@@ -1440,16 +1495,26 @@
         <state line="51" column="0" selection-start="2155" selection-end="2155" vertical-scroll-proportion="0.0" vertical-offset="339" max-vertical-offset="1008" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/alfa/utils/ui/CachingUtils.java">
+    <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/android/widget/RadioGroup.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="77" selection-end="77" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="234">
+        <state line="36" column="13" selection-start="1687" selection-end="1687" vertical-scroll-proportion="0.0" vertical-offset="465" max-vertical-offset="1026" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="51" selection-start="79" selection-end="102" vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="216">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/android/widget/RadioGroup.class">
+    <entry file="file://$PROJECT_DIR$/res/layout/search_fragment.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="13" selection-start="1687" selection-end="1687" vertical-scroll-proportion="0.0" vertical-offset="465" max-vertical-offset="1026" />
+        <state line="40" column="20" selection-start="1104" selection-end="1104" vertical-scroll-proportion="0.0" vertical-offset="517" max-vertical-offset="1836">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/android/util/Log.class">
@@ -1459,276 +1524,319 @@
     </entry>
     <entry file="jar://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/platforms/android-19/android.jar!/java/util/List.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="17" selection-start="156" selection-end="156" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1098">
+        <state line="6" column="17" selection-start="156" selection-end="156" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1098" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/entities/SongResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="5" selection-start="925" selection-end="925" vertical-scroll-proportion="0.0" vertical-offset="262" max-vertical-offset="774">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/engine/FetchSongs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="239" selection-end="239" vertical-scroll-proportion="0.0" vertical-offset="144" max-vertical-offset="2160">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/com/alfa/HebrewSongDownloaderApp/Manifest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="19" selection-start="190" selection-end="190" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="216">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/sources/android-19/java/util/List.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="17" selection-start="1183" selection-end="1183" vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="6192" />
+      </provider>
+    </entry>
+    <entry file="file://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/sources/android-19/android/util/Log.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="0" selection-start="2621" selection-end="2621" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6210" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/engine/Auth.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1494">
+          <folding>
+            <element signature="e#0#3673#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/library/PlayerFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="439" column="0" selection-start="12706" selection-end="12706" vertical-scroll-proportion="0.0" vertical-offset="6920" max-vertical-offset="7452">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/TabsPagerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="27" selection-start="741" selection-end="741" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1098">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/search/SearchFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="93" column="2" selection-start="2598" selection-end="2598" vertical-scroll-proportion="0.0" vertical-offset="1268" max-vertical-offset="1800">
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1899#1933#0" expanded="false" />
+            <element signature="e#2102#2103#0" expanded="false" />
+            <element signature="e#2127#2128#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/search/SearchableActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="0" selection-start="669" selection-end="669" vertical-scroll-proportion="0.0" vertical-offset="26" max-vertical-offset="558">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Exceptions/NoSongFoundException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="75" selection-end="75" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
+        <state line="5" column="13" selection-start="75" selection-end="75" vertical-scroll-proportion="0.16917293" vertical-offset="0" max-vertical-offset="532">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/sources/android-17/android/util/Log.java">
+    <entry file="file://$PROJECT_DIR$/src/Exceptions/UnRecognizedSongEngineException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5904">
+        <state line="5" column="13" selection-start="75" selection-end="75" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="342">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/sources/android-17/android/widget/ImageButton.java">
+    <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="13" selection-start="3351" selection-end="3351" vertical-scroll-proportion="0.0" vertical-offset="792" max-vertical-offset="1620">
+        <state line="35" column="27" selection-start="1156" selection-end="1156" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="3690">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/engine/AlternativeEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="44" selection-start="1808" selection-end="1808" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="1134">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/engine/SearchSingleResultThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="23" selection-start="2325" selection-end="2360" vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="1152">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/downloads/DownloadsAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="13" selection-start="460" selection-end="460" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2592">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/library/LibraryFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="13" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="666">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/library/LibraryAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="247" column="0" selection-start="7837" selection-end="7837" vertical-scroll-proportion="0.0" vertical-offset="782" max-vertical-offset="6066">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/async/AsyncTaskManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="13" selection-start="1021" selection-end="1021" vertical-scroll-proportion="0.0" vertical-offset="1749" max-vertical-offset="4680">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/ui/FragmentUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="142" column="32" selection-start="4283" selection-end="4283" vertical-scroll-proportion="0.0" vertical-offset="2096" max-vertical-offset="2628">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/downloads/DownloadsModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="13" selection-start="36" selection-end="36" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
           <folding>
-            <element signature="e#0#4266#0" expanded="false" />
-            <element signature="imports" expanded="false" />
+            <element signature="e#168#169#0" expanded="false" />
+            <element signature="e#210#211#0" expanded="false" />
+            <element signature="e#246#247#0" expanded="false" />
+            <element signature="e#284#285#0" expanded="false" />
+            <element signature="e#326#327#0" expanded="false" />
+            <element signature="e#367#368#0" expanded="false" />
+            <element signature="e#432#433#0" expanded="false" />
+            <element signature="e#492#493#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/xml/searchable.xml">
+    <entry file="file://$PROJECT_DIR$/src/ui/search/SongListFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="27" selection-start="129" selection-end="145" vertical-scroll-proportion="-1.3333334" vertical-offset="0" max-vertical-offset="216">
+        <state line="33" column="36" selection-start="906" selection-end="906" vertical-scroll-proportion="0.0" vertical-offset="1376" max-vertical-offset="1908">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/library/LibraryListModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="18" selection-start="447" selection-end="447" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="486">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1764">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$MAVEN_REPOSITORY$/com/google/http-client/google-http-client-jackson2/1.17.0-rc/google-http-client-jackson2-1.17.0-rc.pom">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="31" selection-start="1478" selection-end="1478" vertical-scroll-proportion="14.37037" vertical-offset="1090" max-vertical-offset="1620">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/conf/SharedPref.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="44" selection-start="1579" selection-end="1592" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="936">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/apis/google-api-services-youtube/v3-rev94-1.17.0-rc/google-api-services-youtube-v3-rev94-1.17.0-rc.jar!/com/google/api/services/youtube/model/SearchResult.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="19" selection-start="186" selection-end="186" vertical-scroll-proportion="-3.6" vertical-offset="0" max-vertical-offset="756">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/apis/google-api-services-youtube/v3-rev94-1.17.0-rc/google-api-services-youtube-v3-rev94-1.17.0-rc.jar!/com/google/api/services/youtube/YouTube.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="851" column="71" selection-start="48988" selection-end="48988" vertical-scroll-proportion="-10.88" vertical-offset="15028" max-vertical-offset="37854">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.IntelliJIdea13/system/compile-server/hebrewsongdownloaderapp_4230d1f6/targets/java-production/HebrewSongDownloaderApp/android/generated_sources/build_config/com/alfa/HebrewSongDownloaderApp/BuildConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="13" selection-start="107" selection-end="107" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="198">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.IntelliJIdea13/system/compile-server/hebrewsongdownloaderapp_4230d1f6/targets/java-production/HebrewSongDownloaderApp/android/generated_sources/aapt/com/alfa/HebrewSongDownloaderApp/R.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="13" selection-start="238" selection-end="238" vertical-scroll-proportion="0.0" vertical-offset="378" max-vertical-offset="2826">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="129" column="45" selection-start="3469" selection-end="3469" vertical-scroll-proportion="0.0" vertical-offset="1728" max-vertical-offset="5706">
+          <folding>
+            <element signature="e#6951#6985#0" expanded="true" />
+            <element signature="e#7352#7386#0" expanded="true" />
+            <element signature="e#7487#7525#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/apis/google-api-services-youtube/v3-rev94-1.17.0-rc/google-api-services-youtube-v3-rev94-1.17.0-rc-sources.jar!/com/google/api/services/youtube/YouTube.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5937" column="18" selection-start="264948" selection-end="264948" vertical-scroll-proportion="0.0" vertical-offset="97415" max-vertical-offset="153864">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/apis/google-api-services-youtube/v3-rev94-1.17.0-rc/google-api-services-youtube-v3-rev94-1.17.0-rc-sources.jar!/com/google/api/services/youtube/model/SearchResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="19" selection-start="1528" selection-end="1528" vertical-scroll-proportion="0.0" vertical-offset="125" max-vertical-offset="2178">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/logic/URLUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="119" selection-end="119" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="432">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="49" selection-start="602" selection-end="602" vertical-scroll-proportion="0.3880597" vertical-offset="0" max-vertical-offset="846">
+        <state line="7" column="39" selection-start="391" selection-end="393" vertical-scroll-proportion="-4.6666665" vertical-offset="0" max-vertical-offset="828">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ant.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/com/alfa/HebrewSongDownloaderApp/R.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="1" selection-start="188" selection-end="188" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="216">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/logic/YouTubeSearch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="112" column="24" selection-start="4227" selection-end="4227" vertical-scroll-proportion="-8.509091" vertical-offset="1242" max-vertical-offset="2736">
           <folding>
-            <element signature="e#470#488#0" expanded="true" />
+            <element signature="e#0#6059#0" expanded="true" />
+            <element signature="e#2610#2624#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/alfa/utils/ui/UIUtils.java">
+    <entry file="file://$PROJECT_DIR$/src/utils/ui/UIUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="0" selection-start="3109" selection-end="3109" vertical-scroll-proportion="0.0" vertical-offset="1320" max-vertical-offset="4320">
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#800#1111#0" expanded="false" />
-            <element signature="e#882#1085#0" expanded="false" />
-            <element signature="e#1066#1067#0" expanded="false" />
-            <element signature="e#1100#1101#0" expanded="false" />
-            <element signature="e#1897#2063#0" expanded="false" />
-            <element signature="e#2052#2053#0" expanded="false" />
-            <element signature="e#2179#2643#0" expanded="false" />
-            <element signature="e#2261#2617#0" expanded="false" />
-            <element signature="e#2598#2599#0" expanded="false" />
-            <element signature="e#2632#2633#0" expanded="false" />
-            <element signature="e#3105#3505#0" expanded="false" />
-            <element signature="e#3494#3495#0" expanded="false" />
-            <element signature="e#3927#4262#0" expanded="false" />
-            <element signature="e#4009#4236#0" expanded="false" />
-            <element signature="e#4217#4218#0" expanded="false" />
-            <element signature="e#4251#4252#0" expanded="false" />
-            <element signature="e#4684#4977#0" expanded="false" />
-            <element signature="e#4766#4951#0" expanded="false" />
-            <element signature="e#4932#4933#0" expanded="false" />
-            <element signature="e#4966#4967#0" expanded="false" />
-            <element signature="e#5388#5723#0" expanded="false" />
-            <element signature="e#5470#5697#0" expanded="false" />
-            <element signature="e#5678#5679#0" expanded="false" />
-            <element signature="e#5712#5713#0" expanded="false" />
-            <element signature="e#6086#6377#0" expanded="false" />
-            <element signature="e#6168#6351#0" expanded="false" />
-            <element signature="e#6332#6333#0" expanded="false" />
-            <element signature="e#6366#6367#0" expanded="false" />
-            <element signature="e#6740#7033#0" expanded="false" />
-            <element signature="e#6822#7007#0" expanded="false" />
-            <element signature="e#6988#6989#0" expanded="false" />
-            <element signature="e#7022#7023#0" expanded="false" />
-            <element signature="e#7469#7765#0" expanded="false" />
-            <element signature="e#7551#7739#0" expanded="false" />
-            <element signature="e#7720#7721#0" expanded="false" />
-            <element signature="e#7754#7755#0" expanded="false" />
-            <element signature="e#8137#8421#0" expanded="false" />
-            <element signature="e#8219#8395#0" expanded="false" />
-            <element signature="e#8376#8377#0" expanded="false" />
-            <element signature="e#8410#8411#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="235" selection-end="235" vertical-scroll-proportion="-4.0" vertical-offset="0" max-vertical-offset="216">
+        <state line="285" column="0" selection-start="8113" selection-end="8113" vertical-scroll-proportion="0.0" vertical-offset="4268" max-vertical-offset="5004">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/sources/android-17/android/view/View.java">
+    <entry file="file://$PROJECT_DIR$/target/R.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8152" column="0" selection-start="316106" selection-end="316106" vertical-scroll-proportion="0.0" vertical-offset="143903" max-vertical-offset="327204">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2286">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/search_fragment.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/target/generated-sources/r/com/alfa/HebrewSongDownloaderApp/R.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="60" selection-start="1682" selection-end="1682" vertical-scroll-proportion="-3.1153846" vertical-offset="756" max-vertical-offset="3294">
+        <state line="31" column="32" selection-start="1310" selection-end="1310" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2826">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/alfa/utils/logic/URLUtils.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="13" selection-start="128" selection-end="128" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="432">
+        <state line="6" column="34" selection-start="325" selection-end="325" vertical-scroll-proportion="0.21906693" vertical-offset="0" max-vertical-offset="1962">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/alfa/utils/logic/DataUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="46" selection-start="1394" selection-end="1394" vertical-scroll-proportion="0.0" vertical-offset="383" max-vertical-offset="1314">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/entities/SongResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="917" selection-end="917" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="954">
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#659#660#0" expanded="false" />
-            <element signature="e#692#693#0" expanded="false" />
-            <element signature="e#744#745#0" expanded="false" />
-            <element signature="e#788#789#0" expanded="false" />
-            <element signature="e#826#827#0" expanded="false" />
-            <element signature="e#860#861#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/FetchSongs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="47" selection-start="715" selection-end="715" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1890">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/alfa/utils/logic/SharedPref.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="986" selection-end="986" vertical-scroll-proportion="-19.44" vertical-offset="0" max-vertical-offset="774">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SearchableActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="37" selection-start="738" selection-end="738" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="558">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SongListFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="8" selection-start="1723" selection-end="1812" vertical-scroll-proportion="0.0" vertical-offset="666" max-vertical-offset="1314">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/alfa/utils/AsyncTaskManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="264" column="77" selection-start="9946" selection-end="9946" vertical-scroll-proportion="-13.4" vertical-offset="3859" max-vertical-offset="5256">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="71" selection-start="211" selection-end="211" vertical-scroll-proportion="-1.0384616" vertical-offset="0" max-vertical-offset="180">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/android-support-v13.jar!/android/support/v4/view/ViewPager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="166" selection-end="166" vertical-scroll-proportion="-3.6" vertical-offset="0" max-vertical-offset="2664">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/PlayerFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="135" column="6" selection-start="4054" selection-end="4133" vertical-scroll-proportion="-14.84" vertical-offset="1537" max-vertical-offset="4536">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/LibrarySongsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="13" selection-start="581" selection-end="581" vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="1242">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/android-support-v13.jar!/android/support/v4/app/Fragment.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="114" column="29" selection-start="4249" selection-end="4249" vertical-scroll-proportion="-6.76" vertical-offset="1865" max-vertical-offset="3906">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/SearchFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="13" selection-start="650" selection-end="650" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1692">
-          <folding>
-            <element signature="e#2319#2353#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/TabsPagerAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="51" selection-start="1209" selection-end="1209" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="954">
-          <folding>
-            <element signature="e#1304#1305#0" expanded="true" />
-            <element signature="e#1372#1373#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="201" column="43" selection-start="6234" selection-end="6234" vertical-scroll-proportion="-6.12" vertical-offset="3465" max-vertical-offset="3978">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4235#4236#0" expanded="true" />
-            <element signature="e#4262#4263#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Programming Center/Android Developement/lib/adt-bundle-windows-x86_64-20131030/sdk/sources/android-17/android/app/ActionBar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="730" column="34" selection-start="27182" selection-end="27182" vertical-scroll-proportion="0.0" vertical-offset="12546" max-vertical-offset="17082">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/alfa/HebrewSongDownloaderApp/LibraryFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="37" selection-start="913" selection-end="913" vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="594">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/alfa/utils/ui/FragmentUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="23" selection-start="649" selection-end="649" vertical-scroll-proportion="0.22222222" vertical-offset="324" max-vertical-offset="900">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1761,6 +1869,7 @@
       </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
+          <last-edited>JetBrains JFlex</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1772,7 +1881,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>Android API 19 Platform</last-edited>
+          <last-edited>Android API 17 Platform</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1796,7 +1905,7 @@
       </state>
       <state key="ProjectJDKs.UI">
         <settings>
-          <last-edited>1.7</last-edited>
+          <last-edited>1.8</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1808,7 +1917,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>jsoup-1.7.3</last-edited>
+          <last-edited>android-support-v13</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
