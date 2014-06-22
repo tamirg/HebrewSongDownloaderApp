@@ -60,7 +60,8 @@ public class MainActivity extends FragmentActivity implements
 
 		setupMainView();
 
-		YouTubeSearch.getSearchResults("elvis");
+        LogUtils.logData("flow_debug", "MainActivity__elvis yo");
+        YouTubeSearch.getSearchResults("elvis");
 	}
 
 	/**

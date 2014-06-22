@@ -70,20 +70,20 @@ public class YouTubeSearch {
 	 * @param query
 	 * @return
 	 */
-	public static List<SearchResult> getSearchResults(String query) {
-		List<SearchResult> searchResultList = new ArrayList<SearchResult>();
-
-		try {
+    public static void getSearchResults(final String query) {
+        LogUtils.logData("flow_debug", "MainActivity__inElvis");
+        try {
 		    /* The YouTube object is used to make all API requests. The last argument is required, but
             * because we don't need anything initialized when the HttpRequest is initialized, we override
             * the interface and provide a no-op function.
             */
-			youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
+
+            youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
 				public void initialize(HttpRequest request) throws IOException {
 				}
 			}).setApplicationName(Application_Name).build();
 
-			YouTube.Search.List search = youtube.search().list("id,snippet");
+            final YouTube.Search.List search = youtube.search().list("id,snippet");
 
       /*
        * It is important to set your developer key from the Google Developer Console for
@@ -105,24 +105,35 @@ public class YouTubeSearch {
        */
 			search.setFields("items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)");
 			search.setMaxResults(NUMBER_OF_VIDEOS_RETURNED);
-			SearchListResponse searchResponse = search.execute();
 
-			searchResultList = searchResponse.getItems();
+            // setup thread for execution
+            Thread t = new Thread() {
+                public void run() {
+                    try {
+                        SearchListResponse searchResponse = search.execute();
+                        List<SearchResult> searchResultList = new ArrayList<SearchResult>();
+                        searchResultList = searchResponse.getItems();
 
-			if (searchResultList != null) {
-				prettyPrint(searchResultList.iterator(), query);
-			}
+                        if (searchResultList != null) {
+                            prettyPrint(searchResultList.iterator(), query);
+                        }
 
-		} catch (GoogleJsonResponseException e) {
-			System.err.println("There was a service error: " + e.getDetails().getCode() + " : "
-					                   + e.getDetails().getMessage());
-		} catch (IOException e) {
-			System.err.println("There was an IO error: " + e.getCause() + " : " + e.getMessage());
-		} catch (Throwable t) {
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
+
+            // execute thread
+            t.start();
+        } catch (GoogleJsonResponseException e) {
+            LogUtils.logData("flow_debug", "There was a service error: " + e.getDetails().getCode() + " : "
+                    + e.getDetails().getMessage());
+        } catch (IOException e) {
+            LogUtils.logData("flow_debug", "There was an IO error: " + e.getCause() + " : " + e.getMessage());
+        } catch (Throwable t) {
 			t.printStackTrace();
 		}
-
-		return searchResultList;
 	}
 
 	/*
@@ -135,14 +146,14 @@ public class YouTubeSearch {
 	   */
 	private static void prettyPrint(Iterator<SearchResult> iteratorSearchResults, String query) {
 
-		System.out.println("\n=============================================================");
-		System.out.println(
-				                  "   First " + NUMBER_OF_VIDEOS_RETURNED + " videos for search on \"" + query + "\".");
-		System.out.println("=============================================================\n");
+        LogUtils.logData("flow_debug", "\n=============================================================");
+        LogUtils.logData("flow_debug", (
+                "   First " + NUMBER_OF_VIDEOS_RETURNED + " videos for search on \"" + query + "\"."));
+        LogUtils.logData("flow_debug", "=============================================================\n");
 
 		if (!iteratorSearchResults.hasNext()) {
-			System.out.println(" There aren't any results for your query.");
-		}
+            LogUtils.logData("flow_debug", " There aren't any results for your query.");
+        }
 
 		while (iteratorSearchResults.hasNext()) {
 
@@ -153,11 +164,11 @@ public class YouTubeSearch {
 			if (rId.getKind().equals("youtube#video")) {
 				Thumbnail thumbnail = (Thumbnail) singleVideo.getSnippet().getThumbnails().get("default");
 
-				System.out.println(" Video Id" + rId.getVideoId());
-				System.out.println(" Title: " + singleVideo.getSnippet().getTitle());
-				System.out.println(" Thumbnail: " + thumbnail.getUrl());
-				System.out.println("\n-------------------------------------------------------------\n");
-			}
+                LogUtils.logData("flow_debug", " Video Id" + rId.getVideoId());
+                LogUtils.logData("flow_debug", " Title: " + singleVideo.getSnippet().getTitle());
+                LogUtils.logData("flow_debug", " Thumbnail: " + thumbnail.getUrl());
+                LogUtils.logData("flow_debug", "\n-------------------------------------------------------------\n");
+            }
 		}
 	}
 }
