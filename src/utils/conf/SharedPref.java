@@ -25,8 +25,11 @@ public class SharedPref {
 	public final static String songExtension = ".mp3";
 	public final static String queryEncoding = "UTF-8";
 	public final static String unidownUrlQuery = "http://www.unidown.com/search.php?q=";
-
-	/**
+    public final static String mp3tuberHomeUrl = "http://mp3tuber.org/";
+    public final static String userAgent =
+            "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36";
+    public final static String mp3tuberDownloadUrl = "http://mp3tuber.org/download.php?id=";
+    /**
 	 * ******************************************************************
 	 * ***************** Tab handling constants *************************
 	 * ******************************************************************

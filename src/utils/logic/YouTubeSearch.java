@@ -53,7 +53,7 @@ public class YouTubeSearch {
 	/**
 	 * Global instance of the max number of videos we want returned (50 = upper limit per page).
 	 */
-	private static final long NUMBER_OF_VIDEOS_RETURNED = 25;
+    private static final long NUMBER_OF_VIDEOS_RETURNED = 10;
 
 	/**
 	 * Global instance of Youtube object to make all API requests.
@@ -70,71 +70,61 @@ public class YouTubeSearch {
 	 * @param query
 	 * @return
 	 */
-    public static void getSearchResults(final String query) {
-        LogUtils.logData("flow_debug", "MainActivity__inElvis");
+    public static List<SearchResult> getSearchResults(String query) {
+        List<SearchResult> searchResultList = new ArrayList<SearchResult>();
+
         try {
 		    /* The YouTube object is used to make all API requests. The last argument is required, but
             * because we don't need anything initialized when the HttpRequest is initialized, we override
             * the interface and provide a no-op function.
             */
-
             youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
-				public void initialize(HttpRequest request) throws IOException {
-				}
-			}).setApplicationName(Application_Name).build();
+                public void initialize(HttpRequest request) throws IOException {
+                }
+            }).setApplicationName(Application_Name).build();
 
-            final YouTube.Search.List search = youtube.search().list("id,snippet");
+            YouTube.Search.List search = youtube.search().list("id,snippet");
 
       /*
        * It is important to set your developer key from the Google Developer Console for
        * non-authenticated requests (found under the API Access tab at this link:
        * code.google.com/apis/). This is good practice and increased your quota.
        */
-			String apiKey = SharedPref.YouTubeApiKey;
-			search.setKey(apiKey);
-			search.setQ(query);
-	  /*
+            String apiKey = SharedPref.YouTubeApiKey;
+            search.setKey(apiKey);
+            search.setQ(query);
+      /*
 
        * We are only searching for videos (not playlists or channels). If we were searching for
        * more, we would add them as a string like this: "video,playlist,channel".
        */
-			search.setType("video");
-	  /*
+            search.setType("video");
+      /*
 	   * This method reduces the info returned to only the fields we need and makes calls more
        * efficient.
        */
-			search.setFields("items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)");
-			search.setMaxResults(NUMBER_OF_VIDEOS_RETURNED);
+            search.setFields("items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)");
+            search.setMaxResults(NUMBER_OF_VIDEOS_RETURNED);
+            SearchListResponse searchResponse = search.execute();
 
-            // setup thread for execution
-            Thread t = new Thread() {
-                public void run() {
-                    try {
-                        SearchListResponse searchResponse = search.execute();
-                        List<SearchResult> searchResultList = new ArrayList<SearchResult>();
-                        searchResultList = searchResponse.getItems();
+            searchResultList = searchResponse.getItems();
 
-                        if (searchResultList != null) {
-                            prettyPrint(searchResultList.iterator(), query);
-                        }
+            if (searchResultList != null) {
+                //TODO Delete its annoying!!!
+//                prettyPrint(searchResultList.iterator(), query);
+            }
 
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            };
-
-            // execute thread
-            t.start();
         } catch (GoogleJsonResponseException e) {
             LogUtils.logData("flow_debug", "There was a service error: " + e.getDetails().getCode() + " : "
                     + e.getDetails().getMessage());
         } catch (IOException e) {
             LogUtils.logData("flow_debug", "There was an IO error: " + e.getCause() + " : " + e.getMessage());
         } catch (Throwable t) {
-			t.printStackTrace();
-		}
-	}
+            t.printStackTrace();
+        }
+
+        return searchResultList;
+    }
 
 	/*
 	   * Prints out all SearchResults in the Iterator. Each printed line includes title, id, and
