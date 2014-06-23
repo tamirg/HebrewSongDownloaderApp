@@ -29,15 +29,21 @@ public class AlternativeSearchResultThread implements Runnable {
         try {
             List<SearchResult> youtubeSearchResults = YouTubeSearch.getSearchResults(nameOfSong);
             for (SearchResult currYoutubeSearchResult : youtubeSearchResults) {
-                handleSearchResult(currYoutubeSearchResult);
+                try {
+                    handleSearchResult(currYoutubeSearchResult);
+                } catch (Exception e) {
+                    Log.e("error:fetching songs", e.toString());
+                }
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             Log.e("error:fetching songs", e.toString());
+        } finally {
+            AlternativeEngine.setIsLocked(false);
         }
     }
 
     private void handleSearchResult(SearchResult currYoutubeSearchResult) throws IOException {
-        //TODO: DELETE CAUSE NOT SURE IF NEEDED
+        //TODO: DELETE somewhen CAUSE NOT SURE IF NEEDED
         // Proxy connection for anonymous request
         System.setProperty("http.proxyHost", "64.186.149.57");
         System.setProperty("http.proxyPort", "8080");
